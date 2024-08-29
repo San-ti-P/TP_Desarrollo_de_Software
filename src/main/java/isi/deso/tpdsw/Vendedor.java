@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw;
-//import java.lang.Math;
 
 public class Vendedor {
     final static private double RADIOTIERRA = 6378.0;
