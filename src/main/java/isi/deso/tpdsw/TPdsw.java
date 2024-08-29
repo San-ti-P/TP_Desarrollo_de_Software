@@ -90,6 +90,7 @@ public class TPdsw {
         vendedores.remove(pos);
         
         //scanner.close(); // Cerrar el scanner al final*/
+        
         //Solucion calcular distancia
         /*Vendedor v = new Vendedor();
         Cliente c = new Cliente();
@@ -118,7 +119,7 @@ public class TPdsw {
         for (int i = 0; i < 3; i++) {
             Cliente c = new Cliente();
             
-            System.out.print("PEDILOOOOOOOOOOOOOOOOOOOOOOOOOOO ID: ");
+            System.out.print("Ingrese ID: ");
             int idCliente = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea sobrante
 
