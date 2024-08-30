@@ -2,47 +2,123 @@ package isi.deso.tpdsw;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Iterator;
 
 public class TPdsw {
 
     public static void main(String[] args) {
         //Solucion Vendedores
-        /*ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
-        Scanner scanner = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in); 
+        ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
+        ingresarVendedores(scanner, vendedores);
+        buscarVendedor(scanner, vendedores);
+        eliminarVendedor(scanner, vendedores);
+                
+        //Solucion Clientes
+        
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        ingresarClientes(scanner, clientes);
+        buscarCliente(scanner, clientes);
+        eliminarCliente(scanner, clientes);
+        scanner.close();
+        //Solucion calcular distancia
+               
+        Random rand = new Random();
+        int posVendedor = rand.nextInt(vendedores.size());
+        int posCliente = rand.nextInt(clientes.size());
+        double distancia = vendedores.get(posVendedor).distancia(clientes.get(posCliente));
+        System.out.printf("La distancia entre el vendedor %s y el cliente %s es %f km\n",vendedores.get(posVendedor).getNombre(),clientes.get(posCliente).getNombre(), distancia);
+                
+    }
+    
+    private static void ingresarVendedores(Scanner scanner, ArrayList<Vendedor> vendedores){
+        //Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingreso de vendedores: ");
         for (int i = 0; i < 3; i++) {
             Vendedor v = new Vendedor();
             
             System.out.print("Ingrese ID: ");
-            int id = scanner.nextInt();
+            int idVendedor = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea sobrante
 
             System.out.print("Ingrese Nombre: ");
-            String nombre = scanner.nextLine();
+            String nombreVendedor = scanner.nextLine();
 
             System.out.print("Ingrese Direccion: ");
-            String direccion = scanner.nextLine();
+            String direccionVendedor = scanner.nextLine();
 
             System.out.print("Ingrese latitud: ");
-            double latitud = scanner.nextDouble();
-
-            System.out.print("Ingrese longitud: ");
-            double longitud = scanner.nextDouble();
+            double latitudVendedor = scanner.nextDouble();
             scanner.nextLine(); // Consumir la nueva línea sobrante
+            System.out.print("Ingrese longitud: ");
+            double longitudVendedor = scanner.nextDouble();
+            //scanner.nextLine(); // Consumir la nueva línea sobrante
 
-            Coordenada coordenadas = new Coordenada();
-            coordenadas.setLat(latitud);
-            coordenadas.setLng(longitud);
+            Coordenada coordenadasVendedor = new Coordenada();
+            coordenadasVendedor.setLat(latitudVendedor);
+            coordenadasVendedor.setLng(longitudVendedor);
             
-            v.setId(id);
-            v.setNombre(nombre);
-            v.setDireccion(direccion);
+            v.setId(idVendedor);
+            v.setNombre(nombreVendedor);
+            v.setDireccion(direccionVendedor);
+            v.setCoordenadas(coordenadasVendedor);
             vendedores.add(v);
 
             System.out.println();
         }
+        //scanner.close();
+    }
+    
+    private static void ingresarClientes(Scanner scanner, ArrayList<Cliente> clientes){
+        //Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingreso de clientes: ");
+        for (int i = 0; i < 3; i++) {
+            Cliente c = new Cliente();
+            
+            System.out.print("Ingrese ID: ");
+            int idCliente = scanner.nextInt();
+            scanner.nextLine(); // Consumir la nueva línea sobrante
 
+            System.out.print("Ingrese nombre: ");
+            String nombreCliente = scanner.nextLine();
+            
+            System.out.print("Ingrese cuit: ");
+            String cuitCliente = scanner.nextLine();
+            
+            System.out.print("Ingrese email: ");
+            String emailCliente = scanner.nextLine();
+
+            System.out.print("Ingrese Direccion: ");
+            String direccionCliente = scanner.nextLine();
+
+            System.out.print("Ingrese latitud: ");
+            double latitudCliente = scanner.nextDouble();
+            scanner.nextLine(); // Consumir la nueva línea sobrante
+            System.out.print("Ingrese longitud: ");
+            double longitudCliente = scanner.nextDouble();
+            scanner.nextLine(); // Consumir la nueva línea sobrante
+
+            Coordenada coordenadasCliente = new Coordenada();
+            coordenadasCliente.setLat(latitudCliente);
+            coordenadasCliente.setLng(longitudCliente);
+            
+            c.setId(idCliente);
+            c.setNombre(nombreCliente);
+            c.setCuit(cuitCliente);
+            c.setDireccion(direccionCliente);
+            c.setEmail(emailCliente);
+            c.setCoordenadas(coordenadasCliente);
+            clientes.add(c);
+
+            System.out.println();
+        }
+        //scanner.close();
+    }
+    
+    private static void buscarVendedor(Scanner scanner, ArrayList<Vendedor> vendedores){
         int opcion;
+        //Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese 1 si desea buscar por nombre o 2 si desea buscar por id: ");
         opcion = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea sobrante
@@ -78,100 +154,34 @@ public class TPdsw {
                 }
                 i++;
             }
+            if(!flag) System.out.println("El vendedor no fue encontrado");
         }
         else System.out.println("Opcion invalida");
+        //scanner.close();
+    }
     
-        
-        int pos;
-        System.out.println("Ingresar la posicion del vendedor a eliminar: ");
-        pos = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea sobrante
-        
-        vendedores.remove(pos);
-        
-        //scanner.close(); // Cerrar el scanner al final*/
-        //Solucion calcular distancia
-        /*Vendedor v = new Vendedor();
-        Cliente c = new Cliente();
-        Coordenada cv = new Coordenada();
-        cv.setLat(0.00);
-        cv.setLng(10.00);
-        Coordenada cc = new Coordenada();
-        cc.setLat(0.00);
-        cc.setLng(11.00);
-        v.setId(1);
-        v.setNombre("yo");
-        v.setDireccion("aaa");
-        v.setCoordenadas(cv);
-        c.setId(2);
-        c.setCuit("222222");
-        c.setDireccion("bbb");
-        c.setEmail("ccc@mail.com");
-        c.setCoordenadas(cc);
-        double d = v.distancia(c);
-        System.out.println(d);*/
-        
-        //Solucion Clientes
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-
-        for (int i = 0; i < 3; i++) {
-            Cliente c = new Cliente();
-            
-            System.out.print("Ingrese ID: ");
-            int idCliente = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
-
-            System.out.print("Ingrese cuit: ");
-            String cuitCliente = scanner.nextLine();
-            
-            System.out.print("Ingrese email: ");
-            String emailCliente = scanner.nextLine();
-
-            System.out.print("Ingrese Direccion: ");
-            String direccionCliente = scanner.nextLine();
-
-            System.out.print("Ingrese latitud: ");
-            double latitudCliente = scanner.nextDouble();
-
-            System.out.print("Ingrese longitud: ");
-            double longitudCliente = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
-
-            Coordenada coordenadasCliente = new Coordenada();
-            coordenadasCliente.setLat(latitudCliente);
-            coordenadasCliente.setLng(longitudCliente);
-            
-            c.setId(idCliente);
-            c.setCuit(cuitCliente);
-            c.setDireccion(direccionCliente);
-            c.setEmail(emailCliente);
-            c.setCoordenadas(coordenadasCliente);
-            clientes.add(c);
-
-            System.out.println();
-        }
-
+    private static void buscarCliente(Scanner scanner, ArrayList<Cliente> clientes){
         int opcion;
+        //Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese 1 si desea buscar por nombre o 2 si desea buscar por id: ");
         opcion = scanner.nextInt();
         scanner.nextLine(); // Consumir la nueva línea sobrante
         
         if(opcion == 1){
-            //String nombre;
-            System.out.print("Trolleaste pa\n");
-            /*nombre = scanner.nextLine();
+            String nombre;
+            System.out.print("Ingrese el nombre del cliente a buscar: ");
+            nombre = scanner.nextLine();
             int i = 0;
             boolean flag = false;
             
             while(i<3 && !flag){
-                if(nombre.equals(vendedores.get(i).getNombre())){
-                    System.out.println("Vendedor encontrado en la posicion " + (1 + i));
+                if(nombre.equals(clientes.get(i).getNombre())){
+                    System.out.println("Cliente encontrado en la posicion " + (1 + i));
                     flag = true;
                 }
                 i++;
             }
-            if(!flag) System.out.println("El vendedor no fue encontrado");*/
+            if(!flag) System.out.println("El cliente no fue encontrado");
         }
         else if(opcion == 2){
             int id;
@@ -188,18 +198,65 @@ public class TPdsw {
                 }
                 i++;
             }
+            if(!flag) System.out.println("El cliente no fue encontrado");
         }
         else System.out.println("Opcion invalida");
+        //scanner.close();
+    }
     
-        
+    private static void eliminarVendedor(Scanner scanner, ArrayList<Vendedor> vendedores){
         int pos;
+        //Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingresar la posicion del vendedor a eliminar: ");
+        pos = scanner.nextInt();
+        pos--;
+        scanner.nextLine(); // Consumir la nueva línea sobrante
+        System.out.print("Listado de vendedores antes de la eliminacion: ");
+        mostrarVendedores(vendedores);
+        vendedores.remove(pos);
+        System.out.print("Listado de vendedores luego de la eliminacion: ");
+        mostrarVendedores(vendedores);
+        //scanner.close();
+    }
+    
+    private static void eliminarCliente(Scanner scanner, ArrayList<Cliente> clientes){
+        int pos;
+        //Scanner scanner = new Scanner(System.in);
         System.out.println("Ingresar la posicion del cliente a eliminar: ");
         pos = scanner.nextInt();
+        pos--;
         scanner.nextLine(); // Consumir la nueva línea sobrante
-        
+        System.out.print("Listado de clientes antes de la eliminacion: ");
+        mostrarClientes(clientes);
         clientes.remove(pos);
-        
-        scanner.close(); // Cerrar el scanner al final
+        System.out.print("Listado de clientes luego de la eliminacion: ");
+        mostrarClientes(clientes);
+        //scanner.close();
+    }
+    
+    private static void mostrarVendedores(ArrayList<Vendedor> lista){
+        Iterator<Vendedor> i = lista.iterator();
+        if(i.hasNext()){
+            Vendedor siguiente = i.next();
+            System.out.printf("(Id: %d, Nombre: %s)", siguiente.getId(), siguiente.getNombre());
+        }
+        while(i.hasNext()){
+            Vendedor siguiente = i.next();
+            System.out.printf(", (Id: %d, Nombre: %s)", siguiente.getId(), siguiente.getNombre());
+        }
+        System.out.println();
+    }
+    private static void mostrarClientes(ArrayList<Cliente> lista){
+        Iterator<Cliente> i = lista.iterator();
+        if(i.hasNext()){
+            Cliente siguiente = i.next();
+            System.out.printf("(Id: %d, Nombre: %s)", siguiente.getId(), siguiente.getNombre());
+        }
+        while(i.hasNext()){
+            Cliente siguiente = i.next();
+            System.out.printf(", (Id: %d, Nombre: %s)", siguiente.getId(), siguiente.getNombre());
+        }
+        System.out.println();
     }
 }
 

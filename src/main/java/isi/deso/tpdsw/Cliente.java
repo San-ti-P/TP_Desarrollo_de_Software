@@ -2,6 +2,7 @@ package isi.deso.tpdsw;
 
 public class Cliente {
     private int id;
+    private String nombre;
     private String cuit;
     private String email;
     private String direccion;
@@ -11,6 +12,10 @@ public class Cliente {
         return id;
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+    
     public String getCuit() {
         return cuit;
     }
@@ -31,6 +36,9 @@ public class Cliente {
         this.id = id;
     }
 
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
     public void setCuit(String cuit) {
         this.cuit = cuit;
     }
