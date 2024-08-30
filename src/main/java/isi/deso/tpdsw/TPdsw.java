@@ -8,7 +8,9 @@ import java.util.Iterator;
 public class TPdsw {
 
     public static void main(String[] args) {
+        
         //Solucion Vendedores
+        
         Scanner scanner = new Scanner(System.in); 
         ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
         ingresarVendedores(scanner, vendedores);
@@ -22,6 +24,7 @@ public class TPdsw {
         buscarCliente(scanner, clientes);
         eliminarCliente(scanner, clientes);
         scanner.close();
+        
         //Solucion calcular distancia
                
         Random rand = new Random();
@@ -29,11 +32,9 @@ public class TPdsw {
         int posCliente = rand.nextInt(clientes.size());
         double distancia = vendedores.get(posVendedor).distancia(clientes.get(posCliente));
         System.out.printf("La distancia entre el vendedor %s y el cliente %s es %f km\n",vendedores.get(posVendedor).getNombre(),clientes.get(posCliente).getNombre(), distancia);
-                
     }
     
     private static void ingresarVendedores(Scanner scanner, ArrayList<Vendedor> vendedores){
-        //Scanner scanner = new Scanner(System.in);
         System.out.println("Ingreso de vendedores: ");
         for (int i = 0; i < 3; i++) {
             Vendedor v = new Vendedor();
@@ -67,18 +68,16 @@ public class TPdsw {
 
             System.out.println();
         }
-        //scanner.close();
     }
     
     private static void ingresarClientes(Scanner scanner, ArrayList<Cliente> clientes){
-        //Scanner scanner = new Scanner(System.in);
         System.out.println("Ingreso de clientes: ");
         for (int i = 0; i < 3; i++) {
             Cliente c = new Cliente();
             
             System.out.print("Ingrese ID: ");
             int idCliente = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
+            scanner.nextLine();
 
             System.out.print("Ingrese nombre: ");
             String nombreCliente = scanner.nextLine();
@@ -94,10 +93,10 @@ public class TPdsw {
 
             System.out.print("Ingrese latitud: ");
             double latitudCliente = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
+            scanner.nextLine();
             System.out.print("Ingrese longitud: ");
             double longitudCliente = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
+            scanner.nextLine();
 
             Coordenada coordenadasCliente = new Coordenada();
             coordenadasCliente.setLat(latitudCliente);
@@ -113,15 +112,13 @@ public class TPdsw {
 
             System.out.println();
         }
-        //scanner.close();
     }
     
     private static void buscarVendedor(Scanner scanner, ArrayList<Vendedor> vendedores){
         int opcion;
-        //Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese 1 si desea buscar por nombre o 2 si desea buscar por id: ");
         opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea sobrante
+        scanner.nextLine();
         
         if(opcion == 1){
             String nombre;
@@ -143,7 +140,7 @@ public class TPdsw {
             int id;
             System.out.println("Ingrese el id del vendedor a buscar: ");
             id = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
+            scanner.nextLine();
             int i = 0;
             boolean flag = false;
             
@@ -157,15 +154,13 @@ public class TPdsw {
             if(!flag) System.out.println("El vendedor no fue encontrado");
         }
         else System.out.println("Opcion invalida");
-        //scanner.close();
     }
     
     private static void buscarCliente(Scanner scanner, ArrayList<Cliente> clientes){
         int opcion;
-        //Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese 1 si desea buscar por nombre o 2 si desea buscar por id: ");
         opcion = scanner.nextInt();
-        scanner.nextLine(); // Consumir la nueva línea sobrante
+        scanner.nextLine();
         
         if(opcion == 1){
             String nombre;
@@ -187,7 +182,7 @@ public class TPdsw {
             int id;
             System.out.println("Ingrese el id del cliente a buscar: ");
             id = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea sobrante
+            scanner.nextLine();
             int i = 0;
             boolean flag = false;
             
@@ -201,37 +196,32 @@ public class TPdsw {
             if(!flag) System.out.println("El cliente no fue encontrado");
         }
         else System.out.println("Opcion invalida");
-        //scanner.close();
     }
     
     private static void eliminarVendedor(Scanner scanner, ArrayList<Vendedor> vendedores){
         int pos;
-        //Scanner scanner = new Scanner(System.in);
         System.out.print("Ingresar la posicion del vendedor a eliminar: ");
         pos = scanner.nextInt();
         pos--;
-        scanner.nextLine(); // Consumir la nueva línea sobrante
+        scanner.nextLine();
         System.out.print("Listado de vendedores antes de la eliminacion: ");
         mostrarVendedores(vendedores);
         vendedores.remove(pos);
         System.out.print("Listado de vendedores luego de la eliminacion: ");
         mostrarVendedores(vendedores);
-        //scanner.close();
     }
     
     private static void eliminarCliente(Scanner scanner, ArrayList<Cliente> clientes){
         int pos;
-        //Scanner scanner = new Scanner(System.in);
         System.out.println("Ingresar la posicion del cliente a eliminar: ");
         pos = scanner.nextInt();
         pos--;
-        scanner.nextLine(); // Consumir la nueva línea sobrante
+        scanner.nextLine();
         System.out.print("Listado de clientes antes de la eliminacion: ");
         mostrarClientes(clientes);
         clientes.remove(pos);
         System.out.print("Listado de clientes luego de la eliminacion: ");
         mostrarClientes(clientes);
-        //scanner.close();
     }
     
     private static void mostrarVendedores(ArrayList<Vendedor> lista){
