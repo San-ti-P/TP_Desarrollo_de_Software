@@ -38,7 +38,7 @@ public class TPdsw {
         System.out.println("Ingreso de vendedores: ");
         for (int i = 0; i < 3; i++) {
             Vendedor v = new Vendedor();
-            
+            //Ingreso de datos por consola
             System.out.print("Ingrese ID: ");
             int idVendedor = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea sobrante
@@ -54,8 +54,9 @@ public class TPdsw {
             scanner.nextLine(); // Consumir la nueva línea sobrante
             System.out.print("Ingrese longitud: ");
             double longitudVendedor = scanner.nextDouble();
-            //scanner.nextLine(); // Consumir la nueva línea sobrante
+            scanner.nextLine(); // Consumir la nueva línea sobrante
 
+            //Se setean los valores y se arreglan a la coleccion
             Coordenada coordenadasVendedor = new Coordenada();
             coordenadasVendedor.setLat(latitudVendedor);
             coordenadasVendedor.setLng(longitudVendedor);
@@ -74,7 +75,7 @@ public class TPdsw {
         System.out.println("Ingreso de clientes: ");
         for (int i = 0; i < 3; i++) {
             Cliente c = new Cliente();
-            
+            //Ingreso de datos por consola
             System.out.print("Ingrese ID: ");
             int idCliente = scanner.nextInt();
             scanner.nextLine();
@@ -98,6 +99,7 @@ public class TPdsw {
             double longitudCliente = scanner.nextDouble();
             scanner.nextLine();
 
+            //Se setean los valores y se arreglan a la coleccion
             Coordenada coordenadasCliente = new Coordenada();
             coordenadasCliente.setLat(latitudCliente);
             coordenadasCliente.setLng(longitudCliente);
@@ -127,7 +129,7 @@ public class TPdsw {
             int i = 0;
             boolean flag = false;
             
-            while(i<3 && !flag){
+            while(i<vendedores.size() && !flag){
                 if(nombre.equals(vendedores.get(i).getNombre())){
                     System.out.println("Vendedor encontrado en la posicion " + (1 + i));
                     flag = true;
@@ -138,13 +140,13 @@ public class TPdsw {
         }
         else if(opcion == 2){
             int id;
-            System.out.println("Ingrese el id del vendedor a buscar: ");
+            System.out.print("Ingrese el id del vendedor a buscar: ");
             id = scanner.nextInt();
             scanner.nextLine();
             int i = 0;
             boolean flag = false;
             
-            while(i<3 && !flag){
+            while(i<vendedores.size() && !flag){
                 if(vendedores.get(i).getId() == id){
                     System.out.println("Vendedor encontrado en la posicion " + (1 + i));
                     flag = true;
@@ -169,7 +171,7 @@ public class TPdsw {
             int i = 0;
             boolean flag = false;
             
-            while(i<3 && !flag){
+            while(i<clientes.size() && !flag){
                 if(nombre.equals(clientes.get(i).getNombre())){
                     System.out.println("Cliente encontrado en la posicion " + (1 + i));
                     flag = true;
@@ -180,13 +182,13 @@ public class TPdsw {
         }
         else if(opcion == 2){
             int id;
-            System.out.println("Ingrese el id del cliente a buscar: ");
+            System.out.print("Ingrese el id del cliente a buscar: ");
             id = scanner.nextInt();
             scanner.nextLine();
             int i = 0;
             boolean flag = false;
             
-            while(i<3 && !flag){
+            while(i<clientes.size() && !flag){
                 if(clientes.get(i).getId() == id){
                     System.out.println("Cliente encontrado en la posicion " + (1 + i));
                     flag = true;
@@ -213,7 +215,7 @@ public class TPdsw {
     
     private static void eliminarCliente(Scanner scanner, ArrayList<Cliente> clientes){
         int pos;
-        System.out.println("Ingresar la posicion del cliente a eliminar: ");
+        System.out.print("Ingresar la posicion del cliente a eliminar: ");
         pos = scanner.nextInt();
         pos--;
         scanner.nextLine();
