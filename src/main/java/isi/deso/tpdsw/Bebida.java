@@ -5,7 +5,10 @@ package isi.deso.tpdsw;
  * @author santi
  */
 public class Bebida extends ItemMenu{
-
+    private static final double FACTOR_ALCOHOLICA = 0.99;
+    private static final double FACTOR_ANALCOHOLICA = 1.04;
+    private static final double FACTOR_ENVASE = 1.2;
+    
     private float graduacionAlcoholica;
     private int tamaño;
     
@@ -38,10 +41,10 @@ public class Bebida extends ItemMenu{
     @Override
     public float peso(){
         if(this.esAlcoholica()){
-            return (float)(tamaño*0.99*1.2);
+            return (float)(tamaño*FACTOR_ALCOHOLICA*FACTOR_ENVASE);
         }
         else{
-            return (float)(tamaño*1.04*1.2);
+            return (float)(tamaño*FACTOR_ANALCOHOLICA*FACTOR_ENVASE);
         }
     }
     @Override
@@ -52,7 +55,9 @@ public class Bebida extends ItemMenu{
     public boolean esBebida(){
         return true;
     }
-    //public boolean aptoVegano();
+    public boolean aptoVegano(){
+        return false;
+    };
     
     public boolean esAlcoholica(){
         if(graduacionAlcoholica>0){

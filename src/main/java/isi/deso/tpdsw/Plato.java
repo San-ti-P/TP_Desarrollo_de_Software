@@ -4,10 +4,11 @@ package isi.deso.tpdsw;
  *
  * @author santi
  */
-public class Comida extends ItemMenu{
+public class Plato extends ItemMenu{
+    private static final double FACTOR_ENVASE = 1.1;
     private int calorias;
     private boolean aptoCeliaco;
-    private boolean aptoVegetariano;
+    private boolean aptoVegano;
     private float peso;
     
     public int getCalorias() {
@@ -18,7 +19,7 @@ public class Comida extends ItemMenu{
         this.calorias = calorias;
     }
 
-    public boolean isAptoCeliaco() {
+    public boolean getAptoCeliaco() {
         return aptoCeliaco;
     }
 
@@ -26,17 +27,17 @@ public class Comida extends ItemMenu{
         this.aptoCeliaco = aptoCeliaco;
     }
 
-    public boolean isAptoVegetariano() {
-        return aptoVegetariano;
+    public boolean getAptoVegano() {
+        return aptoVegano;
     }
 
     public void setAptoVegetariano(boolean aptoVegetariano) {
-        this.aptoVegetariano = aptoVegetariano;
+        this.aptoVegano = aptoVegetariano;
     }
     
     @Override
     public float peso(){
-        return (float)(peso*1.1);
+        return (float)(peso*FACTOR_ENVASE);
     }
     @Override
     public boolean esComida(){
@@ -48,6 +49,6 @@ public class Comida extends ItemMenu{
     }
     
     public boolean aptoVegano(){
-        return aptoVegetariano;
+        return aptoVegano;
     }
 }

@@ -14,5 +14,5 @@ public abstract class ItemMenu {
     public abstract float peso();
     public abstract boolean esComida();
     public abstract boolean esBebida();
-    //public abstract boolean aptoVegano();
+    public abstract boolean aptoVegano();
 }

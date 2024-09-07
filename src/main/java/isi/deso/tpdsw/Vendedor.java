@@ -85,31 +85,31 @@ public class Vendedor {
         return bebidas;
     }
     
-    public ArrayList<Comida> listaComidas(){
+    public ArrayList<Plato> listaComidas(){
         Iterator<ItemMenu> i = menu.iterator();
-        ArrayList<Comida> comidas = new ArrayList<Comida>();
+        ArrayList<Plato> platos = new ArrayList<Plato>();
         while(i.hasNext()){
             ItemMenu item = i.next();
             if(item.esComida()){
-                comidas.add((Comida)item);
+                platos.add((Plato)item);
             }
         }
-        return comidas;
+        return platos;
     }
     
-    public ArrayList<Comida> listaComidasVeganas(){
+    public ArrayList<Plato> listaComidasVeganas(){
         Iterator<ItemMenu> i = menu.iterator();
-        ArrayList<Comida> comidas = new ArrayList<Comida>();
+        ArrayList<Plato> platos = new ArrayList<Plato>();
         while(i.hasNext()){
             ItemMenu item = i.next();
             if(item.esComida()){
-                Comida comida = (Comida)item;
-                if(comida.aptoVegano()){
-                    comidas.add(comida);
+                Plato plato = (Plato)item;
+                if(plato.aptoVegano()){
+                    platos.add(plato);
                 }
             }
         }
-        return comidas;
+        return platos;
     }
 }
 
