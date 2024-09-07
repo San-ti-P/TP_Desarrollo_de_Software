@@ -1,9 +1,5 @@
 package isi.deso.tpdsw;
 
-/**
- *
- * @author santi
- */
 public class Plato extends ItemMenu{
     private static final double FACTOR_ENVASE = 1.1;
     private int calorias;
