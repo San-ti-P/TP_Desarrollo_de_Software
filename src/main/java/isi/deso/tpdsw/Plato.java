@@ -1,6 +1,10 @@
 package isi.deso.tpdsw;
 
+<<<<<<< HEAD
 public class Plato extends ItemMenu implements Comparable<ItemMenu>{
+=======
+public class Plato extends ItemMenu{
+>>>>>>> 0622af8a4865309449f7f1da43e19b81469125b7
     private static final double FACTOR_ENVASE = 1.1;
     private int calorias;
     private boolean aptoCeliaco;
