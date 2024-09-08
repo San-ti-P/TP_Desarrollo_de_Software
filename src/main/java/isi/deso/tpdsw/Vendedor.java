@@ -1,5 +1,6 @@
 package isi.deso.tpdsw;
 
+import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,10 +10,10 @@ public class Vendedor {
     private String nombre;
     private String direccion;
     private Coordenada coordenadas;
-    private ArrayList<ItemMenu> menu;
+    private TreeSet<ItemMenu> menu;
 
     public Vendedor(){
-        menu = new ArrayList<ItemMenu>();
+        menu = new TreeSet<ItemMenu>();
     }
     
     public int getId() {
@@ -56,6 +57,14 @@ public class Vendedor {
         double latVendedor = Math.toRadians(coordenadas.getLat());
         double lngVendedor = Math.toRadians(coordenadas.getLng());
         return 2*RADIOTIERRA*Math.asin(Math.sqrt(Vendedor.semiverseno(latCliente-latVendedor)+Math.cos(latCliente)*Math.cos(latVendedor)*Vendedor.semiverseno(lngCliente-lngVendedor)));
+    }
+    
+    public void agregarItemMenu(ItemMenu item){
+        menu.add(item);
+    }
+    
+    public void eliminarItemMenu(ItemMenu item){
+        menu.remove(item);
     }
     
     public ArrayList<Bebida> listaBebidas(){

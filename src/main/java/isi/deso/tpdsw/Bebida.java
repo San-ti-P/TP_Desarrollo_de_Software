@@ -1,10 +1,6 @@
 package isi.deso.tpdsw;
 
-/**
- *
- * @author santi
- */
-public class Bebida extends ItemMenu{
+public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     private static final double FACTOR_ALCOHOLICA = 0.99;
     private static final double FACTOR_ANALCOHOLICA = 1.04;
     private static final double FACTOR_ENVASE = 1.2;
@@ -22,22 +18,69 @@ public class Bebida extends ItemMenu{
         tamaño = tam;
     }
     
+    @Override
+    public String getId() {
+        return id;
+    }
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+    @Override
+    public String getDescripcion() {
+        return descripcion;
+    }
+    @Override
+    public float getPrecio() {
+        return precio;
+    }
+    @Override
+    public Categoria getCategoria() {
+        return categoria;
+    }
+    @Override
+    public boolean getAptoVegano() {
+        return aptoVegano;
+    }
     public float getGraduacionAlcoholica() {
         return graduacionAlcoholica;
-    }
-
-    public void setGraduacionAlcoholica(float graduacionAlcoholica) {
-        this.graduacionAlcoholica = graduacionAlcoholica;
     }
 
     public int getTamaño() {
         return tamaño;
     }
 
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    @Override
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    @Override
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+    @Override
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }  
+    @Override
+    public void setAptoVegano(boolean aptoVegano) {
+        this.aptoVegano = aptoVegano;
+    }
+    public void setGraduacionAlcoholica(float graduacionAlcoholica) {
+        this.graduacionAlcoholica = graduacionAlcoholica;
+    }
+    
     public void setTamaño(int tamaño) {
         this.tamaño = tamaño;
     }
-    
     @Override
     public float peso(){
         if(this.esAlcoholica()){
@@ -55,8 +98,9 @@ public class Bebida extends ItemMenu{
     public boolean esBebida(){
         return true;
     }
+    @Override
     public boolean aptoVegano(){
-        return false;
+        return aptoVegano;
     };
     
     public boolean esAlcoholica(){
@@ -66,5 +110,9 @@ public class Bebida extends ItemMenu{
         else{
             return false;
         }
+    }
+    @Override
+    public int compareTo(ItemMenu item) {
+        return this.id.compareTo(item.getId());
     }
 }
