@@ -8,12 +8,14 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     private float graduacionAlcoholica;
     private int tamaño;
     
-    public Bebida(String id, String nombre, String descripcion, float precio, Categoria categoria, float graduacion, int tam){
+    public Bebida(String id, String nombre, String descripcion, float precio, Categoria categoria, float graduacion, int tam, boolean aptoVegano, Vendedor vendedor){
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
+        this.aptoVegano = aptoVegano;
+        this.vendedor = vendedor;
         graduacionAlcoholica = graduacion;
         tamaño = tam;
     }
@@ -45,11 +47,9 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     public float getGraduacionAlcoholica() {
         return graduacionAlcoholica;
     }
-
     public int getTamaño() {
         return tamaño;
     }
-
     @Override
     public void setId(String id) {
         this.id = id;
@@ -77,7 +77,6 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     public void setGraduacionAlcoholica(float graduacionAlcoholica) {
         this.graduacionAlcoholica = graduacionAlcoholica;
     }
-    
     public void setTamaño(int tamaño) {
         this.tamaño = tamaño;
     }
@@ -104,7 +103,7 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     };
     
     public boolean esAlcoholica(){
-        if(graduacionAlcoholica>0){
+        if(graduacionAlcoholica > 0){
             return true;
         }
         else{
@@ -116,3 +115,4 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
         return this.id.compareTo(item.getId());
     }
 }
+

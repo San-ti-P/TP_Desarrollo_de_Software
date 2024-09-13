@@ -6,6 +6,19 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     private int calorias;
     private boolean aptoCeliaco;
     private float peso;
+
+    public Plato(String id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, float graduacion, int tam, boolean aptoVegano, Vendedor vendedor) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.aptoVegano = aptoVegano;
+        this.vendedor = vendedor;
+        this.calorias = calorias;
+        this.aptoCeliaco = aptoCeliaco;
+        this.peso = peso;
+    }
     
     @Override
     public String getId() {

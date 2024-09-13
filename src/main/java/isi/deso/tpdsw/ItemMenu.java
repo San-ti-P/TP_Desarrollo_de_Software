@@ -8,6 +8,7 @@ public abstract class ItemMenu {
     protected float precio;
     protected Categoria categoria;
     protected boolean aptoVegano;
+    protected Vendedor vendedor;
     
     public abstract float peso();
     public abstract boolean esComida();
