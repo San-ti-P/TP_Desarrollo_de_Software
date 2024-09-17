@@ -51,6 +51,11 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
         return tamaño;
     }
     @Override
+    public Vendedor getVendedor(){
+        return vendedor;
+    }
+    
+    @Override
     public void setId(String id) {
         this.id = id;
     }
@@ -79,6 +84,10 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     }
     public void setTamaño(int tamaño) {
         this.tamaño = tamaño;
+    }
+    @Override
+    public void setVendedor(Vendedor vendedor){
+        this.vendedor = vendedor;
     }
     @Override
     public float peso(){

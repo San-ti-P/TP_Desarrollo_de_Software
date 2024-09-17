@@ -51,7 +51,16 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     public boolean getAptoCeliaco() {
         return aptoCeliaco;
     }
-
+    
+    public float getPeso() {
+        return peso;
+    }
+    
+    @Override
+    public Vendedor getVendedor(){
+        return vendedor;
+    }
+    
     @Override
     public void setId(String id) {
         this.id = id;
@@ -83,6 +92,15 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
 
     public void setAptoCeliaco(boolean aptoCeliaco) {
         this.aptoCeliaco = aptoCeliaco;
+    }
+    
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+    
+    @Override
+    public void setVendedor(Vendedor vendedor){
+        this.vendedor = vendedor;
     }
      
     @Override
