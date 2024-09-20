@@ -7,7 +7,7 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     private boolean aptoCeliaco;
     private float peso;
 
-    public Plato(String id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, float graduacion, int tam, boolean aptoVegano, Vendedor vendedor) {
+    public Plato(String id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
