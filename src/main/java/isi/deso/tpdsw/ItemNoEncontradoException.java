@@ -12,7 +12,7 @@ public class ItemNoEncontradoException extends Exception{
     String mensaje;
     public ItemNoEncontradoException(String m){
         this.mensaje=m;
-        System.out.print(mensaje);
+        //System.out.println(mensaje);
     }
     
 }

@@ -29,5 +29,8 @@ public class ItemPedido {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
-    
+    @Override
+    public String toString() {
+        return "{Item=" + item + ", cantidad=" + cantidad + '}';
+    }
 }

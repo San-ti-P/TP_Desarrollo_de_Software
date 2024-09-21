@@ -123,5 +123,10 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     public int compareTo(ItemMenu item) {
         return this.id.compareTo(item.getId());
     }
+    
+    @Override
+    public String toString() {
+        return "[Id=" + id + ", nombre=" + nombre + ']';
+    }
 }
 

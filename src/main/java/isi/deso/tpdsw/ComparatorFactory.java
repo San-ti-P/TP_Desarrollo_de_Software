@@ -11,14 +11,14 @@ public class ComparatorFactory {
         tipos.put("categoria", 1);
     }
    
-    public Comparator<ItemMenu> obtenerPredicado(String arg, String sentido){
+    public Comparator<ItemPedido> obtenerPredicado(String arg, String sentido){
         String s = sentido.toLowerCase();
         switch(tipos.get(arg.toLowerCase().strip())){
             case 0 -> {
-                return (s.equals("asc"))?Comparator.comparing(ItemMenu::getNombre):Comparator.comparing(ItemMenu::getNombre).reversed();
+                return (s.equals("asc"))?Comparator.comparing((ItemPedido item) -> item.getItem().getNombre()):Comparator.comparing((ItemPedido item) -> item.getItem().getNombre()).reversed();
             }
             case 1 -> {   
-                return (s.equals("asc"))?Comparator.comparing((ItemMenu item) -> item.getCategoria().getId()):Comparator.comparing((ItemMenu item) -> item.getCategoria().getId()).reversed();
+                return (s.equals("asc"))?Comparator.comparing((ItemPedido item) -> item.getItem().getCategoria().getId()):Comparator.comparing((ItemPedido item) -> item.getItem().getCategoria().getId()).reversed();
             }
         }
         return null;

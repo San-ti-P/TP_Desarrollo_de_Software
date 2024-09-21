@@ -13,20 +13,20 @@ public class PredicateFactory {
         tipos.put("categoria", 3);
     }
    
-    public Predicate<ItemMenu> obtenerPredicado(String arg, String valor){
+    public Predicate<ItemPedido> obtenerPredicado(String arg, String valor){
         String val = valor.toLowerCase();
         switch(tipos.get(arg.toLowerCase().strip())){
             case 0 -> {
-                return (a) -> a.getId().equals(val);
+                return (a) -> a.getItem().getId().toLowerCase().equals(val);
             }
             case 1 -> {   
-                return (a) -> a.getNombre().equals(val);
+                return (a) -> a.getItem().getNombre().toLowerCase().equals(val);
             }
             case 2 -> {
-                return (a) -> a.getAptoVegano()==(Boolean.parseBoolean(val));
+                return (a) -> a.getItem().getAptoVegano()==(Boolean.parseBoolean(val));
             }
             case 3 -> {
-                return (a) -> a.getCategoria().getId().equals(val);
+                return (a) -> a.getItem().getCategoria().getDescripcion().toLowerCase().equals(val);
             }
         }
         return null;

@@ -7,36 +7,32 @@ import java.util.stream.Collectors;
 
 public class ItemsPedidoMemory implements ItemsPedidoDao {
     @Override
-    public ArrayList<ItemMenu> filtrarPedido(Pedido pedido, Predicate<ItemMenu> funcionLambda) throws ItemNoEncontradoException{
-        ArrayList<ItemMenu> r = new ArrayList(pedido.getItems().stream()
-                .map(i -> i.getItem())
+    public ArrayList<ItemPedido> filtrarPedido(Pedido pedido, Predicate<ItemPedido> funcionLambda) throws ItemNoEncontradoException{
+        ArrayList<ItemPedido> r = new ArrayList(pedido.getItems().stream()
                 .filter(funcionLambda)
                 .collect(Collectors.toList()));
         if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condicion");
         else return r;
     }
     @Override
-    public ArrayList<ItemMenu> ordenarPedido(Pedido pedido, Comparator comparador){
-        ArrayList<ItemMenu> r = new ArrayList(pedido.getItems().stream()
-                .map(i -> i.getItem())
+    public ArrayList<ItemPedido> ordenarPedido(Pedido pedido, Comparator comparador){
+        ArrayList<ItemPedido> r = new ArrayList(pedido.getItems().stream()
                 .sorted(comparador)
                 .toList());
         return r;
     }
     @Override
-    public ArrayList<ItemMenu> rangoPrecios(Pedido pedido, float precioInferior, float precioSuperior) throws ItemNoEncontradoException{
-        ArrayList<ItemMenu> r = new ArrayList(pedido.getItems().stream()
-                .map(i -> i.getItem())
-                .filter((i)->i.getPrecio()>=precioInferior && i.getPrecio()<=precioSuperior)
+    public ArrayList<ItemPedido> rangoPrecios(Pedido pedido, float precioInferior, float precioSuperior) throws ItemNoEncontradoException{
+        ArrayList<ItemPedido> r = new ArrayList(pedido.getItems().stream()
+                .filter((i)->i.getItem().getPrecio()>=precioInferior && i.getItem().getPrecio()<=precioSuperior)
                 .collect(Collectors.toList()));
         if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condicion");
         else return r;
     }
     @Override
-    public ArrayList<ItemMenu> filtrarPorRestaurante(Pedido pedido, String nombre) throws ItemNoEncontradoException{
-        ArrayList<ItemMenu> r = new ArrayList(pedido.getItems().stream()
-                .map(i -> i.getItem())
-                .filter((i)->i.getVendedor().getNombre().equalsIgnoreCase(nombre))
+    public ArrayList<ItemPedido> filtrarPorRestaurante(Pedido pedido, String nombre) throws ItemNoEncontradoException{
+        ArrayList<ItemPedido> r = new ArrayList(pedido.getItems().stream()
+                .filter((i)->i.getItem().getVendedor().getNombre().equalsIgnoreCase(nombre))
                 .collect(Collectors.toList()));
         if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condicion");
         else return r;

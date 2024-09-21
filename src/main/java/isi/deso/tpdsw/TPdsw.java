@@ -176,7 +176,7 @@ public class TPdsw {
             categoriaCervezas, 
             5.0f, 
             600, 
-            false, 
+            true, 
             vendedores.get(2) // La Brava
         );
 
@@ -477,18 +477,13 @@ public class TPdsw {
         System.out.println(pedido6);
         System.out.println("\n");
         
-        // LO DE ARRIBA ME PARECE ESTAR BIEN, LO DE ABAJO, JUNTO CON EL METODO
-        // HAY QUE CHEQUEARLO
         
-        try {
-            filtrarPedidos(pedidos);
-        } catch (ItemNoEncontradoException ex) {
-            System.out.println("No hubo resultados!");
-        }
+        ArrayList<Pedido> filtrados_usuario = filtrarPedidos(pedidos);
+        
         
     } // -- CIERRE MAIN --
     
-    private static void filtrarPedidos(ArrayList<Pedido> pedidos) throws ItemNoEncontradoException {
+    private static ArrayList<Pedido> filtrarPedidos(ArrayList<Pedido> pedidos){
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Como le gustaria filtrar? ");
@@ -498,13 +493,21 @@ public class TPdsw {
         System.out.println("Que valor le gustaria filtrar?: ");
         String entradaValor = scanner.nextLine().toLowerCase().strip();
         PredicateFactory predicado = new PredicateFactory();
-        Predicate<ItemMenu> pred1 = predicado.obtenerPredicado(entradaPredicado, entradaValor);
+        Predicate<ItemPedido> pred1 = predicado.obtenerPredicado(entradaPredicado, entradaValor);
         
+        ItemsPedidoMemory ipm = new ItemsPedidoMemory();
         ArrayList<Pedido> filtrados = new ArrayList<>();
+        ArrayList<ItemPedido> items_filtrados = new ArrayList<>();
         
         for (Pedido p : pedidos) {
-        ItemsPedidoMemory ipm = new ItemsPedidoMemory();
-        if (!(ipm.filtrarPedido(p, pred1).isEmpty())) { filtrados.add(p); }   
+            try{
+                items_filtrados = ipm.filtrarPedido(p, pred1);
+                filtrados.add(p);
+            }catch(ItemNoEncontradoException e){
+                continue;
+            }
+            
+            //if (!(ipm.filtrarPedido(p, pred1).isEmpty())) { filtrados.add(p); }   
         }
         
         if (filtrados.isEmpty()) { System.out.println("No hay pedidos"); }
@@ -512,7 +515,7 @@ public class TPdsw {
                 System.out.println("Los pedidos filtrados son");
                 for (Pedido p: filtrados) { System.out.println(p);  }
             }
-          
+        return filtrados;
     }
     
     
