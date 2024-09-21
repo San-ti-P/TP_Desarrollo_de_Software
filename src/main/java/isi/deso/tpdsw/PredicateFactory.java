@@ -1,10 +1,10 @@
 package isi.deso.tpdsw;
 
-import java.util.TreeMap;
+import java.util.HashMap;
 import java.util.function.Predicate;
 
 public class PredicateFactory {
-    private TreeMap<String, Integer> tipos = new TreeMap();
+    private HashMap<String, Integer> tipos = new HashMap();
     
     public PredicateFactory(){
         tipos.put("id", 0);
@@ -26,7 +26,7 @@ public class PredicateFactory {
                 return (a) -> a.getItem().getAptoVegano()==(Boolean.parseBoolean(val));
             }
             case 3 -> {
-                return (a) -> a.getItem().getCategoria().getDescripcion().toLowerCase().equals(val);
+                return (a) -> a.getItem().getCategoria().getDescripcion().toLowerCase().equals(val) || a.getItem().getCategoria().getId().toLowerCase().equals(val);
             }
         }
         return null;

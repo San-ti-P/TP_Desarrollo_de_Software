@@ -6,8 +6,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Iterator;
 import java.util.function.Predicate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class TPdsw {
     
@@ -505,9 +504,7 @@ public class TPdsw {
                 filtrados.add(p);
             }catch(ItemNoEncontradoException e){
                 continue;
-            }
-            
-            //if (!(ipm.filtrarPedido(p, pred1).isEmpty())) { filtrados.add(p); }   
+            }   
         }
         
         if (filtrados.isEmpty()) { System.out.println("No hay pedidos"); }
