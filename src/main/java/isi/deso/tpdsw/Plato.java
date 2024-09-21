@@ -11,13 +11,13 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.calorias = calorias;
+        this.aptoCeliaco = aptoCeliaco;
+        this.peso = peso;
         this.precio = precio;
         this.categoria = categoria;
         this.aptoVegano = aptoVegano;
         this.vendedor = vendedor;
-        this.calorias = calorias;
-        this.aptoCeliaco = aptoCeliaco;
-        this.peso = peso;
     }
     
     @Override

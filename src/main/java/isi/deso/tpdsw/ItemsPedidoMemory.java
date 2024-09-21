@@ -12,7 +12,7 @@ public class ItemsPedidoMemory implements ItemsPedidoDao {
                 .map(i -> i.getItem())
                 .filter(funcionLambda)
                 .collect(Collectors.toList()));
-        if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condición");
+        if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condicion");
         else return r;
     }
     @Override
@@ -29,7 +29,7 @@ public class ItemsPedidoMemory implements ItemsPedidoDao {
                 .map(i -> i.getItem())
                 .filter((i)->i.getPrecio()>=precioInferior && i.getPrecio()<=precioSuperior)
                 .collect(Collectors.toList()));
-        if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condición");
+        if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condicion");
         else return r;
     }
     @Override
@@ -38,7 +38,7 @@ public class ItemsPedidoMemory implements ItemsPedidoDao {
                 .map(i -> i.getItem())
                 .filter((i)->i.getVendedor().getNombre().equalsIgnoreCase(nombre))
                 .collect(Collectors.toList()));
-        if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condición");
+        if(r.isEmpty()) throw new ItemNoEncontradoException("No se encontraron items que satisfagan la condicion");
         else return r;
     }
 }

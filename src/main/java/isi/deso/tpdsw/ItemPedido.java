@@ -6,6 +6,11 @@ public class ItemPedido {
     private ItemMenu item;
     private Pedido pedido;
 
+    public ItemPedido(ItemMenu item, int cantidad) {
+        this.cantidad = cantidad;
+        this.item = item;
+    }
+    
     public int getCantidad() {
         return cantidad;
     }

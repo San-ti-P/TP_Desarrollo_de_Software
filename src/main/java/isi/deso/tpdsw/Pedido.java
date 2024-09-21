@@ -34,6 +34,9 @@ public class Pedido {
     public void setVendedor(Vendedor vendedor){
         this.vendedor = vendedor;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "id=" + id + ", cliente=" + cliente.getNombre() + ", items=" + items + ", vendedor=" + vendedor.getNombre() + '}';
+    }
 }
