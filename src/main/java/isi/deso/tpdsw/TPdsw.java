@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 
 public class TPdsw {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
         /* 
         //Solucion Vendedores
@@ -23,7 +23,7 @@ public class TPdsw {
                 
         //Solucion Clientes
         
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        ArrayList<Cliente> clientes = new+ ArrayList<Cliente>();
         ingresarClientes(scanner, clientes);
         buscarCliente(scanner, clientes);
         eliminarCliente(scanner, clientes);
@@ -400,7 +400,7 @@ public class TPdsw {
 
         // Crear pedidos
         ArrayList<ItemPedido> itemsPedido1 = new ArrayList<>();
-        itemsPedido1.add(new ItemPedido(bebida1, 2)); // Coca Cola
+        //itemsPedido1.add(new ItemPedido(bebida1, 2)); // Coca Cola
         itemsPedido1.add(new ItemPedido(plato1, 1));  // Hamburguesa Doble
 
         Pedido pedido1 = new Pedido();
@@ -408,7 +408,7 @@ public class TPdsw {
         pedido1.setCliente(cliente1);
         pedido1.setItems(itemsPedido1);
         pedido1.setVendedor(vendedores.get(1)); // McDonalds
-
+ /*
         ArrayList<ItemPedido> itemsPedido2 = new ArrayList<>();
         itemsPedido2.add(new ItemPedido(bebida2, 1)); // Estancia Mendoza Malbec
         itemsPedido2.add(new ItemPedido(plato2, 2));  // Ravioles de Ricota
@@ -458,30 +458,58 @@ public class TPdsw {
         pedido6.setCliente(cliente6);
         pedido6.setItems(itemsPedido6);
         pedido6.setVendedor(vendedores.get(2)); // La Brava
-        
+       */ 
         ArrayList<Pedido> pedidos = new ArrayList<>();
         pedidos.add(pedido1);
-        pedidos.add(pedido2);
-        pedidos.add(pedido3);
-        pedidos.add(pedido4);
-        pedidos.add(pedido5);
-        pedidos.add(pedido6);
+        //pedidos.add(pedido2);
+        //pedidos.add(pedido3);
+        //pedidos.add(pedido4);
+        //pedidos.add(pedido5);
+        //pedidos.add(pedido6);
         
         System.out.println("Los Pedidos existentes son: ");
         System.out.println(pedido1);
-        System.out.println(pedido2);
-        System.out.println(pedido3);
-        System.out.println(pedido4);
-        System.out.println(pedido5);
-        System.out.println(pedido6);
+        //System.out.println(pedido2);
+        //System.out.println(pedido3);
+        //System.out.println(pedido4);
+        //System.out.println(pedido5);
+        //System.out.println(pedido6);
         System.out.println("\n");
         
+       //ArrayList<Pedido> filtrados_usuario = filtrarPedidos(pedidos);
         
-        ArrayList<Pedido> filtrados_usuario = filtrarPedidos(pedidos);
+        // ----------------------- ENTREGA 4 ---------------------
         
+        Scanner scanner = new Scanner(System.in); 
+        System.out.println("Cliente 1: Como le gustaria pagar?: ");
+        System.out.println("Las opciones son: TRANSFERENCIA, MERCADOPAGO");
+        String entradaMetodoPago = scanner.nextLine().toLowerCase().strip();
         
+        if (entradaMetodoPago.equalsIgnoreCase("transferencia")) {
+            Pago p1 = new Transferencia();
+            p1.setPedido(pedido1);
+            pedido1.setPago(p1);
+            pedido1.setEstado(EstadoPedido.RECIBIDO);
+            System.out.println("El precio considerando el metodo de pago: " + pedido1.getPago().precioFinal());
+            System.out.println("El estado del pedido es: " +pedido1.getEstado());
+        }
+        if (entradaMetodoPago.equalsIgnoreCase("mercadopago")) {
+            Pago p1 = new MercadoPago();
+            p1.setPedido(pedido1);
+            pedido1.setPago(p1);
+            pedido1.setPago(p1);
+            pedido1.setEstado(EstadoPedido.RECIBIDO);
+            System.out.println("El precio considerando el metodo de pago: " + pedido1.getPago().precioFinal());    
+            System.out.println("El estado del pedido es: " +pedido1.getEstado());
+        }
+        else {
+            throw new Exception("Ingresaste una entrada lamentable, penosa, nefasta, funesta, aciaga, detestable, aborrecible y PEDIBLE");
+        }
+        System.out.println("El precio sin considerar el metodo de pago: "+ pedido1.getPrecio());
+        
+              
     } // -- CIERRE MAIN --
-    
+  
     private static ArrayList<Pedido> filtrarPedidos(ArrayList<Pedido> pedidos){
         Scanner scanner = new Scanner(System.in);
         
@@ -514,11 +542,6 @@ public class TPdsw {
             }
         return filtrados;
     }
-    
-    
-    
-    
-    
     
     
     private static void ingresarVendedores(Scanner scanner, ArrayList<Vendedor> vendedores){
