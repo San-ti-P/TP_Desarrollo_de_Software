@@ -2,10 +2,11 @@ package isi.deso.tpdsw;
 
 import java.util.Date;
 
-public abstract class Pago {
+public class Pago {
     private Date fecha;
-    private double monto;
-    protected Pedido pedido;
+    private double montoFinal;
+    private Pedido pedido;
+    private EstrategiaDePago estrategia;
 
     public Date getFecha() {
         return fecha;
@@ -15,22 +16,25 @@ public abstract class Pago {
         this.fecha = fecha;
     }
 
-    public double getMonto() {
-        return monto;
+    public double getMontoFinal() {
+        return montoFinal;
     }
-
-    public void setMonto(double monto) {
-        this.monto = monto;
-    }
-
+ 
     public Pedido getPedido() {
         return pedido;
     }
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+        this.montoFinal = estrategia.precioFinal(pedido.getPrecio());
     }
     
-    public abstract double precioFinal();
+    public EstrategiaDePago getEstrategia() {
+        return estrategia;
+    }
+
+    public void setEstrategia(EstrategiaDePago estrategia) {
+        this.estrategia = estrategia;
+    }
     
 }

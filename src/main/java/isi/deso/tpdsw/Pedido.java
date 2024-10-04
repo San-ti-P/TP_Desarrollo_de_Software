@@ -17,10 +17,6 @@ public class Pedido {
         return precio;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
     public Pago getPago() {
         return pago;
     }

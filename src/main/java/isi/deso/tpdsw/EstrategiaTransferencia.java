@@ -1,6 +1,6 @@
 package isi.deso.tpdsw;
 
-public class Transferencia extends Pago {
+public class EstrategiaTransferencia implements EstrategiaDePago {
     private String cuit;
     private String cbu;
     private static final double RECARGO = 1.02;
@@ -22,8 +22,7 @@ public class Transferencia extends Pago {
     }
     
     @Override
-    public double precioFinal() {
-        this.setMonto(pedido.getPrecio() * RECARGO);
-        return this.getMonto();
+    public double precioFinal(double monto){
+        return monto*RECARGO;
     }
 }

@@ -482,28 +482,30 @@ public class TPdsw {
         
         Scanner scanner = new Scanner(System.in); 
         System.out.println("Cliente 1: Como le gustaria pagar?: ");
-        System.out.println("Las opciones son: TRANSFERENCIA, MERCADOPAGO");
+        System.out.println("Las opciones son: TRANSFERENCIA (2% de recargo), MERCADOPAGO (4% de recargo)");
         String entradaMetodoPago = scanner.nextLine().toLowerCase().strip();
         
         if (entradaMetodoPago.equalsIgnoreCase("transferencia")) {
-            Pago p1 = new Transferencia();
+            Pago p1 = new Pago();
+            p1.setEstrategia(new EstrategiaTransferencia());
             p1.setPedido(pedido1);
             pedido1.setPago(p1);
             pedido1.setEstado(EstadoPedido.RECIBIDO);
-            System.out.println("El precio considerando el metodo de pago: " + pedido1.getPago().precioFinal());
+            System.out.println("El precio final es: " + pedido1.getPago().getMontoFinal());
             System.out.println("El estado del pedido es: " +pedido1.getEstado());
         }
-        if (entradaMetodoPago.equalsIgnoreCase("mercadopago")) {
-            Pago p1 = new MercadoPago();
+        else if (entradaMetodoPago.equalsIgnoreCase("mercadopago")) {
+            Pago p1 = new Pago();
+            p1.setEstrategia(new EstrategiaMercadoPago());
             p1.setPedido(pedido1);
             pedido1.setPago(p1);
             pedido1.setPago(p1);
             pedido1.setEstado(EstadoPedido.RECIBIDO);
-            System.out.println("El precio considerando el metodo de pago: " + pedido1.getPago().precioFinal());    
+            System.out.println("El precio final es: " + pedido1.getPago().getMontoFinal());    
             System.out.println("El estado del pedido es: " +pedido1.getEstado());
         }
         else {
-            throw new Exception("Ingresaste una entrada lamentable, penosa, nefasta, funesta, aciaga, detestable, aborrecible y PEDIBLE");
+            throw new Exception("Se ha ingresado un método de pago no valido.");
         }
         System.out.println("El precio sin considerar el metodo de pago: "+ pedido1.getPrecio());
         
