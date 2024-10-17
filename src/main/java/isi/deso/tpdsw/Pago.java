@@ -8,6 +8,14 @@ public class Pago {
     private Pedido pedido;
     private EstrategiaDePago estrategia;
 
+    public Pago(){ }
+    
+    public Pago(Date fecha, Pedido pedido, EstrategiaDePago estrategia){
+        this.fecha = fecha;
+        this.estrategia = estrategia;
+        this.setPedido(pedido);
+    }
+    
     public Date getFecha() {
         return fecha;
     }

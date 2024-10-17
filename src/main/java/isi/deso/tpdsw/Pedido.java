@@ -2,8 +2,9 @@ package isi.deso.tpdsw;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 
-public class Pedido {
+public class Pedido implements Observable {
 
     private String id;
     private Cliente cliente;
@@ -12,6 +13,7 @@ public class Pedido {
     private Pago pago;
     private EstadoPedido estado;
     private double precio = 0;
+    private ArrayList<PedidoObserver> observadores;
 
     public double getPrecio() {
         return precio;
@@ -85,5 +87,23 @@ public class Pedido {
     @Override
     public String toString() {
         return "Pedido{" + "id=" + id + ", cliente=" + cliente.getNombre() + ", items=" + items + ", vendedor=" + vendedor.getNombre() + '}';
+    }
+    
+    @Override
+    public void addObserver(PedidoObserver o){
+        this.observadores.add(o);
+    }
+    
+    @Override
+    public void removeObserver(PedidoObserver o){
+        this.observadores.remove(o); 
+    }
+    
+    @Override
+    public void notifyObservers(){
+        Iterator<PedidoObserver> i = observadores.iterator();
+        while(i.hasNext()){
+            i.next().update(this); 
+        }
     }
 }

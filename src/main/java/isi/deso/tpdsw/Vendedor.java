@@ -11,9 +11,11 @@ public class Vendedor {
     private String direccion;
     private Coordenada coordenadas;
     private TreeSet<ItemMenu> menu;
+    private TreeSet<Pedido> pedidos;
 
     public Vendedor(){
         menu = new TreeSet<ItemMenu>();
+        pedidos = new TreeSet<Pedido>();
     }
     
     public int getId() {
@@ -65,6 +67,14 @@ public class Vendedor {
     
     public void eliminarItemMenu(ItemMenu item){
         menu.remove(item);
+    }
+    
+    public void agregarPedido(Pedido pedido){
+        pedidos.add(pedido);
+    }
+    
+    public void eliminarPedido(Pedido pedido){
+        pedidos.remove(pedido);
     }
     
     public ArrayList<Bebida> listaBebidas(){
@@ -119,6 +129,17 @@ public class Vendedor {
             }
         }
         return platos;
+    }
+    public ArrayList<Pedido> pedidosPorEstado(EstadoPedido estado){
+        Iterator<Pedido> i = pedidos.iterator();
+        ArrayList<Pedido> subPedidos = new ArrayList<Pedido>();
+        while(i.hasNext()){
+            Pedido p = i.next();
+            if (p.getEstado() == estado){
+                subPedidos.add(p);
+            }
+        }
+        return subPedidos;
     }
 }
 
