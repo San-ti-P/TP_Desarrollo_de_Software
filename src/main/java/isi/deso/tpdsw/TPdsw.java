@@ -480,6 +480,7 @@ public class TPdsw {
         
         // ----------------------- ENTREGA 4 ---------------------
         
+        /*
         Scanner scanner = new Scanner(System.in); 
         System.out.println("Cliente 1: Como le gustaria pagar?: ");
         System.out.println("Las opciones son: TRANSFERENCIA (2% de recargo), MERCADOPAGO (4% de recargo)");
@@ -508,7 +509,103 @@ public class TPdsw {
             throw new Exception("Se ha ingresado un método de pago no valido.");
         }
         System.out.println("El precio sin considerar el metodo de pago: "+ pedido1.getPrecio());
+        */
         
+        // ----------------------- ENTREGA 5 ---------------------
+
+        //=================== Patron Observer      
+        System.out.println("\n ----- Patrón Observer -----");
+ 
+        pedido1.addObserver(cliente1);
+        
+        System.out.println("Cliente " + cliente1.getNombre() + " subscrito al pedido " + pedido1.getId());
+        System.out.println("\nBuscando pedidos para el vendedor " + vendedores.get(1).getNombre());
+        
+        for (Pedido p : pedidos) {
+            if (p.getVendedor().getId() == vendedores.get(1).getId()) {
+                System.out.println("Pedido encontrado: " + p.getId());
+                System.out.println("\nVendedor actualiza estado del pedido a EN_ENVIO");
+                p.setEstado(EstadoPedido.EN_ENVIO);
+                p.notifyObservers();
+            }
+        }
+
+        if (pedido1.getPago() != null) {
+            System.out.println("\nDetalles del pago generado:");
+            System.out.println("Monto final: " + pedido1.getPago().getMontoFinal());
+            System.out.println("Estado del pedido: " + pedido1.getEstado());
+        } else {
+            System.out.println("\nNo se ha generado ningún pago todavía");
+        }
+
+        pedido1.removeObserver(cliente1);
+        System.out.println("\nCliente " + cliente1.getNombre() + " desubscrito del pedido " + pedido1.getId());
+        
+        
+        //=================== Pedidos por Estado
+        System.out.println("\n----- pedidosPorEstado -----");
+        Vendedor vendedorTest = vendedores.get(1); // McDonalds
+        pedido1.setEstado(EstadoPedido.RECIBIDO);
+        
+        
+        ArrayList<ItemPedido> itemsPedido2 = new ArrayList<>();
+        itemsPedido2.add(new ItemPedido(plato6, 2));  // Milanesa Napolitana
+        Pedido pedido2 = new Pedido();
+        pedido2.setId("P002");
+        pedido2.setCliente(cliente2);
+        pedido2.setItems(itemsPedido2);
+        pedido2.setVendedor(vendedorTest);
+        pedido2.setEstado(EstadoPedido.RECIBIDO);
+
+        ArrayList<ItemPedido> itemsPedido3 = new ArrayList<>();
+        itemsPedido3.add(new ItemPedido(plato9, 1));  // Milanesa de Pollo
+        Pedido pedido3 = new Pedido();
+        pedido3.setId("P003");
+        pedido3.setCliente(cliente3);
+        pedido3.setItems(itemsPedido3);
+        pedido3.setVendedor(vendedorTest);
+        pedido3.setEstado(EstadoPedido.EN_ENVIO);
+
+        vendedorTest.agregarPedido(pedido1);
+        vendedorTest.agregarPedido(pedido2);
+        vendedorTest.agregarPedido(pedido3);
+
+        System.out.println("\nEstado inicial de los pedidos:");
+        System.out.println("Pedido 1: " + pedido1.getId() + " - Estado: " + pedido1.getEstado());
+        System.out.println("Pedido 2: " + pedido2.getId() + " - Estado: " + pedido2.getEstado());
+        System.out.println("Pedido 3: " + pedido3.getId() + " - Estado: " + pedido3.getEstado());
+
+        System.out.println("\nBuscando pedidos en estado RECIBIDO:");
+        ArrayList<Pedido> pedidosRecibidos = vendedorTest.pedidosPorEstado(EstadoPedido.RECIBIDO);
+        for (Pedido p : pedidosRecibidos) {
+            System.out.println("Pedido encontrado: " + p.getId());
+        }
+
+        System.out.println("\nBuscando pedidos en estado EN_ENVIO:");
+        ArrayList<Pedido> pedidosEnEnvio = vendedorTest.pedidosPorEstado(EstadoPedido.EN_ENVIO);
+        for (Pedido p : pedidosEnEnvio) {
+            System.out.println("Pedido encontrado: " + p.getId());
+        }
+
+        System.out.println("\nActualizando estado del pedido 2 a EN_ENVIO...");
+        pedido2.setEstado(EstadoPedido.EN_ENVIO);
+
+        System.out.println("\nBuscando nuevamente pedidos en estado EN_ENVIO:");
+        pedidosEnEnvio = vendedorTest.pedidosPorEstado(EstadoPedido.EN_ENVIO);
+        for (Pedido p : pedidosEnEnvio) {
+            System.out.println("Pedido encontrado: " + p.getId());
+        }
+
+        System.out.println("\nSubscribiendo clientes a sus pedidos...");
+        pedido2.addObserver(cliente2);
+        pedido2.notifyObservers();
+
+        if (pedido2.getPago() != null) {
+            System.out.println("\nPago generado para el pedido " + pedido2.getId() + ":");
+            System.out.println("Monto final: " + pedido2.getPago().getMontoFinal());
+        }
+
+ 
               
     } // -- CIERRE MAIN --
   

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class Pedido implements Observable {
+public class Pedido implements Observable, Comparable<Pedido> {
 
     private String id;
     private Cliente cliente;
@@ -13,7 +13,7 @@ public class Pedido implements Observable {
     private Pago pago;
     private EstadoPedido estado;
     private double precio = 0;
-    private ArrayList<PedidoObserver> observadores;
+    private ArrayList<PedidoObserver> observadores = new ArrayList<>();
 
     public double getPrecio() {
         return precio;
@@ -56,13 +56,13 @@ public class Pedido implements Observable {
         this.cliente = cliente;
     }
     
-    public void setItems(ArrayList<ItemPedido> items) throws VendedoresDistintos {
+    public void setItems(ArrayList<ItemPedido> items) throws VendedoresDistintosException {
         if (validarVendedorUnico(items)) {
            this.items = items;
            this.calcularPrecio();
        }
        else {
-           throw new VendedoresDistintos("No hay unicidad de vendedores");
+           throw new VendedoresDistintosException("No hay unicidad de vendedores");
        }   
     }        
     
@@ -105,5 +105,10 @@ public class Pedido implements Observable {
         while(i.hasNext()){
             i.next().update(this); 
         }
+    }
+    
+    @Override
+    public int compareTo(Pedido p) {
+        return this.id.compareTo(p.getId());
     }
 }
