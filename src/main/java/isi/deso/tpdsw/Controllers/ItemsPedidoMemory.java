@@ -1,5 +1,7 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Controllers;
 
+import isi.deso.tpdsw.Models.Pedido;
+import isi.deso.tpdsw.Models.ItemPedido;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.function.Predicate;

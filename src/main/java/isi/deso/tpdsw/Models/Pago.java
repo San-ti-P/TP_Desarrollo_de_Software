@@ -1,5 +1,6 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
 
+import isi.deso.tpdsw.Models.EstrategiaDePago;
 import java.util.Date;
 
 public class Pago {

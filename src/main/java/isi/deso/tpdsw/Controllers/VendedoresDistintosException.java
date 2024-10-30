@@ -1,4 +1,4 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Controllers;
 
 public class VendedoresDistintosException extends Exception{
 

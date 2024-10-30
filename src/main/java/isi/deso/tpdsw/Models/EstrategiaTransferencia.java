@@ -1,4 +1,4 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
 
 public class EstrategiaTransferencia implements EstrategiaDePago {
     private String cuit;

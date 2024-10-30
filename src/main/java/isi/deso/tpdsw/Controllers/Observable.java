@@ -1,4 +1,4 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Controllers;
 
 public interface Observable {
     public void addObserver(PedidoObserver o);

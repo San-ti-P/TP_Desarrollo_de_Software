@@ -1,4 +1,6 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
+
+import isi.deso.tpdsw.Models.ItemMenu;
 
 public class ItemPedido {
     

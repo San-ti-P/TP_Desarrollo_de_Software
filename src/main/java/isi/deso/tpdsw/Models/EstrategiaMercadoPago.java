@@ -1,4 +1,4 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
 
 public class EstrategiaMercadoPago implements EstrategiaDePago{
     private String alias;

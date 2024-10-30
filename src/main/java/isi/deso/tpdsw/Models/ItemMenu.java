@@ -1,4 +1,7 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
+
+import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Models.Categoria;
 
 public abstract class ItemMenu {
 

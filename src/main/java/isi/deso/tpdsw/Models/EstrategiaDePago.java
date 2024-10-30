@@ -1,5 +1,5 @@
 
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
 
 
 public interface EstrategiaDePago {

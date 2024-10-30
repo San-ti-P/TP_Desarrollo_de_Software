@@ -1,23 +1,27 @@
-package isi.deso.tpdsw;
+package isi.deso.tpdsw.Models;
 
-public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
-    private static final double FACTOR_ALCOHOLICA = 0.99;
-    private static final double FACTOR_ANALCOHOLICA = 1.04;
-    private static final double FACTOR_ENVASE = 1.2;
-    
-    private float graduacionAlcoholica;
-    private int tamaño;
-    
-    public Bebida(String id, String nombre, String descripcion, float precio, Categoria categoria, float graduacion, int tam, boolean aptoVegano, Vendedor vendedor){
+import isi.deso.tpdsw.Models.ItemMenu;
+import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Models.Categoria;
+
+public class Plato extends ItemMenu implements Comparable<ItemMenu>{
+
+    private static final double FACTOR_ENVASE = 1.1;
+    private int calorias;
+    private boolean aptoCeliaco;
+    private float peso;
+
+    public Plato(String id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.calorias = calorias;
+        this.aptoCeliaco = aptoCeliaco;
+        this.peso = peso;
         this.precio = precio;
         this.categoria = categoria;
         this.aptoVegano = aptoVegano;
         this.vendedor = vendedor;
-        graduacionAlcoholica = graduacion;
-        tamaño = tam;
     }
     
     @Override
@@ -44,12 +48,18 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     public boolean getAptoVegano() {
         return aptoVegano;
     }
-    public float getGraduacionAlcoholica() {
-        return graduacionAlcoholica;
+    public int getCalorias() {
+        return calorias;
     }
-    public int getTamaño() {
-        return tamaño;
+
+    public boolean getAptoCeliaco() {
+        return aptoCeliaco;
     }
+    
+    public float getPeso() {
+        return peso;
+    }
+    
     @Override
     public Vendedor getVendedor(){
         return vendedor;
@@ -74,50 +84,44 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     @Override
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }  
+    }
     @Override
     public void setAptoVegano(boolean aptoVegano) {
         this.aptoVegano = aptoVegano;
     }
-    public void setGraduacionAlcoholica(float graduacionAlcoholica) {
-        this.graduacionAlcoholica = graduacionAlcoholica;
+    
+    public void setCalorias(int calorias) {
+        this.calorias = calorias;
     }
-    public void setTamaño(int tamaño) {
-        this.tamaño = tamaño;
+
+    public void setAptoCeliaco(boolean aptoCeliaco) {
+        this.aptoCeliaco = aptoCeliaco;
     }
+    
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+    
     @Override
     public void setVendedor(Vendedor vendedor){
         this.vendedor = vendedor;
     }
+     
     @Override
     public float peso(){
-        if(this.esAlcoholica()){
-            return (float)(tamaño*FACTOR_ALCOHOLICA*FACTOR_ENVASE);
-        }
-        else{
-            return (float)(tamaño*FACTOR_ANALCOHOLICA*FACTOR_ENVASE);
-        }
+        return (float)(peso*FACTOR_ENVASE);
     }
     @Override
     public boolean esComida(){
-        return false;
+        return true;
     }
     @Override
     public boolean esBebida(){
-        return true;
+        return false;
     }
     @Override
     public boolean aptoVegano(){
         return aptoVegano;
-    };
-    
-    public boolean esAlcoholica(){
-        if(graduacionAlcoholica > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
     }
     @Override
     public int compareTo(ItemMenu item) {
@@ -129,4 +133,3 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
         return "[Id=" + id + ", nombre=" + nombre + ']';
     }
 }
-

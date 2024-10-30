@@ -1,5 +1,18 @@
 package isi.deso.tpdsw;
 
+import isi.deso.tpdsw.Controllers.ItemNoEncontradoException;
+import isi.deso.tpdsw.Controllers.PredicateFactory;
+import isi.deso.tpdsw.Controllers.ItemsPedidoMemory;
+import isi.deso.tpdsw.Models.Plato;
+import isi.deso.tpdsw.Models.Pedido;
+import isi.deso.tpdsw.Models.ItemPedido;
+import isi.deso.tpdsw.Models.Coordenada;
+import isi.deso.tpdsw.Models.EstadoPedido;
+import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Models.TipoItem;
+import isi.deso.tpdsw.Models.Cliente;
+import isi.deso.tpdsw.Models.Bebida;
+import isi.deso.tpdsw.Models.Categoria;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashSet;
