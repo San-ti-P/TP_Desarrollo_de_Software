@@ -9,6 +9,7 @@ isi\deso\tpdsw\Models\EstrategiaMercadoPago.class
 isi\deso\tpdsw\Views\VendedorJPanel$2.class
 isi\deso\tpdsw\Views\MenuJFrame$2.class
 isi\deso\tpdsw\Views\MenuJFrame$5.class
+isi\deso\tpdsw\Views\ButtonRendererEditor$2.class
 isi\deso\tpdsw\Views\ButtonRendererEditor.class
 isi\deso\tpdsw\Views\MenuJFrame$12.class
 isi\deso\tpdsw\Views\MenuJFrame.class
@@ -16,6 +17,7 @@ isi\deso\tpdsw\Models\Bebida.class
 isi\deso\tpdsw\Controllers\PredicateFactory.class
 isi\deso\tpdsw\Views\MenuJFrame$1.class
 isi\deso\tpdsw\Controllers\VendedoresDistintosException.class
+isi\deso\tpdsw\Views\ButtonRendererEliminar.class
 isi\deso\tpdsw\Models\Vendedor.class
 isi\deso\tpdsw\Models\Cliente.class
 isi\deso\tpdsw\Models\ItemMenu.class
@@ -25,6 +27,7 @@ isi\deso\tpdsw\Models\Pedido.class
 isi\deso\tpdsw\Views\MenuJFrame$11.class
 isi\deso\tpdsw\Views\MenuJFrame$8.class
 isi\deso\tpdsw\Models\Categoria.class
+isi\deso\tpdsw\Views\ButtonRendererEditor$1.class
 isi\deso\tpdsw\Views\MenuJFrame$4.class
 isi\deso\tpdsw\Models\Coordenada.class
 isi\deso\tpdsw\Views\MenuJFrame$7.class

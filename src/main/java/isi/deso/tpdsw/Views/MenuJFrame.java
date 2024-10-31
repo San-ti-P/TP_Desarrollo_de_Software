@@ -57,7 +57,7 @@ public class MenuJFrame extends javax.swing.JFrame {
         buscadorJLabel2 = new javax.swing.JLabel();
         btnCrearItemMenu = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        vendedoresJTable2 = new javax.swing.JTable();
+        itemsMenuJTable = new javax.swing.JTable();
         PedidoJPanel = new javax.swing.JPanel();
         ListaPedidosJPanle = new javax.swing.JPanel();
         TitleTextField3 = new javax.swing.JTextField();
@@ -65,7 +65,7 @@ public class MenuJFrame extends javax.swing.JFrame {
         buscadorJLabel3 = new javax.swing.JLabel();
         btnCrear3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        vendedoresJTable3 = new javax.swing.JTable();
+        pedidosJTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,14 +154,14 @@ public class MenuJFrame extends javax.swing.JFrame {
                 {null, null, null, ""},
                 {null, null, null, null},
                 {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
                 "Nombre", "Dirección", "Menú", "Acciones"
             }
         ));
+        vendedoresJTable.setFillsViewportHeight(true);
+        vendedoresJTable.setRowHeight(30);
         VendedorJScrollPane.setViewportView(vendedoresJTable);
 
         javax.swing.GroupLayout ListaVendedoresJPanelLayout = new javax.swing.GroupLayout(ListaVendedoresJPanel);
@@ -171,14 +171,16 @@ public class MenuJFrame extends javax.swing.JFrame {
             .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VendedorJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(VendedorTitleTextField)
                     .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
                         .addComponent(btnCrearVendedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buscadorVendedorJLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(buscadorVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buscadorVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
+                        .addComponent(VendedorJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ListaVendedoresJPanelLayout.setVerticalGroup(
@@ -200,12 +202,12 @@ public class MenuJFrame extends javax.swing.JFrame {
         VendedorJPanel.setLayout(VendedorJPanelLayout);
         VendedorJPanelLayout.setHorizontalGroup(
             VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
             .addGroup(VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(VendedorJPanelLayout.createSequentialGroup()
-                    .addGap(0, 77, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(ListaVendedoresJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 78, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         VendedorJPanelLayout.setVerticalGroup(
             VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,6 +252,7 @@ public class MenuJFrame extends javax.swing.JFrame {
                 "Nombre", "Dirección", "Cuit", "Direccion", "Pedidos", "Acciones"
             }
         ));
+        clientesJTable.setRowHeight(30);
         jScrollPane2.setViewportView(clientesJTable);
 
         javax.swing.GroupLayout ListaClienteJPanelLayout = new javax.swing.GroupLayout(ListaClienteJPanel);
@@ -259,14 +262,16 @@ public class MenuJFrame extends javax.swing.JFrame {
             .addGroup(ListaClienteJPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ListaClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(ClienteTitleTextField)
                     .addGroup(ListaClienteJPanelLayout.createSequentialGroup()
                         .addComponent(btnCrear1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buscadorJLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(buscadorTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buscadorTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListaClienteJPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         ListaClienteJPanelLayout.setVerticalGroup(
@@ -288,12 +293,12 @@ public class MenuJFrame extends javax.swing.JFrame {
         ClienteJPanel.setLayout(ClienteJPanelLayout);
         ClienteJPanelLayout.setHorizontalGroup(
             ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
             .addGroup(ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ClienteJPanelLayout.createSequentialGroup()
-                    .addGap(0, 84, Short.MAX_VALUE)
+                    .addGap(0, 23, Short.MAX_VALUE)
                     .addComponent(ListaClienteJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 85, Short.MAX_VALUE)))
+                    .addGap(0, 24, Short.MAX_VALUE)))
         );
         ClienteJPanelLayout.setVerticalGroup(
             ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +332,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
 
-        vendedoresJTable2.setModel(new javax.swing.table.DefaultTableModel(
+        itemsMenuJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -338,7 +343,8 @@ public class MenuJFrame extends javax.swing.JFrame {
                 "Nombre", "Descripcion", "Precio", "Categoria", "AptoVegano", "Acciones"
             }
         ));
-        jScrollPane3.setViewportView(vendedoresJTable2);
+        itemsMenuJTable.setRowHeight(30);
+        jScrollPane3.setViewportView(itemsMenuJTable);
 
         javax.swing.GroupLayout ListaPedidosPanel2Layout = new javax.swing.GroupLayout(ListaPedidosPanel2);
         ListaPedidosPanel2.setLayout(ListaPedidosPanel2Layout);
@@ -355,7 +361,7 @@ public class MenuJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(buscadorTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ListaPedidosPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -378,12 +384,12 @@ public class MenuJFrame extends javax.swing.JFrame {
         ItemMenuJPanel.setLayout(ItemMenuJPanelLayout);
         ItemMenuJPanelLayout.setHorizontalGroup(
             ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
             .addGroup(ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ItemMenuJPanelLayout.createSequentialGroup()
-                    .addGap(0, 40, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(ListaPedidosPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 40, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         ItemMenuJPanelLayout.setVerticalGroup(
             ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,7 +423,7 @@ public class MenuJFrame extends javax.swing.JFrame {
             }
         });
 
-        vendedoresJTable3.setModel(new javax.swing.table.DefaultTableModel(
+        pedidosJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -428,7 +434,8 @@ public class MenuJFrame extends javax.swing.JFrame {
                 "Cliente", "Vendedor", "Estado", "Acciones"
             }
         ));
-        jScrollPane4.setViewportView(vendedoresJTable3);
+        pedidosJTable.setRowHeight(30);
+        jScrollPane4.setViewportView(pedidosJTable);
 
         javax.swing.GroupLayout ListaPedidosJPanleLayout = new javax.swing.GroupLayout(ListaPedidosJPanle);
         ListaPedidosJPanle.setLayout(ListaPedidosJPanleLayout);
@@ -437,14 +444,16 @@ public class MenuJFrame extends javax.swing.JFrame {
             .addGroup(ListaPedidosJPanleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ListaPedidosJPanleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(TitleTextField3)
                     .addGroup(ListaPedidosJPanleLayout.createSequentialGroup()
                         .addComponent(btnCrear3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buscadorJLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(buscadorTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buscadorTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListaPedidosJPanleLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         ListaPedidosJPanleLayout.setVerticalGroup(
@@ -466,12 +475,12 @@ public class MenuJFrame extends javax.swing.JFrame {
         PedidoJPanel.setLayout(PedidoJPanelLayout);
         PedidoJPanelLayout.setHorizontalGroup(
             PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
             .addGroup(PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PedidoJPanelLayout.createSequentialGroup()
-                    .addGap(0, 77, Short.MAX_VALUE)
+                    .addGap(0, 86, Short.MAX_VALUE)
                     .addComponent(ListaPedidosJPanle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 78, Short.MAX_VALUE)))
+                    .addGap(0, 86, Short.MAX_VALUE)))
         );
         PedidoJPanelLayout.setVerticalGroup(
             PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,6 +503,13 @@ public class MenuJFrame extends javax.swing.JFrame {
     // Aquí configuras la columna de botones
     vendedoresJTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
     vendedoresJTable.getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
+    clientesJTable.getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
+    clientesJTable.getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
+    itemsMenuJTable.getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
+    itemsMenuJTable.getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
+    pedidosJTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
+    pedidosJTable.getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
+    
     }
     
     private void btnVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedoresActionPerformed
@@ -622,12 +638,12 @@ public class MenuJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField buscadorVendedorTextField;
     private javax.swing.JTable clientesJTable;
     private javax.swing.JPanel contenidoJPanel;
+    private javax.swing.JTable itemsMenuJTable;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable pedidosJTable;
     private javax.swing.JPanel seleccionJPanel;
     private javax.swing.JTable vendedoresJTable;
-    private javax.swing.JTable vendedoresJTable2;
-    private javax.swing.JTable vendedoresJTable3;
     // End of variables declaration//GEN-END:variables
 }

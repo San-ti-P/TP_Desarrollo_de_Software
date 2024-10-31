@@ -11,36 +11,52 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonRendererEditor extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener {
-    private final JButton button;
-    private String label;
+public class ButtonRendererEditor extends AbstractCellEditor implements TableCellRenderer, TableCellEditor {
+    private final JPanel panel;
+    private final JButton btnEditar;
+    private final JButton btnEliminar;
 
     public ButtonRendererEditor() {
-        button = new JButton();
-        button.addActionListener(this);
+        // Configura el panel y los botones
+        panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        btnEditar = new JButton("Editar");
+        btnEliminar = new JButton("Eliminar");
+
+        // Agrega los botones al panel
+        panel.add(btnEditar);
+        panel.add(btnEliminar);
+
+        // Acciones para los botones
+        btnEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Aquí puedes agregar la lógica de edición
+                JOptionPane.showMessageDialog(panel, "Editar fila seleccionada"); // aca va la logica de editar
+                fireEditingStopped();
+            }
+        });
+
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Aquí puedes agregar la lógica de eliminación
+                JOptionPane.showMessageDialog(panel, "Eliminar fila seleccionada"); // aca va la logica de eliminar
+                fireEditingStopped();
+            }
+        });
     }
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        button.setText((value == null) ? "Editar" : value.toString());
-        return button;
+        return panel;
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        label = (value == null) ? "Editar" : value.toString();
-        button.setText(label);
-        return button;
+        return panel;
     }
 
     @Override
     public Object getCellEditorValue() {
-        return label;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(button, "Botón presionado en la fila " + label);
-        fireEditingStopped();
-    }
-}
+        return null;
+    }}
