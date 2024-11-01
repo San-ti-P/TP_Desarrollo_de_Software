@@ -36,7 +36,10 @@ public class MenuJFrame extends javax.swing.JFrame {
         btnItemsMenu = new javax.swing.JButton();
         btnPedidos = new javax.swing.JButton();
         contenidoJPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        defaultJPanel = new javax.swing.JPanel();
+        etiqueta = new javax.swing.JLabel();
+        fillerWest = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
+        fillerEast = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,12 +77,11 @@ public class MenuJFrame extends javax.swing.JFrame {
             seleccionJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(seleccionJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(seleccionJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVendedores)
-                    .addGroup(seleccionJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnPedidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnItemsMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(seleccionJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnItemsMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         seleccionJPanelLayout.setVerticalGroup(
@@ -100,18 +102,18 @@ public class MenuJFrame extends javax.swing.JFrame {
 
         contenidoJPanel.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 914, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-        );
+        defaultJPanel.setLayout(new java.awt.BorderLayout());
 
-        contenidoJPanel.add(jPanel1, "card2");
+        etiqueta.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        etiqueta.setForeground(new java.awt.Color(102, 102, 102));
+        etiqueta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiqueta.setText("Seleccione la entidad con la que quiere trabajar");
+        etiqueta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        defaultJPanel.add(etiqueta, java.awt.BorderLayout.CENTER);
+        defaultJPanel.add(fillerWest, java.awt.BorderLayout.WEST);
+        defaultJPanel.add(fillerEast, java.awt.BorderLayout.EAST);
+
+        contenidoJPanel.add(defaultJPanel, "card2");
 
         getContentPane().add(contenidoJPanel, java.awt.BorderLayout.CENTER);
 
@@ -210,12 +212,15 @@ public class MenuJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnVendedores;
     private javax.swing.JPanel contenidoJPanel;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel defaultJPanel;
+    private javax.swing.JLabel etiqueta;
+    private javax.swing.Box.Filler fillerEast;
+    private javax.swing.Box.Filler fillerWest;
     private javax.swing.JPanel seleccionJPanel;
     // End of variables declaration//GEN-END:variables
-    private VendedorJPanel vendedorJPanel = new VendedorJPanel();
-    private ClienteJPanel clienteJPanel = new ClienteJPanel();
-    private ItemMenuJPanel itemMenuJPanel = new ItemMenuJPanel();
-    private PedidoJPanel pedidoJPanel = new PedidoJPanel();
+    private VendedoresJPanel vendedorJPanel = new VendedoresJPanel();
+    private ClientesJPanel clienteJPanel = new ClientesJPanel();
+    private ItemsMenuJPanel itemMenuJPanel = new ItemsMenuJPanel();
+    private PedidosJPanel pedidoJPanel = new PedidosJPanel();
     
 }
