@@ -4,6 +4,8 @@
  */
 package isi.deso.tpdsw.Views;
 
+
+import javax.swing.*;
 /**
  *
  * @author santi
@@ -26,37 +28,38 @@ public class VendedorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ListaPedidosPanel = new javax.swing.JPanel();
-        TitleTextField = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        btnCrear = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        VendedorJPanel = new javax.swing.JPanel();
+        ListaVendedoresJPanel = new javax.swing.JPanel();
+        VendedorTitleTextField = new javax.swing.JTextField();
+        buscadorVendedorTextField = new javax.swing.JTextField();
+        buscadorVendedorJLabel = new javax.swing.JLabel();
+        btnCrearVendedor = new javax.swing.JButton();
+        VendedorJScrollPane = new javax.swing.JScrollPane();
+        vendedoresJTable = new javax.swing.JTable();
 
-        TitleTextField.setBackground(new java.awt.Color(255, 0, 0));
-        TitleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TitleTextField.setText("Lista de Vendedores");
-        TitleTextField.setFocusable(false);
-        TitleTextField.addActionListener(new java.awt.event.ActionListener() {
+        VendedorTitleTextField.setBackground(new java.awt.Color(255, 0, 0));
+        VendedorTitleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        VendedorTitleTextField.setText("Lista de Vendedores");
+        VendedorTitleTextField.setFocusable(false);
+        VendedorTitleTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TitleTextFieldActionPerformed(evt);
+                VendedorTitleTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Buscador:");
+        buscadorVendedorJLabel.setText("Buscador:");
 
-        btnCrear.setText("Crear Nuevo Vendedor");
-        btnCrear.setToolTipText("");
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearVendedor.setText("Crear Nuevo Vendedor");
+        btnCrearVendedor.setToolTipText("");
+        btnCrearVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
+                btnCrearVendedorActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        vendedoresJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {null, null, null, ""},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
@@ -65,78 +68,101 @@ public class VendedorJPanel extends javax.swing.JPanel {
                 "Nombre", "Dirección", "Menú", "Acciones"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        vendedoresJTable.setFillsViewportHeight(true);
+        vendedoresJTable.setRowHeight(30);
+        VendedorJScrollPane.setViewportView(vendedoresJTable);
 
-        javax.swing.GroupLayout ListaPedidosPanelLayout = new javax.swing.GroupLayout(ListaPedidosPanel);
-        ListaPedidosPanel.setLayout(ListaPedidosPanelLayout);
-        ListaPedidosPanelLayout.setHorizontalGroup(
-            ListaPedidosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaPedidosPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout ListaVendedoresJPanelLayout = new javax.swing.GroupLayout(ListaVendedoresJPanel);
+        ListaVendedoresJPanel.setLayout(ListaVendedoresJPanelLayout);
+        ListaVendedoresJPanelLayout.setHorizontalGroup(
+            ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ListaPedidosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(TitleTextField)
-                    .addGroup(ListaPedidosPanelLayout.createSequentialGroup()
-                        .addComponent(btnCrear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                .addGroup(ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(VendedorJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
+                    .addComponent(VendedorTitleTextField)
+                    .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
+                        .addComponent(btnCrearVendedor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 532, Short.MAX_VALUE)
+                        .addComponent(buscadorVendedorJLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buscadorVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        ListaPedidosPanelLayout.setVerticalGroup(
-            ListaPedidosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaPedidosPanelLayout.createSequentialGroup()
+        ListaVendedoresJPanelLayout.setVerticalGroup(
+            ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TitleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(VendedorTitleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(ListaPedidosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnCrear))
+                .addGroup(ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscadorVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscadorVendedorJLabel)
+                    .addComponent(btnCrearVendedor))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(VendedorJScrollPane)
                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout VendedorJPanelLayout = new javax.swing.GroupLayout(VendedorJPanel);
+        VendedorJPanel.setLayout(VendedorJPanelLayout);
+        VendedorJPanelLayout.setHorizontalGroup(
+            VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 914, Short.MAX_VALUE)
+            .addGroup(VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(ListaVendedoresJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        VendedorJPanelLayout.setVerticalGroup(
+            VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(ListaVendedoresJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaPedidosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VendedorJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 542, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaPedidosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VendedorJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+    private void VendedorTitleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendedorTitleTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearActionPerformed
+    }//GEN-LAST:event_VendedorTitleTextFieldActionPerformed
 
-    private void TitleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TitleTextFieldActionPerformed
+    private void btnCrearVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVendedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TitleTextFieldActionPerformed
+    }//GEN-LAST:event_btnCrearVendedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ListaPedidosPanel;
-    private javax.swing.JTextField TitleTextField;
-    private javax.swing.JButton btnCrear;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel ListaVendedoresJPanel;
+    private javax.swing.JPanel VendedorJPanel;
+    private javax.swing.JScrollPane VendedorJScrollPane;
+    private javax.swing.JTextField VendedorTitleTextField;
+    private javax.swing.JButton btnCrearVendedor;
+    private javax.swing.JLabel buscadorVendedorJLabel;
+    private javax.swing.JTextField buscadorVendedorTextField;
+    private javax.swing.JTable vendedoresJTable;
     // End of variables declaration//GEN-END:variables
+   
+    
+    public JTable getJTable(){
+        return this.vendedoresJTable;
+    }
 }

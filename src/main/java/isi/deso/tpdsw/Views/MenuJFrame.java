@@ -5,6 +5,7 @@
 package isi.deso.tpdsw.Views;
 
 import java.awt.CardLayout;
+import javax.swing.*;
 /**
  *
  * @author santi
@@ -16,6 +17,7 @@ public class MenuJFrame extends javax.swing.JFrame {
      */
     public MenuJFrame() {
         initComponents();
+        configurarLayout();
         configurarTabla();
     }
 
@@ -34,38 +36,7 @@ public class MenuJFrame extends javax.swing.JFrame {
         btnItemsMenu = new javax.swing.JButton();
         btnPedidos = new javax.swing.JButton();
         contenidoJPanel = new javax.swing.JPanel();
-        VendedorJPanel = new javax.swing.JPanel();
-        ListaVendedoresJPanel = new javax.swing.JPanel();
-        VendedorTitleTextField = new javax.swing.JTextField();
-        buscadorVendedorTextField = new javax.swing.JTextField();
-        buscadorVendedorJLabel = new javax.swing.JLabel();
-        btnCrearVendedor = new javax.swing.JButton();
-        VendedorJScrollPane = new javax.swing.JScrollPane();
-        vendedoresJTable = new javax.swing.JTable();
-        ClienteJPanel = new javax.swing.JPanel();
-        ListaClienteJPanel = new javax.swing.JPanel();
-        ClienteTitleTextField = new javax.swing.JTextField();
-        buscadorTextField1 = new javax.swing.JTextField();
-        buscadorJLabel1 = new javax.swing.JLabel();
-        btnCrear1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        clientesJTable = new javax.swing.JTable();
-        ItemMenuJPanel = new javax.swing.JPanel();
-        ListaPedidosPanel2 = new javax.swing.JPanel();
-        ItemMenuTitleTextField = new javax.swing.JTextField();
-        buscadorTextField2 = new javax.swing.JTextField();
-        buscadorJLabel2 = new javax.swing.JLabel();
-        btnCrearItemMenu = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        itemsMenuJTable = new javax.swing.JTable();
-        PedidoJPanel = new javax.swing.JPanel();
-        ListaPedidosJPanle = new javax.swing.JPanel();
-        TitleTextField3 = new javax.swing.JTextField();
-        buscadorTextField3 = new javax.swing.JTextField();
-        buscadorJLabel3 = new javax.swing.JLabel();
-        btnCrear3 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        pedidosJTable = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,445 +100,72 @@ public class MenuJFrame extends javax.swing.JFrame {
 
         contenidoJPanel.setLayout(new java.awt.CardLayout());
 
-        VendedorTitleTextField.setBackground(new java.awt.Color(255, 0, 0));
-        VendedorTitleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        VendedorTitleTextField.setText("Lista de Vendedores");
-        VendedorTitleTextField.setFocusable(false);
-        VendedorTitleTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VendedorTitleTextFieldActionPerformed(evt);
-            }
-        });
-
-        buscadorVendedorJLabel.setText("Buscador:");
-
-        btnCrearVendedor.setText("Crear Nuevo Vendedor");
-        btnCrearVendedor.setToolTipText("");
-        btnCrearVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearVendedorActionPerformed(evt);
-            }
-        });
-
-        vendedoresJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, ""},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Dirección", "Menú", "Acciones"
-            }
-        ));
-        vendedoresJTable.setFillsViewportHeight(true);
-        vendedoresJTable.setRowHeight(30);
-        VendedorJScrollPane.setViewportView(vendedoresJTable);
-
-        javax.swing.GroupLayout ListaVendedoresJPanelLayout = new javax.swing.GroupLayout(ListaVendedoresJPanel);
-        ListaVendedoresJPanel.setLayout(ListaVendedoresJPanelLayout);
-        ListaVendedoresJPanelLayout.setHorizontalGroup(
-            ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VendedorTitleTextField)
-                    .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
-                        .addComponent(btnCrearVendedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscadorVendedorJLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscadorVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
-                        .addComponent(VendedorJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        ListaVendedoresJPanelLayout.setVerticalGroup(
-            ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaVendedoresJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(VendedorTitleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(ListaVendedoresJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscadorVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscadorVendedorJLabel)
-                    .addComponent(btnCrearVendedor))
-                .addGap(18, 18, 18)
-                .addComponent(VendedorJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout VendedorJPanelLayout = new javax.swing.GroupLayout(VendedorJPanel);
-        VendedorJPanel.setLayout(VendedorJPanelLayout);
-        VendedorJPanelLayout.setHorizontalGroup(
-            VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 914, Short.MAX_VALUE)
-            .addGroup(VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(VendedorJPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaVendedoresJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        VendedorJPanelLayout.setVerticalGroup(
-            VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 530, Short.MAX_VALUE)
-            .addGroup(VendedorJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(VendedorJPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaVendedoresJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        contenidoJPanel.add(VendedorJPanel, "Vendedor");
-
-        ClienteTitleTextField.setBackground(new java.awt.Color(255, 0, 0));
-        ClienteTitleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ClienteTitleTextField.setText("Lista de Clientes");
-        ClienteTitleTextField.setFocusable(false);
-        ClienteTitleTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteTitleTextFieldActionPerformed(evt);
-            }
-        });
-
-        buscadorJLabel1.setText("Buscador:");
-
-        btnCrear1.setText("Crear Nuevo Cliente");
-        btnCrear1.setToolTipText("");
-        btnCrear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrear1ActionPerformed(evt);
-            }
-        });
-
-        clientesJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Dirección", "Cuit", "Direccion", "Pedidos", "Acciones"
-            }
-        ));
-        clientesJTable.setRowHeight(30);
-        jScrollPane2.setViewportView(clientesJTable);
-
-        javax.swing.GroupLayout ListaClienteJPanelLayout = new javax.swing.GroupLayout(ListaClienteJPanel);
-        ListaClienteJPanel.setLayout(ListaClienteJPanelLayout);
-        ListaClienteJPanelLayout.setHorizontalGroup(
-            ListaClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaClienteJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ListaClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ClienteTitleTextField)
-                    .addGroup(ListaClienteJPanelLayout.createSequentialGroup()
-                        .addComponent(btnCrear1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscadorJLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscadorTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListaClienteJPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        ListaClienteJPanelLayout.setVerticalGroup(
-            ListaClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaClienteJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ClienteTitleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(ListaClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscadorTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscadorJLabel1)
-                    .addComponent(btnCrear1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout ClienteJPanelLayout = new javax.swing.GroupLayout(ClienteJPanel);
-        ClienteJPanel.setLayout(ClienteJPanelLayout);
-        ClienteJPanelLayout.setHorizontalGroup(
-            ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 914, Short.MAX_VALUE)
-            .addGroup(ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ClienteJPanelLayout.createSequentialGroup()
-                    .addGap(0, 23, Short.MAX_VALUE)
-                    .addComponent(ListaClienteJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 24, Short.MAX_VALUE)))
-        );
-        ClienteJPanelLayout.setVerticalGroup(
-            ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-            .addGroup(ClienteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ClienteJPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaClienteJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        contenidoJPanel.add(ClienteJPanel, "Cliente");
-
-        ItemMenuTitleTextField.setBackground(new java.awt.Color(255, 0, 0));
-        ItemMenuTitleTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ItemMenuTitleTextField.setText("Lista de ItemsMenu");
-        ItemMenuTitleTextField.setFocusable(false);
-        ItemMenuTitleTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemMenuTitleTextFieldActionPerformed(evt);
-            }
-        });
-
-        buscadorJLabel2.setText("Buscador:");
-
-        btnCrearItemMenu.setText("Crear Nuevo ItemMenu");
-        btnCrearItemMenu.setToolTipText("");
-        btnCrearItemMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearItemMenuActionPerformed(evt);
-            }
-        });
-
-        itemsMenuJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Descripcion", "Precio", "Categoria", "AptoVegano", "Acciones"
-            }
-        ));
-        itemsMenuJTable.setRowHeight(30);
-        jScrollPane3.setViewportView(itemsMenuJTable);
-
-        javax.swing.GroupLayout ListaPedidosPanel2Layout = new javax.swing.GroupLayout(ListaPedidosPanel2);
-        ListaPedidosPanel2.setLayout(ListaPedidosPanel2Layout);
-        ListaPedidosPanel2Layout.setHorizontalGroup(
-            ListaPedidosPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaPedidosPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ListaPedidosPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ItemMenuTitleTextField)
-                    .addGroup(ListaPedidosPanel2Layout.createSequentialGroup()
-                        .addComponent(btnCrearItemMenu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscadorJLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscadorTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ListaPedidosPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        ListaPedidosPanel2Layout.setVerticalGroup(
-            ListaPedidosPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaPedidosPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ItemMenuTitleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(ListaPedidosPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscadorTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscadorJLabel2)
-                    .addComponent(btnCrearItemMenu))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout ItemMenuJPanelLayout = new javax.swing.GroupLayout(ItemMenuJPanel);
-        ItemMenuJPanel.setLayout(ItemMenuJPanelLayout);
-        ItemMenuJPanelLayout.setHorizontalGroup(
-            ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 914, Short.MAX_VALUE)
-            .addGroup(ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ItemMenuJPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaPedidosPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        ItemMenuJPanelLayout.setVerticalGroup(
-            ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-            .addGroup(ItemMenuJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ItemMenuJPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaPedidosPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        contenidoJPanel.add(ItemMenuJPanel, "ItemMenu");
-
-        TitleTextField3.setBackground(new java.awt.Color(255, 0, 0));
-        TitleTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TitleTextField3.setText("Lista de Pedidos");
-        TitleTextField3.setFocusable(false);
-        TitleTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TitleTextField3ActionPerformed(evt);
-            }
-        });
-
-        buscadorJLabel3.setText("Buscador:");
-
-        btnCrear3.setText("Crear Nuevo Vendedor");
-        btnCrear3.setToolTipText("");
-        btnCrear3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrear3ActionPerformed(evt);
-            }
-        });
-
-        pedidosJTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Cliente", "Vendedor", "Estado", "Acciones"
-            }
-        ));
-        pedidosJTable.setRowHeight(30);
-        jScrollPane4.setViewportView(pedidosJTable);
-
-        javax.swing.GroupLayout ListaPedidosJPanleLayout = new javax.swing.GroupLayout(ListaPedidosJPanle);
-        ListaPedidosJPanle.setLayout(ListaPedidosJPanleLayout);
-        ListaPedidosJPanleLayout.setHorizontalGroup(
-            ListaPedidosJPanleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaPedidosJPanleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ListaPedidosJPanleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TitleTextField3)
-                    .addGroup(ListaPedidosJPanleLayout.createSequentialGroup()
-                        .addComponent(btnCrear3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscadorJLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(buscadorTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListaPedidosJPanleLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        ListaPedidosJPanleLayout.setVerticalGroup(
-            ListaPedidosJPanleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ListaPedidosJPanleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TitleTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(ListaPedidosJPanleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscadorTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscadorJLabel3)
-                    .addComponent(btnCrear3))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout PedidoJPanelLayout = new javax.swing.GroupLayout(PedidoJPanel);
-        PedidoJPanel.setLayout(PedidoJPanelLayout);
-        PedidoJPanelLayout.setHorizontalGroup(
-            PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 914, Short.MAX_VALUE)
-            .addGroup(PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PedidoJPanelLayout.createSequentialGroup()
-                    .addGap(0, 86, Short.MAX_VALUE)
-                    .addComponent(ListaPedidosJPanle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 86, Short.MAX_VALUE)))
-        );
-        PedidoJPanelLayout.setVerticalGroup(
-            PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-            .addGroup(PedidoJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PedidoJPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ListaPedidosJPanle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        contenidoJPanel.add(PedidoJPanel, "Pedido");
+        contenidoJPanel.add(jPanel1, "card2");
 
         getContentPane().add(contenidoJPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void configurarLayout(){
+        CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
+        contenidoJPanel.add(vendedorJPanel);
+        contenidoJPanel.add(clienteJPanel);
+        contenidoJPanel.add(itemMenuJPanel);
+        contenidoJPanel.add(pedidoJPanel);
+        ly.addLayoutComponent(vendedorJPanel, "vendedor");
+        ly.addLayoutComponent(clienteJPanel, "cliente");
+        ly.addLayoutComponent(itemMenuJPanel, "itemMenu");
+        ly.addLayoutComponent(pedidoJPanel, "pedido");
+    }
+    
     private void configurarTabla() {
     // Aquí configuras la columna de botones
-    vendedoresJTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
-    vendedoresJTable.getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
-    clientesJTable.getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
-    clientesJTable.getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
-    itemsMenuJTable.getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
-    itemsMenuJTable.getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
-    pedidosJTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
-    pedidosJTable.getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
-    
-    }
+    vendedorJPanel.getJTable().getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
+    vendedorJPanel.getJTable().getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
+    clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
+    clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
+    itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
+    itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
+    pedidoJPanel.getJTable().getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
+    pedidoJPanel.getJTable().getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
+    } 
     
     private void btnVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedoresActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
-        ly.show(contenidoJPanel, "Vendedor");
+        ly.show(contenidoJPanel, "vendedor");
         
     }//GEN-LAST:event_btnVendedoresActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
-        ly.show(contenidoJPanel, "Cliente");
+        ly.show(contenidoJPanel, "cliente");
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnItemsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItemsMenuActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
-        ly.show(contenidoJPanel, "ItemMenu");
+        ly.show(contenidoJPanel, "itemMenu");
     }//GEN-LAST:event_btnItemsMenuActionPerformed
 
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
-        ly.show(contenidoJPanel, "Pedido");
+        ly.show(contenidoJPanel, "pedido");
     }//GEN-LAST:event_btnPedidosActionPerformed
-
-    private void VendedorTitleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendedorTitleTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VendedorTitleTextFieldActionPerformed
-
-    private void btnCrearVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVendedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearVendedorActionPerformed
-
-    private void ClienteTitleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteTitleTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ClienteTitleTextFieldActionPerformed
-
-    private void btnCrear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrear1ActionPerformed
-
-    private void ItemMenuTitleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemMenuTitleTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ItemMenuTitleTextFieldActionPerformed
-
-    private void btnCrearItemMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearItemMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearItemMenuActionPerformed
-
-    private void TitleTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TitleTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TitleTextField3ActionPerformed
-
-    private void btnCrear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrear3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrear3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -607,43 +205,17 @@ public class MenuJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ClienteJPanel;
-    private javax.swing.JTextField ClienteTitleTextField;
-    private javax.swing.JPanel ItemMenuJPanel;
-    private javax.swing.JTextField ItemMenuTitleTextField;
-    private javax.swing.JPanel ListaClienteJPanel;
-    private javax.swing.JPanel ListaPedidosJPanle;
-    private javax.swing.JPanel ListaPedidosPanel2;
-    private javax.swing.JPanel ListaVendedoresJPanel;
-    private javax.swing.JPanel PedidoJPanel;
-    private javax.swing.JTextField TitleTextField3;
-    private javax.swing.JPanel VendedorJPanel;
-    private javax.swing.JScrollPane VendedorJScrollPane;
-    private javax.swing.JTextField VendedorTitleTextField;
     private javax.swing.JButton btnClientes;
-    private javax.swing.JButton btnCrear1;
-    private javax.swing.JButton btnCrear3;
-    private javax.swing.JButton btnCrearItemMenu;
-    private javax.swing.JButton btnCrearVendedor;
     private javax.swing.JButton btnItemsMenu;
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnVendedores;
-    private javax.swing.JLabel buscadorJLabel1;
-    private javax.swing.JLabel buscadorJLabel2;
-    private javax.swing.JLabel buscadorJLabel3;
-    private javax.swing.JTextField buscadorTextField1;
-    private javax.swing.JTextField buscadorTextField2;
-    private javax.swing.JTextField buscadorTextField3;
-    private javax.swing.JLabel buscadorVendedorJLabel;
-    private javax.swing.JTextField buscadorVendedorTextField;
-    private javax.swing.JTable clientesJTable;
     private javax.swing.JPanel contenidoJPanel;
-    private javax.swing.JTable itemsMenuJTable;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable pedidosJTable;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel seleccionJPanel;
-    private javax.swing.JTable vendedoresJTable;
     // End of variables declaration//GEN-END:variables
+    private VendedorJPanel vendedorJPanel = new VendedorJPanel();
+    private ClienteJPanel clienteJPanel = new ClienteJPanel();
+    private ItemMenuJPanel itemMenuJPanel = new ItemMenuJPanel();
+    private PedidoJPanel pedidoJPanel = new PedidoJPanel();
+    
 }
