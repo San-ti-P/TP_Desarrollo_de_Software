@@ -1,8 +1,5 @@
 package isi.deso.tpdsw.Models;
 
-import isi.deso.tpdsw.Models.EstadoPedido;
-import isi.deso.tpdsw.Models.Vendedor;
-import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Controllers.Observable;
 import isi.deso.tpdsw.Controllers.PedidoObserver;
 import isi.deso.tpdsw.Controllers.VendedoresDistintosException;

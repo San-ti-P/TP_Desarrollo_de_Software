@@ -101,7 +101,7 @@ public class Cliente implements PedidoObserver {
                 e = mp; 
             }
             else {
-                System.out.println("error todo mal loco");
+                System.out.println("Método de pago no soportado");
                 return; 
             }
             Pago pago = new Pago(new Date(), p, e);
