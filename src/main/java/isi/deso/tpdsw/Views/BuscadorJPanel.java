@@ -61,7 +61,7 @@ abstract public class BuscadorJPanel extends JPanel{
             }
         });
 
-        javax.swing.GroupLayout layout = new GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)

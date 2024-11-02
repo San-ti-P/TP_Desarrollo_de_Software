@@ -5,6 +5,7 @@
 package isi.deso.tpdsw.Views;
 
 import isi.deso.tpdsw.Controllers.VendedorController;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +20,10 @@ public class VendedoresJPanel extends BuscadorJPanel{
             });
         this.getBtnCrear().setText("Crear Nuevo Vendedor");
         this.getTitleTextField().setText("Lista de Vendedores");
+        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
+        model.addRow(new Object[] {null, null, null, null});
+        this.getJTable().getColumnModel().getColumn(3).setMinWidth(150);
+        this.getJTable().getColumnModel().getColumn(3).setMaxWidth(150);
     }
     /*
     @Override
