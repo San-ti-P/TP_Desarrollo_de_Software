@@ -1,18 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package isi.deso.tpdsw.Views;
 
-/**
- *
- * @author santi
- */
 public class SeleccionarItemsPedidoFormJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SeleccionarItemsPedidoFormJFrame
-     */
     public SeleccionarItemsPedidoFormJFrame() {
         initComponents();
     }

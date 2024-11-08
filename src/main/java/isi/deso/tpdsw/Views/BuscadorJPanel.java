@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Views;
 
 import javax.swing.GroupLayout;
@@ -14,10 +10,6 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author santi
- */
 abstract public class BuscadorJPanel extends JPanel{
     
     public BuscadorJPanel(String [] jTableColumns) {

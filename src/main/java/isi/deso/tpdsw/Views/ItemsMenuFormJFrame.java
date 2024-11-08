@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package isi.deso.tpdsw.Views;
 
 import java.awt.CardLayout;
 
-/**
- *
- * @author santi
- */
 public class ItemsMenuFormJFrame extends javax.swing.JFrame {
 
     /**

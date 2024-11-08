@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package isi.deso.tpdsw.Views;
 
 import java.awt.CardLayout;
 import javax.swing.*;
-/**
- *
- * @author santi
- */
+import isi.deso.tpdsw.Controllers.*;
+
 public class MenuJFrame extends javax.swing.JFrame {
 
     /**
@@ -18,7 +12,7 @@ public class MenuJFrame extends javax.swing.JFrame {
     public MenuJFrame() {
         initComponents();
         configurarLayout();
-        configurarTabla();
+//        configurarTabla();
     }
 
     /**
@@ -132,17 +126,17 @@ public class MenuJFrame extends javax.swing.JFrame {
         ly.addLayoutComponent(pedidoJPanel, "pedido");
     }
     
-    private void configurarTabla() {
-    // Aquí configuras la columna de botones
-    vendedorJPanel.getJTable().getColumnModel().getColumn(4).setCellRenderer(new ButtonRendererEditor());
-    vendedorJPanel.getJTable().getColumnModel().getColumn(4).setCellEditor(new ButtonRendererEditor());
-    clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
-    clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
-    itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
-    itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
-    pedidoJPanel.getJTable().getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
-    pedidoJPanel.getJTable().getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
-    } 
+//    private void configurarTabla() {
+//    // Aquí configuras la columna de botones
+//    vendedorJPanel.getJTable().getColumnModel().getColumn(4).setCellRenderer(new ButtonRendererEditor());
+//    vendedorJPanel.getJTable().getColumnModel().getColumn(4).setCellEditor(new ButtonRendererEditor());
+//    clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
+//    clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
+//    itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
+//    itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
+//    pedidoJPanel.getJTable().getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
+//    pedidoJPanel.getJTable().getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
+//    } 
     
     private void btnVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedoresActionPerformed
         // TODO add your handling code here:

@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Views;
 
+import isi.deso.tpdsw.Controllers.Controller;
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableCellEditor;
@@ -15,25 +12,37 @@ public class ButtonRendererEditor extends AbstractCellEditor implements TableCel
     private final JPanel panel;
     private final JButton btnEditar;
     private final JButton btnEliminar;
+    private Controller controlador;
+    
+    
+    public ButtonRendererEditor(Controller controlador, BuscadorJPanel panelBoton) {
+        this.controlador = controlador;
 
-    public ButtonRendererEditor() {
         // Configura el panel y los botones
         panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         btnEditar = new JButton("Editar");
         btnEliminar = new JButton("Eliminar");
-
+        
         // Agrega los botones al panel
         panel.add(btnEditar);
         panel.add(btnEliminar);
 
         // Acciones para los botones
         btnEditar.addActionListener(new ActionListener() {
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Aquí puedes agregar la lógica de edición
-                JOptionPane.showMessageDialog(panel, "Editar fila seleccionada"); // aca va la logica de editar
+//                JOptionPane.showMessageDialog(panel, "Editar fila seleccionada"); // aca va la logica de editar
+                
+                int row = panelBoton.getJTable().getSelectedRow();
+                
+                    if (row != -1) {
+                        controlador.editarFila(row);
+                    }
                 fireEditingStopped();
             }
+            
         });
 
         btnEliminar.addActionListener(new ActionListener() {
