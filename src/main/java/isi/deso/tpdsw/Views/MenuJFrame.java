@@ -134,8 +134,8 @@ public class MenuJFrame extends javax.swing.JFrame {
     
     private void configurarTabla() {
     // Aquí configuras la columna de botones
-    vendedorJPanel.getJTable().getColumnModel().getColumn(3).setCellRenderer(new ButtonRendererEditor());
-    vendedorJPanel.getJTable().getColumnModel().getColumn(3).setCellEditor(new ButtonRendererEditor());
+    vendedorJPanel.getJTable().getColumnModel().getColumn(4).setCellRenderer(new ButtonRendererEditor());
+    vendedorJPanel.getJTable().getColumnModel().getColumn(4).setCellEditor(new ButtonRendererEditor());
     clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());
     clienteJPanel.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor());
     itemMenuJPanel.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor());

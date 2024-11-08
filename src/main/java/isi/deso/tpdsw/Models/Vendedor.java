@@ -19,6 +19,17 @@ public class Vendedor {
         menu = new TreeSet<ItemMenu>();
         pedidos = new TreeSet<Pedido>();
     }
+
+    public Vendedor(int id, String nombre, String direccion, Coordenada coordenadas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.coordenadas = coordenadas;
+        menu = new TreeSet<ItemMenu>();
+        pedidos = new TreeSet<Pedido>();
+    }
+    
+    
     
     public int getId() {
         return id;

@@ -44,9 +44,11 @@ isi\deso\tpdsw\Views\PedidosFormJFrame$2.class
 isi\deso\tpdsw\Views\SeleccionarItemsPedidoFormJFrame$1.class
 isi\deso\tpdsw\Controllers\PedidoObserver.class
 isi\deso\tpdsw\Models\TipoItem.class
+isi\deso\tpdsw\Views\VendedoresFormJFrame$3.class
 isi\deso\tpdsw\Models\Plato.class
 isi\deso\tpdsw\Views\SeleccionarItemsPedidoFormJFrame$2.class
 isi\deso\tpdsw\Views\ItemsMenuFormJFrame$3.class
+isi\deso\tpdsw\Views\VendedoresFormJFrame$4.class
 isi\deso\tpdsw\Views\ItemsMenuFormJFrame$5.class
 isi\deso\tpdsw\Views\BuscadorJPanel$1.class
 isi\deso\tpdsw\Controllers\ComparatorFactory.class
