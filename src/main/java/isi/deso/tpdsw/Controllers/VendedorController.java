@@ -4,8 +4,11 @@ import isi.deso.tpdsw.Models.Coordenada;
 import isi.deso.tpdsw.Models.Vendedor;
 import isi.deso.tpdsw.Views.EditarVendedorJFrame;
 import isi.deso.tpdsw.Views.VendedoresJPanel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 
 public class VendedorController implements Controller{
     private static int nextID = 0;
@@ -39,12 +42,31 @@ public class VendedorController implements Controller{
         this.fila = fila;
         EditarVendedorJFrame form = new EditarVendedorJFrame(this);
         form.setVisible(true);
+        form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @Override
     public void eliminarFila(int fila) {
-        ((DefaultTableModel) vJPanel.getJTable().getModel()).removeRow(fila);
+    this.fila = fila;
+    
+    JTable tabla = vJPanel.getJTable();
+    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+    
+    // Verificar si la fila existe antes de eliminarla
+    if (fila >= 0 && fila < modelo.getRowCount()) {
+        // Eliminar la fila del modelo
+        
+        // Limpiar cualquier editor activo en la tabla para evitar errores
+        if (tabla.isEditing()) {
+            tabla.getCellEditor().stopCellEditing();
+        }
+        modelo.removeRow(fila);
+
+        // Repintar la tabla para actualizar la interfaz
+        tabla.repaint();
     }
+}
+
     
     public void editarVendedor(String nombre, String direccion, Double latitud, Double longitud) {
         int id = (int) vJPanel.getJTable().getValueAt(fila, 0);

@@ -32,9 +32,6 @@ public class ButtonRendererEditor extends AbstractCellEditor implements TableCel
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes agregar la lógica de edición
-//                JOptionPane.showMessageDialog(panel, "Editar fila seleccionada"); // aca va la logica de editar
-                
                 int row = panelBoton.getJTable().getSelectedRow();
                 
                     if (row != -1) {
@@ -48,13 +45,26 @@ public class ButtonRendererEditor extends AbstractCellEditor implements TableCel
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes agregar la lógica de eliminación
-                JOptionPane.showMessageDialog(panel, "Eliminar fila seleccionada"); // aca va la logica de eliminar
-                fireEditingStopped();
+                int row = panelBoton.getJTable().getSelectedRow();
+                    if (row != -1) {
+                        int opcion = JOptionPane.showConfirmDialog(null,
+                                "¿Deseas continuar?",
+                                "Confirmación",
+                                JOptionPane.OK_CANCEL_OPTION);
+
+                        // Si el usuario presiona "Aceptar"
+                        if (opcion == JOptionPane.OK_OPTION) {
+                            controlador.eliminarFila(row);
+                        } else {
+                            System.out.println("Operación cancelada");
+                        }
+                        
+                    }
+                fireEditingStopped(); 
             }
         });
     }
-
+    
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         return panel;
