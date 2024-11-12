@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 public class Pedido implements Observable, Comparable<Pedido> {
 
-    private String id;
+    private int id;
     private Cliente cliente;
     private ArrayList<ItemPedido> items;
     private Vendedor vendedor; 
@@ -18,6 +18,15 @@ public class Pedido implements Observable, Comparable<Pedido> {
     private double precio = 0;
     private ArrayList<PedidoObserver> observadores = new ArrayList<>();
 
+    public Pedido(int id, Cliente cliente, ArrayList<ItemPedido> items, Vendedor vendedor, EstadoPedido estado) {
+        this.id = id;
+        this.cliente = cliente;
+        this.items = items;
+        this.vendedor = vendedor;
+        this.estado = estado;
+        this.calcularPrecio();
+    }
+   
     public double getPrecio() {
         return precio;
     }
@@ -38,7 +47,7 @@ public class Pedido implements Observable, Comparable<Pedido> {
         this.estado = estado;
     }
     
-    public String getId() {
+    public int getId() {
         return id;
     }
     public Cliente getCliente() {
@@ -51,7 +60,7 @@ public class Pedido implements Observable, Comparable<Pedido> {
         return vendedor;
     }
     
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -112,6 +121,6 @@ public class Pedido implements Observable, Comparable<Pedido> {
     
     @Override
     public int compareTo(Pedido p) {
-        return this.id.compareTo(p.getId());
+        return this.id - p.getId();
     }
 }

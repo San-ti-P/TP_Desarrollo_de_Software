@@ -17,6 +17,18 @@ public class Cliente implements PedidoObserver {
     public Cliente(){
         this.pedidos = new ArrayList<Pedido>(); 
     }
+
+    public Cliente(int id, String nombre, String cuit, String email, String direccion, Coordenada coordenadas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cuit = cuit;
+        this.email = email;
+        this.direccion = direccion;
+        this.coordenadas = coordenadas;
+        this.pedidos = new ArrayList<Pedido>(); 
+    }
+    
+    
     
     public void agregarPedido(Pedido pedido){
         pedidos.add(pedido);
