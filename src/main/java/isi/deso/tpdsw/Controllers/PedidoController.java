@@ -7,6 +7,7 @@ import isi.deso.tpdsw.Models.ItemMenu;
 import isi.deso.tpdsw.Models.ItemPedido;
 import isi.deso.tpdsw.Models.Pedido;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Views.EditarPedidoJFrame;
 import isi.deso.tpdsw.Views.EditarVendedorJFrame;
 import isi.deso.tpdsw.Views.PedidosJPanel;
 import isi.deso.tpdsw.Views.VendedoresJPanel;

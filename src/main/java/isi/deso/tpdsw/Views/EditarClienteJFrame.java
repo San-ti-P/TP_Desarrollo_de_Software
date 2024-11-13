@@ -11,7 +11,6 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         btnAceptar = new javax.swing.JButton();
@@ -41,6 +40,11 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nombre:");
 
@@ -142,15 +146,15 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }                        
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         String nombre = this.getCampoNombre().getText();
         String direccion = this.getCampoDireccion().getText();
         String cuit = this.getCampoCuit().getText();
         String email = this.getCampoEmail().getText();
-        Double latitud = Double.parseDouble(this.getCampoLatitud().getText());
-        Double longitud = Double.parseDouble(this.getCampoLongitud().getText());
+        Double latitud = Double.valueOf(this.getCampoLatitud().getText());
+        Double longitud = Double.valueOf(this.getCampoLongitud().getText());
         
         controlador.editarCliente(nombre, direccion, cuit, email, latitud, longitud);
         this.setVisible(false);
@@ -160,7 +164,6 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }
     
-    // Variables declaration - do not modify                     
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JTextField campoCuit;
@@ -177,7 +180,6 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    // End of variables declaration     
     private ClienteController controlador;
     
     public JTextField getCampoNombre() {

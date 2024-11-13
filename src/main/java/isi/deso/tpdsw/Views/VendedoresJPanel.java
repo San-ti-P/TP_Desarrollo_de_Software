@@ -31,11 +31,7 @@ public class VendedoresJPanel extends BuscadorJPanel{
     public void modificarFila(int fila, Vendedor v) {
         this.getJTable().setValueAt(v.getNombre(), fila, 1);
         this.getJTable().setValueAt(v.getDireccion(), fila, 2);
-    }
-    
-    @Override
-    void titleTextFieldActionPerformed(java.awt.event.ActionEvent evt){ 
-    }                                                   
+    }                                                
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){

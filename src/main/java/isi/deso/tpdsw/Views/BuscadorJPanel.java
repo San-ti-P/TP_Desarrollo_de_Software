@@ -47,11 +47,6 @@ abstract public class BuscadorJPanel extends JPanel{
         titleTextField.setHorizontalAlignment(JTextField.CENTER);
         //titleTextField.setText("Lista de Vendedores");
         titleTextField.setFocusable(false);
-        titleTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleTextFieldActionPerformed(evt);
-            }
-        });
 
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
@@ -107,11 +102,7 @@ abstract public class BuscadorJPanel extends JPanel{
     
     public JTable getJTable(){
         return this.tablaJTable;
-    }
-    
-    //abstract 
-    void titleTextFieldActionPerformed(java.awt.event.ActionEvent evt){}                                                   
-
+    }    
     //abstract
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){} 
 }

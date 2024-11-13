@@ -46,6 +46,11 @@ public class ClientesFormJFrame extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nombre:");
 
@@ -160,29 +165,12 @@ public class ClientesFormJFrame extends javax.swing.JFrame {
         controlador.crearCliente(nombre, cuit, email, direccion, latitud, longitud);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
-    
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
-    }        
-    
-    /**
-     * @param args the command line arguments
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    }//GEN-LAST:event_btnCancelarActionPerformed
+      
 
-        //</editor-fold>
-
-        /* Create and display the form 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClientesFormJFrame().setVisible(true);
-            }
-        });
-    } */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

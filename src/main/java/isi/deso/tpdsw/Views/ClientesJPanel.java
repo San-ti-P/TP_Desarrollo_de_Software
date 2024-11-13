@@ -35,11 +35,7 @@ public class ClientesJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(cli.getCuit(), fila, 3);
         this.getJTable().setValueAt(cli.getEmail(), fila, 4);
         
-    }
-    
-    @Override
-    void titleTextFieldActionPerformed(java.awt.event.ActionEvent evt){ 
-    }                                                   
+    }                                            
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){

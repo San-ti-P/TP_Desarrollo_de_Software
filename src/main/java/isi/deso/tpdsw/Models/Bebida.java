@@ -8,7 +8,7 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     private float graduacionAlcoholica;
     private int tamaño;
     
-    public Bebida(String id, String nombre, String descripcion, float precio, Categoria categoria, float graduacion, int tam, boolean aptoVegano, Vendedor vendedor){
+    public Bebida(int id, String nombre, String descripcion, float precio, Categoria categoria, float graduacion, int tam, boolean aptoVegano, Vendedor vendedor){
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -21,7 +21,7 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     }
     
     @Override
-    public String getId() {
+    public int getId() {
         return id;
     }
     @Override
@@ -56,7 +56,7 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     }
     
     @Override
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     @Override
@@ -121,7 +121,7 @@ public class Bebida extends ItemMenu implements Comparable<ItemMenu>{
     }
     @Override
     public int compareTo(ItemMenu item) {
-        return this.id.compareTo(item.getId());
+        return this.id - item.getId();
     }
     
     @Override

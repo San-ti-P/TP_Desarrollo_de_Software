@@ -11,7 +11,7 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     private boolean aptoCeliaco;
     private float peso;
 
-    public Plato(String id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
+    public Plato(int id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -25,7 +25,7 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     }
     
     @Override
-    public String getId() {
+    public int getId() {
         return id;
     }
     @Override
@@ -66,7 +66,7 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     }
     
     @Override
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     @Override
@@ -125,7 +125,7 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     }
     @Override
     public int compareTo(ItemMenu item) {
-        return this.id.compareTo(item.getId());
+        return this.id - item.getId();
     }
     
     @Override

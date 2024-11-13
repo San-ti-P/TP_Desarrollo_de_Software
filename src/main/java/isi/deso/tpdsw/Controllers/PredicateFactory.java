@@ -18,7 +18,7 @@ public class PredicateFactory {
         String val = valor.toLowerCase();
         switch(tipos.get(arg.toLowerCase().strip())){
             case 0 -> {
-                return (a) -> a.getItem().getId().toLowerCase().equals(val);
+                return (a) -> a.getItem().getId() == Integer.parseInt(val);
             }
             case 1 -> {   
                 return (a) -> a.getItem().getNombre().toLowerCase().equals(val);
