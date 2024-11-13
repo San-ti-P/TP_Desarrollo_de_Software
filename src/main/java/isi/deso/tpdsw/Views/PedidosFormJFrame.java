@@ -1,8 +1,12 @@
 package isi.deso.tpdsw.Views;
 
-import isi.deso.tpdsw.Models.ItemMenu;
-import javax.swing.JTextField;
 import isi.deso.tpdsw.Controllers.PedidoController;
+import isi.deso.tpdsw.Models.Cliente;
+import isi.deso.tpdsw.Models.ItemPedido;
+import isi.deso.tpdsw.Models.Vendedor;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+
 
 public class PedidosFormJFrame extends javax.swing.JFrame {
 
@@ -135,11 +139,13 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String cliente = this.getClienteComboBox();
-        String vendedor = this.getVendedorComboBox();
-        ArrayList<ItemMenu> items = new ArrayList<>(); 
+        Cliente cliente = (Cliente) this.getClienteComboBox().getSelectedItem();
+        Vendedor vendedor = (Vendedor) this.getVendedorComboBox().getSelectedItem();
+        ArrayList<ItemPedido> items = new ArrayList<>(); 
+        double subtotal = this.getSubtotal();
         
-        controlador.crearPedido(cliente, vendedor, items, );
+        
+        controlador.crearPedido(cliente, vendedor, items, subtotal);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -149,7 +155,7 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
-     */
+     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -174,13 +180,13 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PedidosFormJFrame().setVisible(true);
             }
         });
-    }
+    } */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
@@ -195,4 +201,26 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JComboBox<String> vendedorComboBox;
     // End of variables declaration//GEN-END:variables
+private PedidoController controlador;
+    
+    public JComboBox getClienteComboBox() {
+        return clienteComboBox;
+    }
+
+    public void setClienteComboBox(JComboBox clienteComboBox) {
+        this.clienteComboBox = clienteComboBox;
+    }
+    
+    public JComboBox getVendedorComboBox() {
+        return vendedorComboBox;
+    }
+
+    public void setVendedorComboBox(JComboBox vendedorComboBox) {
+        this.vendedorComboBox = vendedorComboBox;
+    }
+
+    private double getSubtotal() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
