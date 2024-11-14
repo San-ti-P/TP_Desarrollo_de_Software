@@ -42,6 +42,12 @@ abstract public class BuscadorJPanel extends JPanel{
         });
 
         buscadorJLabel.setText("Buscador:");
+        
+        buscadorTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                buscadorKeyReleased(evt);
+            }
+        });
 
         titleTextField.setBackground(new java.awt.Color(255, 0, 0));
         titleTextField.setHorizontalAlignment(JTextField.CENTER);
@@ -92,6 +98,10 @@ abstract public class BuscadorJPanel extends JPanel{
     private JTextField buscadorTextField;
     private JTable tablaJTable;                  
    
+    public JTextField getBuscadorTextField(){
+        return buscadorTextField;
+    }
+    
     public JButton getBtnCrear(){
         return btnCrear;
     }
@@ -104,5 +114,7 @@ abstract public class BuscadorJPanel extends JPanel{
         return this.tablaJTable;
     }    
     //abstract
-    void btnCrearActionPerformed(java.awt.event.ActionEvent evt){} 
+    abstract void btnCrearActionPerformed(java.awt.event.ActionEvent evt);
+    //abstract
+    abstract void buscadorKeyReleased(java.awt.event.KeyEvent evt);
 }

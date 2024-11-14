@@ -3,6 +3,7 @@ package isi.deso.tpdsw.Views;
 import isi.deso.tpdsw.Controllers.VendedorController;
 import javax.swing.table.DefaultTableModel;
 import isi.deso.tpdsw.Models.Vendedor;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 public class VendedoresJPanel extends BuscadorJPanel{
@@ -33,11 +34,27 @@ public class VendedoresJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(v.getDireccion(), fila, 2);
     }                                                
 
+    public void vaciarTabla(){
+        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
+        model.getDataVector().removeAllElements();
+        this.getJTable().revalidate();
+    }
+    
+    public void actualizarDatos(){
+        controlador.buscarDatos();
+    }
+    
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         VendedoresFormJFrame form = new VendedoresFormJFrame(controlador);
         form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         form.setVisible(true);
     } 
+
+    @Override
+    void buscadorKeyReleased(KeyEvent evt) {
+        this.vaciarTabla();
+        controlador.filtrarDatos(this.getBuscadorTextField().getText());
+    }
     
 }

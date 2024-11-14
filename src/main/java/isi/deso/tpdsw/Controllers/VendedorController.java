@@ -1,9 +1,12 @@
 package isi.deso.tpdsw.Controllers;
 
+import isi.deso.tpdsw.Daos.VendedorDao;
 import isi.deso.tpdsw.Models.Coordenada;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.VendedorDaoFactory;
 import isi.deso.tpdsw.Views.EditarVendedorJFrame;
 import isi.deso.tpdsw.Views.VendedoresJPanel;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +16,7 @@ import javax.swing.JTable;
 public class VendedorController implements Controller{
     private static int nextID = 0;
     private VendedoresJPanel vJPanel;
+    private VendedorDao dao;
     private int fila;
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){
@@ -26,8 +30,26 @@ public class VendedorController implements Controller{
 
     public VendedorController(VendedoresJPanel vJPanel) {
         this.vJPanel = vJPanel;
+        this.dao = (new VendedorDaoFactory()).getDao("sql");
     }
     
+    public void buscarDatos(){
+        ArrayList<Vendedor> vendedores = dao.getAll();
+        
+        int size = vendedores.size();
+        for(int i=0; i<size; i++){
+            vJPanel.agregarFila(vendedores.get(i));
+        }
+    }
+    
+    public void filtrarDatos(String nombre){
+        ArrayList<Vendedor> vendedores = dao.searchByName(nombre);
+        
+        int size = vendedores.size();
+        for(int i=0; i<size; i++){
+            vJPanel.agregarFila(vendedores.get(i));
+        }
+    }
     
     public static int getNextID() {
         return nextID;
