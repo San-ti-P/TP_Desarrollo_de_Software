@@ -1,8 +1,9 @@
 package isi.deso.tpdsw;
 
-import isi.deso.tpdsw.Controllers.ItemNoEncontradoException;
-import isi.deso.tpdsw.Controllers.PredicateFactory;
-import isi.deso.tpdsw.Controllers.ItemsPedidoMemory;
+import java.sql.Statement;
+import isi.deso.tpdsw.Services.ItemNoEncontradoException;
+import isi.deso.tpdsw.Services.PredicateFactory;
+import isi.deso.tpdsw.Daos.ItemsPedidoMemory;
 import isi.deso.tpdsw.Models.Plato;
 import isi.deso.tpdsw.Models.Pedido;
 import isi.deso.tpdsw.Models.ItemPedido;
@@ -13,17 +14,45 @@ import isi.deso.tpdsw.Models.TipoItem;
 import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Models.Bebida;
 import isi.deso.tpdsw.Models.Categoria;
+import isi.deso.tpdsw.Views.MenuJFrame;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Iterator;
 import java.util.function.Predicate;
+import javax.swing.JFrame;
 
 
-public class TPdsw {
+public class TPdsw { 
     
     public static void main(String[] args) throws Exception {
+        
+        String url = "jdbc:mysql://localhost:3306/desotest";
+        
+        try {
+            Connection connection = DriverManager.getConnection(url, "root", "");
+            String query = "SELECT * FROM Cliente;";
+            try (Statement stat = connection.createStatement()) {
+                ResultSet rs = stat.executeQuery(query);
+                while (rs.next()) {
+                    String nombre = rs.getString("nombre");
+                    System.out.println("Nombre: " + nombre);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        
+        MenuJFrame menu = new MenuJFrame();
+        
+        menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        menu.setVisible(true);
+        
         
         /* 
         //Solucion Vendedores

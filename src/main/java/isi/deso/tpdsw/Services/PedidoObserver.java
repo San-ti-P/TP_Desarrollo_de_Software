@@ -1,4 +1,4 @@
-package isi.deso.tpdsw.Controllers;
+package isi.deso.tpdsw.Services;
 
 import isi.deso.tpdsw.Models.Pedido;
 

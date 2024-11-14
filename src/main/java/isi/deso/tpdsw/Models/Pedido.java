@@ -1,8 +1,8 @@
 package isi.deso.tpdsw.Models;
 
-import isi.deso.tpdsw.Controllers.Observable;
-import isi.deso.tpdsw.Controllers.PedidoObserver;
-import isi.deso.tpdsw.Controllers.VendedoresDistintosException;
+import isi.deso.tpdsw.Services.Observable;
+import isi.deso.tpdsw.Services.PedidoObserver;
+import isi.deso.tpdsw.Services.VendedoresDistintosException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;

@@ -1,6 +1,6 @@
 package isi.deso.tpdsw.Models;
 
-import isi.deso.tpdsw.Controllers.PedidoObserver;
+import isi.deso.tpdsw.Services.PedidoObserver;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
