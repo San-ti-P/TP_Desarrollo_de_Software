@@ -7,6 +7,9 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 public interface ItemsPedidoDao {
+    public ArrayList<ItemPedido> getAll();
+    public ArrayList<ItemPedido> searchByName(String nombre);
+    
     public ArrayList<ItemPedido> filtrarPedido(Pedido pedido, Predicate<ItemPedido> funcionLambda) throws ItemNoEncontradoException;
     public ArrayList<ItemPedido> ordenarPedido(Pedido pedido, Comparator comparador);
     public ArrayList<ItemPedido> rangoPrecios(Pedido pedido, float precioInferior, float precioSuperior) throws ItemNoEncontradoException;
