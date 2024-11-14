@@ -6,6 +6,7 @@ import isi.deso.tpdsw.Models.ItemPedido;
 import isi.deso.tpdsw.Models.Vendedor;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 
 
 public class EditarPedidoJFrame extends javax.swing.JFrame {
@@ -158,7 +159,12 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
     } 
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
+        Vendedor vendedor = (Vendedor) this.getVendedorComboBox().getSelectedItem();
+        //if(vendedor!=null){
+            SeleccionarItemsPedidoFormJFrame form = new SeleccionarItemsPedidoFormJFrame(this, vendedor);
+            form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            form.setVisible(true);
+        //}
     }                                              
 
     // Variables declaration - do not modify                     
@@ -174,7 +180,8 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JComboBox<Vendedor> vendedorComboBox;
     // End of variables declaration                   
-private PedidoController controlador;
+    private PedidoController controlador;
+    private ArrayList<ItemPedido> items;
     
     public JComboBox<Cliente> getClienteComboBox() {
         return clienteComboBox;
@@ -197,4 +204,7 @@ private PedidoController controlador;
         return 1;
     }
 
+    public ArrayList<ItemPedido> getItems(){
+        return this.items;
+    }
 }

@@ -6,6 +6,7 @@ import isi.deso.tpdsw.Models.ItemPedido;
 import isi.deso.tpdsw.Models.Vendedor;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 
 
 public class PedidosFormJFrame extends javax.swing.JFrame {
@@ -143,20 +144,27 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
         Cliente cliente = (Cliente) this.getClienteComboBox().getSelectedItem();
         Vendedor vendedor = (Vendedor) this.getVendedorComboBox().getSelectedItem();
         
-        ArrayList<ItemPedido> items = new ArrayList<>(); 
+        
         double subtotal = this.getSubtotal();
-        controlador.crearPedido(cliente, vendedor, items, subtotal);
+        controlador.crearPedido(cliente, vendedor, getItems(), subtotal);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // TODO add your handling code here:
+        Vendedor vendedor = (Vendedor) this.getVendedorComboBox().getSelectedItem();
+        //if(vendedor!=null){
+            SeleccionarItemsPedidoFormJFrame form = new SeleccionarItemsPedidoFormJFrame(this, vendedor);
+            form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            form.setVisible(true);
+        //}
+        
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
@@ -170,7 +178,8 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JComboBox<Vendedor> vendedorComboBox;
     // End of variables declaration//GEN-END:variables
-private PedidoController controlador;
+    private PedidoController controlador;
+    private ArrayList<ItemPedido> items;
     
     public JComboBox<Cliente> getClienteComboBox() {
         return clienteComboBox;
@@ -192,5 +201,12 @@ private PedidoController controlador;
         System.out.println("GETSUBTOTAL PRESENTE");
         return 1;
     }
-
+    
+    public void setItems(ArrayList<ItemPedido> items){
+        this.items = items;
+    }
+    
+    public ArrayList<ItemPedido> getItems(){
+        return this.items;
+    }
 }
