@@ -61,7 +61,7 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
 
         jLabel7.setText("Email:");
 
-        jLabel8.setText("DirecciÃ³n:");
+        jLabel8.setText("Dirección:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +156,7 @@ public class EditarClienteJFrame extends javax.swing.JFrame {
         Double latitud = Double.valueOf(this.getCampoLatitud().getText());
         Double longitud = Double.valueOf(this.getCampoLongitud().getText());
         
-        controlador.editarCliente(nombre, direccion, cuit, email, latitud, longitud);
+        controlador.editarCliente(nombre, cuit, email, direccion, latitud, longitud);
         this.setVisible(false);
     }                                          
 

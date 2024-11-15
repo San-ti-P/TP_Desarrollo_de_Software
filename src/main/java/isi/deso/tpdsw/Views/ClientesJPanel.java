@@ -38,15 +38,9 @@ public class ClientesJPanel extends BuscadorJPanel{
         
     }
 
-    public void vaciarTabla(){
-        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
-        model.getDataVector().removeAllElements();
-        this.getJTable().revalidate();
+    public void actualizarDatos(){
+        controlador.buscarDatos();
     }
-
-//    public void actualizarDatos(){
-//        controlador.buscarDatos();
-//    }
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
@@ -60,6 +54,4 @@ public class ClientesJPanel extends BuscadorJPanel{
         this.vaciarTabla();
         controlador.filtrarDatos(this.getBuscadorTextField().getText());
     }
-
-
 }

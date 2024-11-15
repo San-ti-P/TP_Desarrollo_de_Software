@@ -12,7 +12,8 @@ public class Cliente implements PedidoObserver {
     private String email;
     private String direccion;
     private Coordenada coordenadas;
-    private ArrayList<Pedido> pedidos; 
+    private ArrayList<Pedido> pedidos;
+    private boolean activo;
     
     public Cliente(){
         this.pedidos = new ArrayList<Pedido>(); 
@@ -25,13 +26,15 @@ public class Cliente implements PedidoObserver {
         this.email = email;
         this.direccion = direccion;
         this.coordenadas = coordenadas;
-        this.pedidos = new ArrayList<Pedido>(); 
+        this.pedidos = new ArrayList<Pedido>();
+        this.activo = true;
     }
 
     public Cliente(int id, String nombre, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
+        this.activo = true;
     }
 
     public void agregarPedido(Pedido pedido){
@@ -65,7 +68,15 @@ public class Cliente implements PedidoObserver {
     public Coordenada getCoordenadas() {
         return coordenadas;
     }
-    
+
+    public boolean getActivo() {
+        return this.activo;
+    }
+
+    public void setActivo(boolean b) {
+        this.activo = true;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -89,7 +100,9 @@ public class Cliente implements PedidoObserver {
     public void setCoordenadas(Coordenada coordenadas) {
         this.coordenadas = coordenadas;
     }
-    
+
+
+
     @Override
     public void update(Pedido p){
         if(p.getEstado() == EstadoPedido.EN_ENVIO){
@@ -125,4 +138,5 @@ public class Cliente implements PedidoObserver {
             p.setPago(pago);
         }
     }
+
 }

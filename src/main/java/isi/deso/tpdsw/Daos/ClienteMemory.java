@@ -30,4 +30,23 @@ public class ClienteMemory implements ClienteDao {
         }
         return result;
     }
+
+    @Override
+    public Cliente createCliente(Cliente cliente) {
+        return null;
+    }
+
+    @Override
+    public Cliente updateCliente(Cliente cliente) {
+        return null;
+    }
+
+    @Override
+    public void deleteCliente(int id) {
+    }
+
+    @Override
+    public int obtenerUltimoID() {
+        return 0;
+    }
 }

@@ -39,12 +39,6 @@ public class VendedoresJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(v.getDireccion(), fila, 2);
     }                                                
 
-    public void vaciarTabla(){
-        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
-        model.getDataVector().removeAllElements();
-        this.getJTable().revalidate();
-    }
-    
     public void actualizarDatos(){
         controlador.buscarDatos();
     }

@@ -12,7 +12,7 @@ import javax.swing.JTable;
 import java.util.ArrayList;
 
 public class ClienteController implements Controller{
-    private static int nextID = 0;
+    private static int nextID;
     private ClientesJPanel cJPanel;
     private ClienteDao dao;
     private int fila;
@@ -20,6 +20,7 @@ public class ClienteController implements Controller{
     public ClienteController(ClientesJPanel cJPanel) {
         this.cJPanel = cJPanel;
         this.dao = (new ClienteDaoFactory()).getDao("sql");
+        nextID = dao.obtenerUltimoID() + 1;
     }
 
     public Cliente crearCliente(String nombre, String cuit, String email, String direccion, Double latitud, Double longitud){
@@ -27,6 +28,16 @@ public class ClienteController implements Controller{
         Cliente cli = new Cliente(getNextID() ,nombre, cuit, email, direccion, c);
         cJPanel.agregarFila(cli);
         setNextID(getNextID()+ 1);
+        dao.createCliente(cli);
+
+        return cli;
+    }
+
+    public Cliente editarCliente(String nombre, String cuit, String email, String direccion, Double latitud, Double longitud) {
+        int id = (int) cJPanel.getJTable().getValueAt(fila, 0);
+        Cliente cli = new Cliente(id, nombre, cuit, email, direccion, new Coordenada(latitud, longitud));
+        cJPanel.modificarFila(fila, cli);
+        dao.updateCliente(cli);
 
         return cli;
     }
@@ -71,16 +82,10 @@ public class ClienteController implements Controller{
             if (tabla.isEditing()) {
                 tabla.getCellEditor().stopCellEditing();
             }
+            int id = (int) tabla.getValueAt(fila, 0);
+            dao.deleteCliente(id);
             modelo.removeRow(fila);
             tabla.repaint();
         }
-    }
-    
-    public void editarCliente(String nombre, String cuit, String email, String direccion, Double latitud, Double longitud) {
-        int id = (int) cJPanel.getJTable().getValueAt(fila, 0);
-        
-    //  Recuperar vendedor de la BD y pasar a modificar
-        Cliente c = new Cliente(id, nombre, cuit, email, direccion, new Coordenada(latitud, longitud));
-        cJPanel.modificarFila(fila, c);
     }
 }

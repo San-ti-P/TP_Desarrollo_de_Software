@@ -21,8 +21,8 @@ public class VendedorSQL implements VendedorDao {
                 int id = rs.getInt("id");
                 String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
-                double latitud = rs.getDouble("latitud");
-                double longitud = rs.getDouble("longitud");
+                double latitud = rs.getDouble("lat");
+                double longitud = rs.getDouble("lng");
                 Coordenada coordenada = new Coordenada(latitud, longitud);
                 Vendedor vendedor = new Vendedor(id, nombre, direccion, coordenada);
                 lista.add(vendedor);
@@ -45,8 +45,8 @@ public class VendedorSQL implements VendedorDao {
                 int id = rs.getInt("id");
                 String nombreReal = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
-                double latitud = rs.getDouble("latitud");
-                double longitud = rs.getDouble("longitud");
+                double latitud = rs.getDouble("lat");
+                double longitud = rs.getDouble("lng");
                 Coordenada coordenada = new Coordenada(latitud, longitud);
                 Vendedor vendedor = new Vendedor(id, nombreReal, direccion, coordenada);
                 lista.add(vendedor);
@@ -66,8 +66,8 @@ public class VendedorSQL implements VendedorDao {
                 int id = rs.getInt("id");
                 String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
-                double latitud = rs.getDouble("latitud");
-                double longitud = rs.getDouble("longitud");
+                double latitud = rs.getDouble("lat");
+                double longitud = rs.getDouble("lng");
                 Coordenada coordenada = new Coordenada(latitud, longitud);
                 return new Vendedor(id, nombre, direccion, coordenada);
             }

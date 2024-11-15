@@ -117,4 +117,12 @@ abstract public class BuscadorJPanel extends JPanel{
     abstract void btnCrearActionPerformed(java.awt.event.ActionEvent evt);
     //abstract
     abstract void buscadorKeyReleased(java.awt.event.KeyEvent evt);
+
+    public void vaciarTabla(){
+        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
+        model.getDataVector().removeAllElements();
+        this.getJTable().revalidate();
+        this.getJTable().repaint();
+    }
+
 }

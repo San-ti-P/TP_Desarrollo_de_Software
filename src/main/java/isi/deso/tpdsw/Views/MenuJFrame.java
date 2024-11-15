@@ -149,6 +149,7 @@ public class MenuJFrame extends javax.swing.JFrame {
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
+        clienteJPanel.actualizarDatos();
         ly.show(contenidoJPanel, "cliente");
     }//GEN-LAST:event_btnClientesActionPerformed
 

@@ -37,12 +37,6 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(i.getAptoVegano(), fila, 5);
     }
 
-    public void vaciarTabla(){
-        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
-        model.getDataVector().removeAllElements();
-        this.getJTable().revalidate();
-    }
-
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         ItemsMenuFormJFrame form = new ItemsMenuFormJFrame(controlador);
