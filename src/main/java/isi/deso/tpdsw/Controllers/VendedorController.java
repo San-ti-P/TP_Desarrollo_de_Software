@@ -18,6 +18,11 @@ public class VendedorController implements Controller{
     private VendedoresJPanel vJPanel;
     private VendedorDao dao;
     private int fila;
+
+    public VendedorController(VendedoresJPanel vJPanel) {
+        this.vJPanel = vJPanel;
+        this.dao = (new VendedorDaoFactory()).getDao("sql");
+    }
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){
         Coordenada c = new Coordenada(latitud, longitud);
@@ -26,11 +31,6 @@ public class VendedorController implements Controller{
         setNextID(getNextID()+ 1);
         
         return v;
-    }
-
-    public VendedorController(VendedoresJPanel vJPanel) {
-        this.vJPanel = vJPanel;
-        this.dao = (new VendedorDaoFactory()).getDao("sql");
     }
     
     public void buscarDatos(){

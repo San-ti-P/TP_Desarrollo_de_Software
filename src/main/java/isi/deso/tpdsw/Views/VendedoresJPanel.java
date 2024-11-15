@@ -25,6 +25,10 @@ public class VendedoresJPanel extends BuscadorJPanel{
         this.getJTable().getColumnModel().getColumn(4).setCellEditor(new ButtonRendererEditor(controlador, this));
     }
     
+    public VendedorController getControlador(){
+        return this.controlador;
+    }
+    
     public void agregarFila(Vendedor v){
         DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
         model.addRow(new Object[] {v.getId(), v.getNombre(), v.getDireccion(), null, null});
