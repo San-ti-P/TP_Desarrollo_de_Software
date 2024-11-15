@@ -41,10 +41,10 @@ public class VendedorController implements Controller{
             vJPanel.agregarFila(vendedores.get(i));
         }
     }
-    
+
     public void filtrarDatos(String nombre){
         ArrayList<Vendedor> vendedores = dao.searchByName(nombre);
-        
+
         int size = vendedores.size();
         for(int i=0; i<size; i++){
             vJPanel.agregarFila(vendedores.get(i));
@@ -88,8 +88,6 @@ public class VendedorController implements Controller{
         tabla.repaint();
     }
 }
-
-    
     public void editarVendedor(String nombre, String direccion, Double latitud, Double longitud) {
         int id = (int) vJPanel.getJTable().getValueAt(fila, 0);
         

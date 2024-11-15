@@ -12,7 +12,8 @@ public class VendedoresJPanel extends BuscadorJPanel{
     public VendedoresJPanel(){
         super(new String [] {
                 "ID", "Nombre", "Dirección", "Menú", "Acciones"
-            });
+        });
+
         this.getBtnCrear().setText("Crear Nuevo Vendedor");
         this.getTitleTextField().setText("Lista de Vendedores");
         this.getJTable().getColumnModel().getColumn(4).setMinWidth(150);

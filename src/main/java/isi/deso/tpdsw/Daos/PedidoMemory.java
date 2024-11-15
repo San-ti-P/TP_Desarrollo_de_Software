@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Daos;
 
-/**
- *
- * @author maria
- */
+import isi.deso.tpdsw.Models.Pedido;
+
+import java.util.ArrayList;
+
 public class PedidoMemory implements PedidoDao{
-    
+    private ArrayList<Pedido> pedidos;
+
+    public PedidoMemory(){
+        pedidos = new ArrayList<>();
+    }
+
+    // Lo agregamos Marcos y Gonza
+    @Override
+    public ArrayList<Pedido> getAll() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Pedido> searchByName(String nombre) {
+        return null;
+    }
 }

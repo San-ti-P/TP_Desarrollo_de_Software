@@ -4,6 +4,7 @@ import isi.deso.tpdsw.Controllers.PedidoController;
 import isi.deso.tpdsw.Models.Pedido;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyEvent;
 
 public class PedidosJPanel extends BuscadorJPanel{
     private PedidoController controlador;
@@ -30,13 +31,25 @@ public class PedidosJPanel extends BuscadorJPanel{
     
     public void modificarFila(int fila, Pedido p) {
         this.getJTable().setValueAt(p.getEstado(), fila, 3);
-    }                                                 
+    }
+
+    public void vaciarTabla(){
+        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
+        model.getDataVector().removeAllElements();
+        this.getJTable().revalidate();
+    }
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         PedidosFormJFrame form = new PedidosFormJFrame(controlador);
         form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    } 
-    
+    }
+
+    @Override
+    void buscadorKeyReleased(KeyEvent evt) {
+        this.vaciarTabla();
+        controlador.filtrarDatos(this.getBuscadorTextField().getText());
+    }
+
 }
