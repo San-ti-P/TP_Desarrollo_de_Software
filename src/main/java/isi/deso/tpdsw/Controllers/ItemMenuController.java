@@ -14,10 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import java.util.ArrayList;
 
 public class ItemMenuController implements Controller{
     private static int nextID = 0;
     private ItemsMenuJPanel iJPanel;
+//  private ItemMenuDao dao;
     private int fila;
     
     public Bebida crearBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor){
@@ -39,8 +41,7 @@ public class ItemMenuController implements Controller{
     public ItemMenuController(ItemsMenuJPanel iJPanel) {
         this.iJPanel = iJPanel;
     }
-    
-    
+
     public static int getNextID() {
         return nextID;
     }
@@ -64,17 +65,11 @@ public class ItemMenuController implements Controller{
     JTable tabla = iJPanel.getJTable();
     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
     
-    // Verificar si la fila existe antes de eliminarla
     if (fila >= 0 && fila < modelo.getRowCount()) {
-        // Eliminar la fila del modelo
-        
-        // Limpiar cualquier editor activo en la tabla para evitar errores
         if (tabla.isEditing()) {
             tabla.getCellEditor().stopCellEditing();
         }
         modelo.removeRow(fila);
-
-        // Repintar la tabla para actualizar la interfaz
         tabla.repaint();
     }
 }
@@ -94,5 +89,14 @@ public class ItemMenuController implements Controller{
         Plato p = new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
         iJPanel.modificarFila(fila, p);
     }
+
+//    public void filtrarDatos(String nombre){
+//        ArrayList<ItemMenu> item = dao.searchByName(nombre);
+//
+//        int size = items.size();
+//        for(int i=0; i<size; i++){
+//            iJPanel.agregarFila(items.get(i));
+//        }
+//    }
     
 }

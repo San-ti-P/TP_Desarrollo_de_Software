@@ -27,9 +27,7 @@ public class Cliente implements PedidoObserver {
         this.coordenadas = coordenadas;
         this.pedidos = new ArrayList<Pedido>(); 
     }
-    
-    
-    
+
     public void agregarPedido(Pedido pedido){
         pedidos.add(pedido);
     }
@@ -69,6 +67,7 @@ public class Cliente implements PedidoObserver {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
+
     public void setCuit(String cuit) {
         this.cuit = cuit;
     }

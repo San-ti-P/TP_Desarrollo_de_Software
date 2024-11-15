@@ -1,14 +1,9 @@
-
 package isi.deso.tpdsw.Daos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author santi
- */
 public class DBConnector {
     
     private static DBConnector CONNECTOR_INSTANCE;

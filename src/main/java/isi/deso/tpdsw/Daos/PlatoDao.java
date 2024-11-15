@@ -1,9 +1,7 @@
-
 package isi.deso.tpdsw.Daos;
 
 import isi.deso.tpdsw.Models.Plato;
 import java.util.ArrayList;
-
 
 public interface PlatoDao {
     public ArrayList<Plato> getAll();

@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Daos;
 
-/**
- *
- * @author maria
- */
+import isi.deso.tpdsw.Models.Bebida;
+import java.util.ArrayList;
+
 public class BebidaSQL implements BebidaDao{
-    
+
+    @Override
+    public ArrayList<Bebida> getAll() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Bebida> searchByName(String nombre) {
+        return null;
+    }
 }

@@ -40,6 +40,7 @@ public class PedidoSQL implements PedidoDao {
         return lista;
     }
 
+//  Estos metodos son solamente para cumplir con todos los atributos de Pedido al realizar getAll
     private Cliente getClienteById(int id) {
         // Implementar lógica para obtener Cliente por ID
         return new Cliente(); // Placeholder
@@ -54,7 +55,7 @@ public class PedidoSQL implements PedidoDao {
     public ArrayList<Pedido> searchByName(String nombre) {
         ArrayList<Pedido> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM pedido WHERE nombre LIKE '%"+nombre+"%';";
+        String query = "SELECT * FROM pedido WHERE nombre_cliente LIKE '%"+nombre+"%';";
 
         try(Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);

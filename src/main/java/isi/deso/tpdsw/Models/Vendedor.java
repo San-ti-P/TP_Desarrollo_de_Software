@@ -1,7 +1,5 @@
 package isi.deso.tpdsw.Models;
 
-import isi.deso.tpdsw.Models.Cliente;
-import isi.deso.tpdsw.Models.Bebida;
 import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,11 +27,10 @@ public class Vendedor {
         pedidos = new TreeSet<Pedido>();
     }
     
-    
-    
     public int getId() {
         return id;
     }
+
     public String getNombre() {
         return nombre;
     }

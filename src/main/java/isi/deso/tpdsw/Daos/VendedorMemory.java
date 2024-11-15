@@ -1,27 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Daos;
 
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Models.Coordenada;
+
 import java.util.ArrayList;
 
-public class VendedorMemory implements VendedorDao{
+public class VendedorMemory implements VendedorDao {
     private ArrayList<Vendedor> vendedores;
-    
-    public VendedorMemory(){
+
+    public VendedorMemory() {
         vendedores = new ArrayList<>();
+        // Agregar datos de prueba
+        vendedores.add(new Vendedor(1, "Vendedor 1", "Direccion 1", new Coordenada(10.0, 20.0)));
+        vendedores.add(new Vendedor(2, "Vendedor 2", "Direccion 2", new Coordenada(30.0, 40.0)));
     }
 
-    // Lo agregamos Marcos y Gonza
     @Override
     public ArrayList<Vendedor> getAll() {
-        return null;
+        return new ArrayList<>(vendedores);
     }
 
     @Override
     public ArrayList<Vendedor> searchByName(String nombre) {
-        return null;
+        ArrayList<Vendedor> result = new ArrayList<>();
+        for (Vendedor vendedor : vendedores) {
+            if (vendedor.getNombre().contains(nombre)) {
+                result.add(vendedor);
+            }
+        }
+        return result;
     }
 }

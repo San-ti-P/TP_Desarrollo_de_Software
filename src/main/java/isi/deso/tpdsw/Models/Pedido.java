@@ -50,12 +50,15 @@ public class Pedido implements Observable, Comparable<Pedido> {
     public int getId() {
         return id;
     }
+
     public Cliente getCliente() {
         return cliente;
     }
+
     public ArrayList<ItemPedido> getItems() {
         return items;
     }
+
     public Vendedor getVendedor(){
         return vendedor;
     }

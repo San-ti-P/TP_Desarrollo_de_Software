@@ -1,7 +1,6 @@
 package isi.deso.tpdsw.Daos;
 
 import isi.deso.tpdsw.Services.ItemNoEncontradoException;
-import isi.deso.tpdsw.Daos.ItemsPedidoDao;
 import isi.deso.tpdsw.Models.Pedido;
 import isi.deso.tpdsw.Models.ItemPedido;
 import java.util.ArrayList;
@@ -10,6 +9,33 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ItemsPedidoMemory implements ItemsPedidoDao {
+    private ArrayList<ItemPedido> itemsPedido;
+
+    public ItemsPedidoMemory() {
+        itemsPedido = new ArrayList<>();
+        // Agregar datos de prueba
+        Pedido pedido1 = new Pedido(1, null, new ArrayList<>(), null, null);
+        Pedido pedido2 = new Pedido(2, null, new ArrayList<>(), null, null);
+        itemsPedido.add(new ItemPedido(null, 2));
+        itemsPedido.add(new ItemPedido(null, 3));
+    }
+
+    @Override
+    public ArrayList<ItemPedido> getAll() {
+        return new ArrayList<>(itemsPedido);
+    }
+
+    @Override
+    public ArrayList<ItemPedido> searchByName(String nombre) {
+        ArrayList<ItemPedido> result = new ArrayList<>();
+        for (ItemPedido itemPedido : itemsPedido) {
+            if (itemPedido.getItem().getNombre().contains(nombre)) {
+                result.add(itemPedido);
+            }
+        }
+        return result;
+    }
+
     @Override
     public ArrayList<ItemPedido> filtrarPedido(Pedido pedido, Predicate<ItemPedido> funcionLambda) throws ItemNoEncontradoException{
         ArrayList<ItemPedido> r = new ArrayList(pedido.getItems().stream()

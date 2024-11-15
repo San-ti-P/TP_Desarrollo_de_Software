@@ -1,7 +1,5 @@
 package isi.deso.tpdsw.Models;
 
-import isi.deso.tpdsw.Models.ItemMenu;
-
 public class ItemPedido {
     
     private int cantidad;
@@ -31,6 +29,7 @@ public class ItemPedido {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
+
     @Override
     public String toString() {
         return "{Item=" + item + ", cantidad=" + cantidad + '}';

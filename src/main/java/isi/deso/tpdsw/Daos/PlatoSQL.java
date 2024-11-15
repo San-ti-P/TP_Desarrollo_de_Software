@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Daos;
 
-/**
- *
- * @author maria
- */
+import isi.deso.tpdsw.Models.Plato;
+import java.util.ArrayList;
+
 public class PlatoSQL implements PlatoDao{
-    
+
+    @Override
+    public ArrayList<Plato> getAll() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Plato> searchByName(String nombre) {
+        return null;
+    }
 }

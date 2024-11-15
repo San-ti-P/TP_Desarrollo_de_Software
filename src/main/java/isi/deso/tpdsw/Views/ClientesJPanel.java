@@ -4,6 +4,7 @@ import isi.deso.tpdsw.Controllers.ClienteController;
 import javax.swing.table.DefaultTableModel;
 import isi.deso.tpdsw.Models.Cliente;
 import javax.swing.JFrame;
+import java.awt.event.KeyEvent;
 
 public class ClientesJPanel extends BuscadorJPanel{
     private ClienteController controlador;
@@ -35,14 +36,30 @@ public class ClientesJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(cli.getCuit(), fila, 3);
         this.getJTable().setValueAt(cli.getEmail(), fila, 4);
         
-    }                                            
+    }
+
+    public void vaciarTabla(){
+        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
+        model.getDataVector().removeAllElements();
+        this.getJTable().revalidate();
+    }
+
+//    public void actualizarDatos(){
+//        controlador.buscarDatos();
+//    }
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         ClientesFormJFrame form = new ClientesFormJFrame(controlador);
         form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    } 
-    
-    
+    }
+
+    @Override
+    void buscadorKeyReleased(KeyEvent evt) {
+        this.vaciarTabla();
+        controlador.filtrarDatos(this.getBuscadorTextField().getText());
+    }
+
+
 }

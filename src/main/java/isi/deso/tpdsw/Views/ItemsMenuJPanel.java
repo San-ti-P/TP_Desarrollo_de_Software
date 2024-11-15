@@ -4,6 +4,7 @@ import isi.deso.tpdsw.Controllers.ItemMenuController;
 import isi.deso.tpdsw.Models.ItemMenu;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyEvent;
 
 public class ItemsMenuJPanel extends BuscadorJPanel{
     private ItemMenuController controlador;
@@ -34,12 +35,24 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(i.getPrecio(), fila, 3);
         this.getJTable().setValueAt(i.getCategoria(), fila, 4);
         this.getJTable().setValueAt(i.getAptoVegano(), fila, 5);
-    }                                                 
+    }
+
+    public void vaciarTabla(){
+        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
+        model.getDataVector().removeAllElements();
+        this.getJTable().revalidate();
+    }
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         ItemsMenuFormJFrame form = new ItemsMenuFormJFrame(controlador);
         form.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         form.setVisible(true);
-    } 
+    }
+
+    @Override
+    void buscadorKeyReleased(KeyEvent evt) {
+        this.vaciarTabla();
+//        controlador.filtrarDatos(this.getBuscadorTextField().getText());
+    }
 }

@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Daos;
 
-/**
- *
- * @author maria
- */
+import isi.deso.tpdsw.Models.Categoria;
+import java.util.ArrayList;
+
 public class CategoriaMemory implements CategoriaDao{
-    
+
+    @Override
+    public ArrayList<Categoria> getAll() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Categoria> searchByName(String nombre) {
+        return null;
+    }
 }

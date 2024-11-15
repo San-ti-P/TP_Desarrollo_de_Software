@@ -74,17 +74,11 @@ public class VendedorController implements Controller{
     JTable tabla = vJPanel.getJTable();
     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
     
-    // Verificar si la fila existe antes de eliminarla
     if (fila >= 0 && fila < modelo.getRowCount()) {
-        // Eliminar la fila del modelo
-        
-        // Limpiar cualquier editor activo en la tabla para evitar errores
         if (tabla.isEditing()) {
             tabla.getCellEditor().stopCellEditing();
         }
         modelo.removeRow(fila);
-
-        // Repintar la tabla para actualizar la interfaz
         tabla.repaint();
     }
 }

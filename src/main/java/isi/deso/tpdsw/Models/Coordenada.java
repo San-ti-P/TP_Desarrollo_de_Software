@@ -11,8 +11,7 @@ public class Coordenada {
         this.lat=lat;
         this.lng=lng;
     }
-    
-    
+
     public double getLat() {
         return lat;
     }

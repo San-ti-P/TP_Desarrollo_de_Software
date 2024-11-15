@@ -1,33 +1,49 @@
 package isi.deso.tpdsw.Controllers;
 
+import isi.deso.tpdsw.Daos.ClienteDao;
 import isi.deso.tpdsw.Models.Coordenada;
 import isi.deso.tpdsw.Models.Cliente;
+import isi.deso.tpdsw.Services.ClienteDaoFactory;
 import isi.deso.tpdsw.Views.EditarClienteJFrame;
 import isi.deso.tpdsw.Views.ClientesJPanel;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JPanel;
 import javax.swing.JTable;
+import java.util.ArrayList;
 
 public class ClienteController implements Controller{
     private static int nextID = 0;
     private ClientesJPanel cJPanel;
+    private ClienteDao dao;
     private int fila;
     
+    public ClienteController(ClientesJPanel cJPanel) {
+        this.cJPanel = cJPanel;
+        this.dao = (new ClienteDaoFactory()).getDao("sql");
+    }
+
     public Cliente crearCliente(String nombre, String cuit, String email, String direccion, Double latitud, Double longitud){
         Coordenada c = new Coordenada(latitud, longitud);
         Cliente cli = new Cliente(getNextID() ,nombre, cuit, email, direccion, c);
         cJPanel.agregarFila(cli);
         setNextID(getNextID()+ 1);
-        
+
         return cli;
     }
 
-    public ClienteController(ClientesJPanel cJPanel) {
-        this.cJPanel = cJPanel;
+    public void buscarDatos() {
+        ArrayList<Cliente> clientes = dao.getAll();
+        for (Cliente cliente : clientes) {
+            cJPanel.agregarFila(cliente);
+        }
     }
-    
+
+    public void filtrarDatos(String nombre) {
+        ArrayList<Cliente> clientes = dao.searchByName(nombre);
+        for (Cliente cliente : clientes) {
+            cJPanel.agregarFila(cliente);
+        }
+    }
     
     public static int getNextID() {
         return nextID;
@@ -47,26 +63,18 @@ public class ClienteController implements Controller{
 
     @Override
     public void eliminarFila(int fila) {
-    this.fila = fila;
-    
-    JTable tabla = cJPanel.getJTable();
-    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-    
-    // Verificar si la fila existe antes de eliminarla
-    if (fila >= 0 && fila < modelo.getRowCount()) {
-        // Eliminar la fila del modelo
-        
-        // Limpiar cualquier editor activo en la tabla para evitar errores
-        if (tabla.isEditing()) {
-            tabla.getCellEditor().stopCellEditing();
+        this.fila = fila;
+        JTable tabla = cJPanel.getJTable();
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+        if (fila >= 0 && fila < modelo.getRowCount()) {
+            if (tabla.isEditing()) {
+                tabla.getCellEditor().stopCellEditing();
+            }
+            modelo.removeRow(fila);
+            tabla.repaint();
         }
-        modelo.removeRow(fila);
-
-        // Repintar la tabla para actualizar la interfaz
-        tabla.repaint();
     }
-}
-
     
     public void editarCliente(String nombre, String cuit, String email, String direccion, Double latitud, Double longitud) {
         int id = (int) cJPanel.getJTable().getValueAt(fila, 0);
