@@ -25,16 +25,6 @@ public class ItemsPedidoMemory implements ItemsPedidoDao {
         return new ArrayList<>(itemsPedido);
     }
 
-    @Override
-    public ArrayList<ItemPedido> searchByName(String nombre) {
-        ArrayList<ItemPedido> result = new ArrayList<>();
-        for (ItemPedido itemPedido : itemsPedido) {
-            if (itemPedido.getItem().getNombre().contains(nombre)) {
-                result.add(itemPedido);
-            }
-        }
-        return result;
-    }
 
     @Override
     public ArrayList<ItemPedido> filtrarPedido(Pedido pedido, Predicate<ItemPedido> funcionLambda) throws ItemNoEncontradoException{

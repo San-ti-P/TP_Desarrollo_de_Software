@@ -9,9 +9,4 @@ public class PagoMemory implements PagoDao{
     public ArrayList<Pago> getAll() {
         return null;
     }
-
-    @Override
-    public ArrayList<Pago> searchByName(String nombre) {
-        return null;
-    }
 }

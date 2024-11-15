@@ -18,6 +18,7 @@ isi\deso\tpdsw\Views\PedidosFormJFrame$1.class
 isi\deso\tpdsw\Daos\VendedorDao.class
 isi\deso\tpdsw\Views\ItemsMenuFormJFrame.class
 isi\deso\tpdsw\Daos\CategoriaSQL.class
+isi\deso\tpdsw\Services\PlatoDaoFactory.class
 isi\deso\tpdsw\Views\VendedoresFormJFrame$2.class
 isi\deso\tpdsw\Views\MenuJFrame.class
 isi\deso\tpdsw\Models\Bebida.class
@@ -53,6 +54,7 @@ isi\deso\tpdsw\Daos\PedidoDao.class
 isi\deso\tpdsw\Models\Pago.class
 isi\deso\tpdsw\Views\EditarItemMenuJFrame$2.class
 isi\deso\tpdsw\Views\PedidosFormJFrame$3.class
+isi\deso\tpdsw\Controllers\BebidaController.class
 isi\deso\tpdsw\Services\ItemNoEncontradoException.class
 isi\deso\tpdsw\TPdsw.class
 isi\deso\tpdsw\Daos\EstrategiaTransferenciaSQL.class
@@ -98,6 +100,7 @@ isi\deso\tpdsw\Controllers\Controller.class
 isi\deso\tpdsw\Controllers\PedidoController.class
 isi\deso\tpdsw\Models\TipoItem.class
 isi\deso\tpdsw\Daos\BebidaSQL.class
+isi\deso\tpdsw\Controllers\PlatoController.class
 isi\deso\tpdsw\Daos\DBConnector.class
 isi\deso\tpdsw\Views\ItemsMenuFormJFrame$3.class
 isi\deso\tpdsw\Views\EditarVendedorJFrame$2.class

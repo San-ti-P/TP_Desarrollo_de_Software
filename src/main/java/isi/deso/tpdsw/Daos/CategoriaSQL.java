@@ -10,8 +10,4 @@ public class CategoriaSQL implements CategoriaDao{
         return null;
     }
 
-    @Override
-    public ArrayList<Categoria> searchByName(String nombre) {
-        return null;
-    }
 }

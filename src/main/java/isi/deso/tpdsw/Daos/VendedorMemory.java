@@ -30,4 +30,6 @@ public class VendedorMemory implements VendedorDao {
         }
         return result;
     }
+    
+    public Vendedor getVendedorById(int vendedorId){return null;}
 }

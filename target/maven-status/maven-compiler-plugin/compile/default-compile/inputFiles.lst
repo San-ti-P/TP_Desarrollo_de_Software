@@ -15,6 +15,7 @@ C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Soft
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Services\PredicateFactory.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\CategoriaMemory.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Views\PedidosFormJFrame.java
+C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Controllers\BebidaController.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Models\ItemMenu.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\ItemsPedidoDao.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\PedidoDao.java
@@ -38,6 +39,7 @@ C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Soft
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Services\ComparatorFactory.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Views\BuscadorJPanel.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\CoordenadaMemory.java
+C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Controllers\PlatoController.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Models\Pedido.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\EstrategiaMercadoPagoSQL.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Models\EstadoPedido.java
@@ -74,6 +76,7 @@ C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Soft
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Views\PedidosJPanel.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\ClienteDao.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Models\Bebida.java
+C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Services\PlatoDaoFactory.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\PedidoMemory.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Daos\PagoDao.java
 C:\Users\santi\Desktop\Clases\Desarrollo de Software\TPdsw\TP_Desarrollo_de_Software\src\main\java\isi\deso\tpdsw\Models\Coordenada.java

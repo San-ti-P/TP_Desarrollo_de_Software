@@ -35,7 +35,6 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
         return lista;
     }
 
-    @Override
     public ArrayList<ItemPedido> searchByName(String nombre) {
         ArrayList<ItemPedido> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
@@ -56,35 +55,60 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
         }
         return lista;
     }
+    
+    public ItemMenu getItemById(int itemId){
+        ItemMenu item = getPlatoById(itemId);
+        if(item == null) item = getBebidaById(itemId);
+        return item;
+    }
 
-    private ItemMenu getItemById(int itemId) {
+    private Plato getPlatoById(int itemId) {
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_menu WHERE id = " + itemId + ";";
+        String query = "SELECT * FROM item_menu im, plato p WHERE im.id = " + itemId +"im.id = p.id;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
-            if (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                String descripcion = rs.getString("descripcion");
-                float precio = rs.getFloat("precio");
-                int vendedorId = rs.getInt("vendedor_id");
-                Vendedor vendedor = getVendedorById(vendedorId);
+            if(rs.isBeforeFirst()){
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    String nombre = rs.getString("nombre");
+                    String descripcion = rs.getString("descripcion");
+                    float precio = rs.getFloat("precio");
+                    int vendedorId = rs.getInt("vendedor_id");
+                    Vendedor vendedor = getVendedorById(vendedorId);
 
-                // Check for attributes unique to Bebida
-                try {
-                    float graduacionAlcoholica = rs.getFloat("graduacion_alcoholica");
-                    int tamaño = rs.getInt("tamaño");
-                    boolean aptoVegano = rs.getBoolean("apto_vegano");
-                    Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
-                    return new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor);
-                } catch (SQLException e) {
-                    // If attributes unique to Bebida are not found, it must be a Plato
                     int calorias = rs.getInt("calorias");
                     boolean aptoCeliaco = rs.getBoolean("apto_celiaco");
                     float peso = rs.getFloat("peso");
                     boolean aptoVegano = rs.getBoolean("apto_vegano");
                     Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
                     return new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener el item");
+        }
+        return null;
+    }
+    
+    private Bebida getBebidaById(int itemId) {
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM item_menu im, bebida b WHERE im.id = " + itemId +"im.id = b.id;";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            if(rs.isBeforeFirst()){
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    String nombre = rs.getString("nombre");
+                    String descripcion = rs.getString("descripcion");
+                    float precio = rs.getFloat("precio");
+                    int vendedorId = rs.getInt("vendedor_id");
+                    Vendedor vendedor = getVendedorById(vendedorId);
+
+                    float graduacionAlcoholica = rs.getFloat("graduacion_alcoholica");
+                    int tamaño = rs.getInt("tamaño");
+                    boolean aptoVegano = rs.getBoolean("apto_vegano");
+                    Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
+                    return new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor);
                 }
             }
         } catch (SQLException ex) {

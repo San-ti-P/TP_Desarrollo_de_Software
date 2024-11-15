@@ -14,10 +14,6 @@ public class Categoria {
 
     public static Categoria valueOf(String categoria) {
         switch (categoria.toLowerCase()) {
-            case "bebida":
-                return new Categoria("1", "Bebida", TipoItem.BEBIDA);
-            case "plato":
-                return new Categoria("2", "Plato", TipoItem.PLATO);
             case "gaseosas":
                 return new Categoria("Cat1", "Gaseosas", TipoItem.BEBIDA);
             case "hamburguesas":

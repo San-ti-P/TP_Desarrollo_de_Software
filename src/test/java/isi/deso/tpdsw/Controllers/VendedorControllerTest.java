@@ -46,6 +46,7 @@ public class VendedorControllerTest {
     
     @Test
     public void vendedorCreadoCorrectamente(){
+        VendedorController.setNextID(0);
         Vendedor esperado = new Vendedor(0, "Luigi's", "Marcial Candioti 3986", new Coordenada(12.3, 89.4));
         VendedoresJPanel panel = new VendedoresJPanel();
         //VendedorController controlador = new VendedorController(null);
@@ -59,6 +60,7 @@ public class VendedorControllerTest {
     
     @Test
     public void idIncrementadoCorrectamente(){
+        VendedorController.setNextID(0);
         Vendedor esperado = new Vendedor(0, "Luigi's", "Marcial Candioti 3986", new Coordenada(12.3, 89.4));
         VendedoresJPanel panel = new VendedoresJPanel();
         Vendedor real = panel.getControlador().crearVendedor("Luigi's", "Marcial Candioti 3986", 12.3, 89.4);

@@ -5,5 +5,4 @@ import java.util.ArrayList;
 
 public interface CategoriaDao {
     public ArrayList<Categoria> getAll();
-    public ArrayList<Categoria> searchByName(String nombre);
 }

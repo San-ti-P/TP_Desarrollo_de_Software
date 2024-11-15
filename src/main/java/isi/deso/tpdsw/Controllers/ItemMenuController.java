@@ -2,44 +2,34 @@ package isi.deso.tpdsw.Controllers;
 
 import isi.deso.tpdsw.Models.Bebida;
 import isi.deso.tpdsw.Models.Categoria;
-import isi.deso.tpdsw.Models.Coordenada;
 import isi.deso.tpdsw.Models.Plato;
 import isi.deso.tpdsw.Models.Vendedor;
 import isi.deso.tpdsw.Views.EditarItemMenuJFrame;
-import isi.deso.tpdsw.Views.EditarVendedorJFrame;
 import isi.deso.tpdsw.Views.ItemsMenuJPanel;
-import isi.deso.tpdsw.Views.VendedoresJPanel;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JPanel;
 import javax.swing.JTable;
-import java.util.ArrayList;
 
 public class ItemMenuController implements Controller{
     private static int nextID = 0;
     private ItemsMenuJPanel iJPanel;
 //  private ItemMenuDao dao;
     private int fila;
+    private PlatoController controladorPlato;
+    private BebidaController controladorBebida;
     
-    public Bebida crearBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor){
-        Bebida b = new Bebida(getNextID(), nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
-        iJPanel.agregarFila(b);
-        setNextID(getNextID()+ 1);
-        
-        return b;
-    }
-    
-    public Plato crearPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
-        Plato p = new Plato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
-        iJPanel.agregarFila(p);
-        setNextID(getNextID()+ 1);
-        
-        return p;
-    }
-
     public ItemMenuController(ItemsMenuJPanel iJPanel) {
         this.iJPanel = iJPanel;
+        this.controladorPlato = new PlatoController();
+        this.controladorBebida = new BebidaController();
+    }
+    
+    public ItemsMenuJPanel getIJPanel(){
+        return this.iJPanel;
+    }
+    
+    public int getFila(){
+        return this.fila;
     }
 
     public static int getNextID() {
@@ -48,6 +38,32 @@ public class ItemMenuController implements Controller{
 
     public static void setNextID(int nextID) {
         ItemMenuController.nextID = nextID;
+    }
+    
+    public Plato crearPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
+        Plato p = controladorPlato.crearPlato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+        this.getIJPanel().agregarFila(p);
+        return p;
+    }
+    
+    public void editarPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
+        int id = (int) this.getIJPanel().getJTable().getValueAt(this.getFila(), 0);
+        
+        Plato p = controladorPlato.editarPlato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+        this.getIJPanel().modificarFila(this.getFila(), p);
+    }
+    
+    public Bebida crearBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor){
+        Bebida b = controladorBebida.crearBebida(getNextID(), nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
+        this.getIJPanel().agregarFila(b);
+        return b;
+    }
+    
+    public void editarBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor) {
+        int id = (int) this.getIJPanel().getJTable().getValueAt(this.getFila(), 0);
+        
+        Bebida b = controladorBebida.editarBebida(id, nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
+        this.getIJPanel().modificarFila(this.getFila(), b);
     }
 
     @Override
@@ -74,22 +90,9 @@ public class ItemMenuController implements Controller{
     }
 }
 
-    public void editarBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor) {
-        int id = (int) iJPanel.getJTable().getValueAt(fila, 0);
-        
-        //  Recuperar vendedor de la BD y pasar a modificar
-        Bebida b = new Bebida(id, nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
-        iJPanel.modificarFila(fila, b);
-    }
     
-    public void editarPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
-        int id = (int) iJPanel.getJTable().getValueAt(fila, 0);
-        
-        //  Recuperar vendedor de la BD y pasar a modificar
-        Plato p = new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
-        iJPanel.modificarFila(fila, p);
-    }
-
+    
+    
 //    public void filtrarDatos(String nombre){
 //        ArrayList<ItemMenu> item = dao.searchByName(nombre);
 //

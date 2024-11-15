@@ -56,4 +56,24 @@ public class VendedorSQL implements VendedorDao {
         }
         return lista;
     }
+    
+    public Vendedor getVendedorById(int vendedorId) {
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM vendedor WHERE id = " + vendedorId + ";";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String direccion = rs.getString("direccion");
+                double latitud = rs.getDouble("latitud");
+                double longitud = rs.getDouble("longitud");
+                Coordenada coordenada = new Coordenada(latitud, longitud);
+                return new Vendedor(id, nombre, direccion, coordenada);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener el vendedor");
+        }
+        return null;
+    }
 }
