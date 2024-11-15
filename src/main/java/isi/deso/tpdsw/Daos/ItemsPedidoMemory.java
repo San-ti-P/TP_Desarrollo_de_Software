@@ -16,8 +16,8 @@ public class ItemsPedidoMemory implements ItemsPedidoDao {
         // Agregar datos de prueba
         Pedido pedido1 = new Pedido(1, null, new ArrayList<>(), null, null);
         Pedido pedido2 = new Pedido(2, null, new ArrayList<>(), null, null);
-        itemsPedido.add(new ItemPedido(null, 2));
-        itemsPedido.add(new ItemPedido(null, 3));
+        itemsPedido.add(new ItemPedido(null, 2, pedido1));
+        itemsPedido.add(new ItemPedido(null, 3, pedido2));
     }
 
     @Override

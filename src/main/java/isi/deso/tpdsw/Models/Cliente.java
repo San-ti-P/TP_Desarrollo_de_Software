@@ -28,6 +28,12 @@ public class Cliente implements PedidoObserver {
         this.pedidos = new ArrayList<Pedido>(); 
     }
 
+    public Cliente(int id, String nombre, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
+
     public void agregarPedido(Pedido pedido){
         pedidos.add(pedido);
     }

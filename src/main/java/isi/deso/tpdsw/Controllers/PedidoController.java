@@ -20,17 +20,17 @@ public class PedidoController implements Controller{
     private PedidoDao dao;
     private int fila;
     
+    public PedidoController(PedidosJPanel pJPanel) {
+        this.pJPanel = pJPanel;
+        this.dao = (new PedidoDaoFactory()).getDao("sql");
+    }
+
     public Pedido crearPedido(Cliente cliente, Vendedor vendedor, ArrayList<ItemPedido> items, double subtotal){
         Pedido p = new Pedido(getNextID(), cliente, items, vendedor, EstadoPedido.RECIBIDO);
         pJPanel.agregarFila(p);
         setNextID(getNextID()+ 1);
-        
-        return p;
-    }
 
-    public PedidoController(PedidosJPanel pJPanel) {
-        this.pJPanel = pJPanel;
-        this.dao = (new PedidoDaoFactory()).getDao("sql");
+        return p;
     }
 
     public void filtrarDatos(String nombre){
