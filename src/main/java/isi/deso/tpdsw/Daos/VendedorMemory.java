@@ -1,5 +1,6 @@
 package isi.deso.tpdsw.Daos;
 
+import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Models.Vendedor;
 import isi.deso.tpdsw.Models.Coordenada;
 
@@ -13,11 +14,14 @@ public class VendedorMemory implements VendedorDao {
         // Agregar datos de prueba
         vendedores.add(new Vendedor(1, "Vendedor 1", "Direccion 1", new Coordenada(10.0, 20.0)));
         vendedores.add(new Vendedor(2, "Vendedor 2", "Direccion 2", new Coordenada(30.0, 40.0)));
+        vendedores.add(new Vendedor(3, "Vendedor 3", "Direccion 3", new Coordenada(50.0, 60.0)));
+        vendedores.add(new Vendedor(4, "Vendedor 4", "Direccion 4", new Coordenada(70.0, 80.0)));
+        vendedores.add(new Vendedor(5, "Vendedor 5", "Direccion 5", new Coordenada(90.0, 100.0)));
     }
 
     @Override
     public ArrayList<Vendedor> getAll() {
-        return new ArrayList<>(vendedores);
+        return vendedores;
     }
 
     @Override
@@ -31,25 +35,45 @@ public class VendedorMemory implements VendedorDao {
         return result;
     }
     
-    public Vendedor getVendedorById(int vendedorId){return null;}
+    public Vendedor getVendedorById(int vendedorId){
+        for (Vendedor vendedor : vendedores) {
+            if (vendedor.getId() == vendedorId) {
+                return vendedor;
+            }
+        }
+        return null;
+    }
 
     @Override
     public Vendedor createVendedor(Vendedor vendedor) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        vendedores.add(vendedor);
+        return vendedor;
     }
 
     @Override
     public Vendedor updateVendedor(Vendedor vendedor) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (int i = 0; i < vendedores.size(); i++) {
+            if (vendedores.get(i).getId() == vendedor.getId()) {
+                vendedores.set(i, vendedor);
+                return vendedor;
+            }
+        }
+        return null;
     }
 
     @Override
     public void deleteVendedor(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        vendedores.removeIf(vendedor -> vendedor.getId() == id);
     }
 
     @Override
     public int obtenerUltimoID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int maxId = 0;
+        for (Vendedor vendedor : vendedores) {
+            if (vendedor.getId() > maxId) {
+                maxId = vendedor.getId();
+            }
+        }
+        return maxId;
     }
 }

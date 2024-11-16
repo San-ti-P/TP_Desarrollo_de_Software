@@ -1,9 +1,6 @@
 package isi.deso.tpdsw.Daos;
 
-import isi.deso.tpdsw.Models.Bebida;
-import isi.deso.tpdsw.Models.Categoria;
-import isi.deso.tpdsw.Models.Coordenada;
-import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Models.*;
 
 import java.util.ArrayList;
 
@@ -13,15 +10,19 @@ public class CategoriaMemory implements CategoriaDao{
     public CategoriaMemory() {
         categorias = new ArrayList<>();
 
-        categorias.add(Categoria.valueOf("gaseosas"));
-        categorias.add(Categoria.valueOf("hamburguesas"));
-        categorias.add(Categoria.valueOf("helados"));
-        categorias.add(Categoria.valueOf("vinos"));
-        categorias.add(Categoria.valueOf("pastas"));
-        categorias.add(Categoria.valueOf("carnes"));
-        categorias.add(Categoria.valueOf("verduras"));
-        categorias.add(Categoria.valueOf("harinas"));
-        categorias.add(Categoria.valueOf("cervezas"));
+        categorias.add(new Categoria(1, "Platos Principales", TipoItem.PLATO));
+        categorias.add(new Categoria(2, "Bebidas Alcoholicas", TipoItem.BEBIDA));
+        categorias.add(new Categoria(3, "Postres", TipoItem.PLATO));
+        categorias.add(new Categoria(4, "Bebidas Sin Alcohol", TipoItem.BEBIDA));
+        categorias.add(new Categoria(5, "Gaseosas", TipoItem.BEBIDA));
+        categorias.add(new Categoria(6, "Hamburguesas", TipoItem.PLATO));
+        categorias.add(new Categoria(7, "Helados", TipoItem.PLATO));
+        categorias.add(new Categoria(8, "Vinos", TipoItem.BEBIDA));
+        categorias.add(new Categoria(9, "Pastas", TipoItem.PLATO));
+        categorias.add(new Categoria(10, "Carnes", TipoItem.PLATO));
+        categorias.add(new Categoria(11, "Verduras", TipoItem.PLATO));
+        categorias.add(new Categoria(12, "Harinas", TipoItem.PLATO));
+        categorias.add(new Categoria(13, "Cervezas", TipoItem.BEBIDA));
     }
 
     @Override
@@ -30,12 +31,12 @@ public class CategoriaMemory implements CategoriaDao{
     }
 
     @Override
-    public int obtenerUltimoID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public Categoria getCategoriaById(int categoriaId) {
+        for (Categoria categoria : categorias) {
+            if (categoria.getId() == categoriaId) {
+                return categoria;
+            }
+        }
         return null;
     }
 

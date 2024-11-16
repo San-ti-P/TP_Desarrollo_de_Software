@@ -29,22 +29,6 @@ public class CategoriaSQL implements CategoriaDao{
         return categorias;
     }
 
-    
-    @Override
-    public int obtenerUltimoID() {
-        Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT MAX(id) AS max_id FROM categoria;";
-        try (Statement stm = con.createStatement()) {
-            ResultSet rs = stm.executeQuery(query);
-            if (rs.next()) {
-                return rs.getInt("max_id");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return 0;
-    }
-
     @Override
     public Categoria getCategoriaById(int categoriaId) {
         Connection con = DBConnector.getConnector().getConnection();
