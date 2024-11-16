@@ -33,16 +33,26 @@ public class ClienteMemory implements ClienteDao {
 
     @Override
     public Cliente createCliente(Cliente cliente) {
-        return null;
+        int nuevoId = obtenerUltimoID() + 1;
+        cliente.setId(nuevoId);
+        clientes.add(cliente);
+        return cliente;
     }
 
     @Override
     public Cliente updateCliente(Cliente cliente) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId() == cliente.getId()) {
+                clientes.set(i, cliente);
+                return cliente;
+            }
+        }
         return null;
     }
 
     @Override
     public void deleteCliente(int id) {
+        clientes.removeIf(cliente -> cliente.getId() == id);
     }
 
     @Override
