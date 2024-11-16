@@ -27,7 +27,7 @@ public class PredicateFactory {
                 return (a) -> a.getItem().getAptoVegano()==(Boolean.parseBoolean(val));
             }
             case 3 -> {
-                return (a) -> a.getItem().getCategoria().getDescripcion().toLowerCase().equals(val) || a.getItem().getCategoria().getId().toLowerCase().equals(val);
+                return (a) -> a.getItem().getCategoria().getDescripcion().toLowerCase().equals(val) || a.getItem().getCategoria().getId() == Integer.parseInt(val);
             }
         }
         return null;

@@ -13,6 +13,8 @@ import isi.deso.tpdsw.Controllers.ItemMenuController;
 import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Categoria;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.CategoriaDaoFactory;
+import isi.deso.tpdsw.Services.VendedorDaoFactory;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
@@ -21,8 +23,8 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
     public ItemsMenuFormJFrame(ItemMenuController c) {
         controlador = c;
         initComponents();
-        controladorVendedor = new VendedorController();
-        controladorCategoria = new CategoriaController();
+        controladorVendedor = new VendedorController((new VendedorDaoFactory()).getDao("sql"));
+        controladorCategoria = new CategoriaController((new CategoriaDaoFactory()).getDao("sql"));
         cargarCategorias();
         cargarVendedores();
     }

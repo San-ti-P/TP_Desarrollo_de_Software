@@ -5,4 +5,5 @@ import java.util.ArrayList;
 
 public interface CategoriaDao {
     public ArrayList<Categoria> getAll();
+    public int obtenerUltimoID();
 }

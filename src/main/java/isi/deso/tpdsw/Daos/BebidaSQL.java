@@ -21,25 +21,26 @@ public class BebidaSQL implements BebidaDao{
     public ArrayList<Bebida> getAll() {
         ArrayList<Bebida> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_menu im, bebida b WHERE im.id = b.id;";
+        String query = "SELECT * FROM itemMenu im, bebida b WHERE im.id = b.id;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
-            int id = rs.getInt("id");
-            String nombre = rs.getString("nombre");
-            String descripcion = rs.getString("descripcion");
-            float precio = rs.getFloat("precio");
-            int vendedorId = rs.getInt("vendedor_id");
-            Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float precio = rs.getFloat("precio");
+                int vendedorId = rs.getInt("vendedor_id");
+                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
 
-            float graduacionAlcoholica = rs.getFloat("graduacion_alcoholica");
-            int tamaño = rs.getInt("tamaño");
-            boolean aptoVegano = rs.getBoolean("apto_vegano");
-            Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
-            lista.add(new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor));
-                
+                float graduacionAlcoholica = rs.getFloat("graduacionAlcoholica");
+                int tamaño = rs.getInt("tamaño");
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
+                Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
+                lista.add(new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor));
+            }
         } catch (SQLException ex) {
             //Logger.getLogger(PersonaJDBC.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Fallo al obtener los datos");
+            System.out.println("Fallo al obtener los datos en getAll Bebida");
         }
         return lista;
     }

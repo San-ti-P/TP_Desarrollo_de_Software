@@ -25,8 +25,9 @@ public class VendedorController implements Controller{
         nextID = dao.obtenerUltimoID() + 1;
     }
 
-    public VendedorController() {
+    public VendedorController(VendedorDao dao) {
         this.dao = dao;
+        nextID = dao.obtenerUltimoID() + 1;
     }
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){

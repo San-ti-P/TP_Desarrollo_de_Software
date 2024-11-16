@@ -10,4 +10,9 @@ public class CategoriaMemory implements CategoriaDao{
         return null;
     }
 
+    @Override
+    public int obtenerUltimoID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

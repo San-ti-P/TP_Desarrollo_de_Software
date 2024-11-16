@@ -49,6 +49,9 @@ public class ItemMenuController implements Controller{
     public void buscarDatos() {
         ArrayList<Bebida> bebidas = daoBebida.getAll();
         ArrayList<Plato> platos = daoPlato.getAll();
+        System.out.println(platos);
+        System.out.println(bebidas);
+        
         for (Bebida bebida : bebidas) {
             iJPanel.agregarFila(bebida);
         }
