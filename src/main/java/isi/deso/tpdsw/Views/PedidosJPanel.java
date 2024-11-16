@@ -32,6 +32,11 @@ public class PedidosJPanel extends BuscadorJPanel{
     public void modificarFila(int fila, Pedido p) {
         this.getJTable().setValueAt(p.getEstado(), fila, 3);
     }
+    
+    public void actualizarDatos(){
+        this.vaciarTabla(); 
+        controlador.buscarDatos();
+    }
 
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){

@@ -14,14 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 public class VendedorController implements Controller{
-    private static int nextID = 0;
+    private static int nextID;
     private VendedoresJPanel vJPanel;
     private VendedorDao dao;
     private int fila;
 
-    public VendedorController(VendedoresJPanel vJPanel) {
+    public VendedorController(VendedoresJPanel vJPanel, VendedorDao dao) {
         this.vJPanel = vJPanel;
-        this.dao = (new VendedorDaoFactory()).getDao("sql");
+        this.dao = dao;
+        nextID = dao.obtenerUltimoID() + 1;
     }
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){
@@ -29,10 +30,20 @@ public class VendedorController implements Controller{
         Vendedor v = new Vendedor(getNextID() ,nombre, direccion, c);
         vJPanel.agregarFila(v);
         setNextID(getNextID()+ 1);
+        dao.createVendedor(v);
         
         return v;
     }
     
+    
+    public Vendedor editarVendedor(String nombre, String direccion, Double latitud, Double longitud) {
+        int id = (int) vJPanel.getJTable().getValueAt(fila, 0);
+        Vendedor v = new Vendedor(id, nombre, direccion, new Coordenada(latitud, longitud));
+        vJPanel.modificarFila(fila, v);
+        dao.updateVendedor(v);
+
+        return v;
+    }
     public void buscarDatos(){
         ArrayList<Vendedor> vendedores = dao.getAll();
         
@@ -69,24 +80,19 @@ public class VendedorController implements Controller{
 
     @Override
     public void eliminarFila(int fila) {
-    this.fila = fila;
-    
-    JTable tabla = vJPanel.getJTable();
-    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-    
-    if (fila >= 0 && fila < modelo.getRowCount()) {
-        if (tabla.isEditing()) {
-            tabla.getCellEditor().stopCellEditing();
+        this.fila = fila;
+
+        JTable tabla = vJPanel.getJTable();
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+        if (fila >= 0 && fila < modelo.getRowCount()) {
+            if (tabla.isEditing()) {
+                tabla.getCellEditor().stopCellEditing();
+            }
+            int id = (int) tabla.getValueAt(fila, 0);
+            dao.deleteVendedor(id);
+            modelo.removeRow(fila);
+            tabla.repaint();
         }
-        modelo.removeRow(fila);
-        tabla.repaint();
-    }
-}
-    public void editarVendedor(String nombre, String direccion, Double latitud, Double longitud) {
-        int id = (int) vJPanel.getJTable().getValueAt(fila, 0);
-        
-    //  Recuperar vendedor de la BD y pasar a modificar
-        Vendedor v = new Vendedor(id, nombre, direccion, new Coordenada(latitud, longitud));
-        vJPanel.modificarFila(fila, v);
     }
 }
