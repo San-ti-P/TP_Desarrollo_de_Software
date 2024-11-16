@@ -3,6 +3,7 @@ package isi.deso.tpdsw.Views;
 import isi.deso.tpdsw.Controllers.ClienteController;
 import javax.swing.table.DefaultTableModel;
 import isi.deso.tpdsw.Models.Cliente;
+import isi.deso.tpdsw.Services.ClienteDaoFactory;
 import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 
@@ -18,7 +19,7 @@ public class ClientesJPanel extends BuscadorJPanel{
         this.getJTable().getColumnModel().getColumn(5).setMinWidth(150);
         this.getJTable().getColumnModel().getColumn(5).setMaxWidth(150);
         
-        controlador = new ClienteController(this);
+        controlador = new ClienteController(this, (new ClienteDaoFactory()).getDao("sql"));
         
         this.getJTable().getColumnModel().getColumn(5).setCellRenderer(new ButtonRendererEditor(controlador, this));
         this.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor(controlador, this));

@@ -20,9 +20,9 @@ public class PedidoController implements Controller{
     private PedidoDao dao;
     private int fila;
     
-    public PedidoController(PedidosJPanel pJPanel) {
+    public PedidoController(PedidosJPanel pJPanel, PedidoDao dao) {
         this.pJPanel = pJPanel;
-        this.dao = (new PedidoDaoFactory()).getDao("sql");
+        this.dao = dao;
         nextID = dao.obtenerUltimoID() + 1;
     }
 
