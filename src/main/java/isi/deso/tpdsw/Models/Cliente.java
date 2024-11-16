@@ -138,6 +138,10 @@ public class Cliente implements PedidoObserver {
             p.setPago(pago);
         }
     }
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 
     @Override
     public boolean equals(Object o){

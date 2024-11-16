@@ -1,9 +1,6 @@
 package isi.deso.tpdsw.Daos;
 
-import isi.deso.tpdsw.Models.Cliente;
-import isi.deso.tpdsw.Models.EstadoPedido;
-import isi.deso.tpdsw.Models.Pedido;
-import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Models.*;
 import isi.deso.tpdsw.Services.ClienteDaoFactory;
 import isi.deso.tpdsw.Services.VendedorDaoFactory;
 import java.sql.Connection;
@@ -36,11 +33,9 @@ public class PedidoSQL implements PedidoDao {
                 double precio = rs.getDouble("precio");
                 String estado = rs.getString("estado");
 
-                // Obtener cliente y vendedor
                 Cliente cliente = clienteDao.getClienteById(clienteId);
                 Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
 
-                // Crear pedido
                 Pedido pedido = new Pedido(id, cliente, new ArrayList<>(), vendedor, EstadoPedido.valueOf(estado));
                 lista.add(pedido);
             }
@@ -49,35 +44,38 @@ public class PedidoSQL implements PedidoDao {
         }
         return lista;
     }
-    
-    @Override
-    public ArrayList<Pedido> searchByName(String nombre) {
-        ArrayList<Pedido> lista = new ArrayList<>();
-        Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM pedido WHERE nombrecliente LIKE '%"+nombre+"%';";
 
-        try(Statement stm = con.createStatement()) {
-            ResultSet rs = stm.executeQuery(query);
-            while(rs.next()) {
-                int id = rs.getInt("id");
-                int clienteId = rs.getInt("clienteid");
-                int vendedorId = rs.getInt("vendedorid");
-                double precio = rs.getDouble("precio");
-                String estado = rs.getString("estado");
+@Override
+public ArrayList<Pedido> searchByName(String nombre) {
+    ArrayList<Pedido> lista = new ArrayList<>();
+    Connection con = DBConnector.getConnector().getConnection();
 
-                // Obtener cliente y vendedor
-                Cliente cliente = clienteDao.getClienteById(clienteId);
-                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+    String query = "SELECT p.id AS pedidoId, p.clienteId AS clienteId, p.vendedorId AS vendedorId, " +
+            "p.estado AS estado, p.precio AS precio, c.nombre AS clienteNombre " +
+            "FROM pedido p " +
+            "JOIN cliente c ON p.clienteId = c.id " +
+            "WHERE p.activo = 1 AND c.nombre LIKE '%" + nombre + "%'";
 
-                // Crear pedido
-                Pedido pedido = new Pedido(id, cliente, new ArrayList<>(), vendedor, EstadoPedido.valueOf(estado));
-                lista.add(pedido);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Fallo al obtener los datos");
+    try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(query)) {
+        while (rs.next()) {
+            int id = rs.getInt("pedidoId");
+            int clienteId = rs.getInt("clienteId");
+            int vendedorId = rs.getInt("vendedorId");
+            String estado = rs.getString("estado");
+            double precio = rs.getDouble("precio");
+
+            Cliente cliente = clienteDao.getClienteById(clienteId);
+            Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+
+            Pedido pedido = new Pedido(id, cliente, new ArrayList<>(), vendedor, EstadoPedido.valueOf(estado));
+            lista.add(pedido);
         }
-        return lista;
+    } catch (SQLException ex) {
+        System.out.println("Fallo al obtener los datos: ");
     }
+
+    return lista;
+}
 
     @Override
     public int obtenerUltimoID() {

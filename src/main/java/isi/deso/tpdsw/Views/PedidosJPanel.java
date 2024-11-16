@@ -25,6 +25,10 @@ public class PedidosJPanel extends BuscadorJPanel{
         this.getJTable().getColumnModel().getColumn(5).setCellEditor(new ButtonRendererEditor(controlador, this));
     }
 
+    public PedidoController getControlador() {
+        return controlador;
+    }
+
     public void agregarFila(Pedido p){
         DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
         model.addRow(new Object[] {p.getId(), p.getCliente().getNombre(), p.getVendedor().getNombre(), p.getEstado(), null, null});

@@ -1,13 +1,17 @@
 package isi.deso.tpdsw.Views;
 
+import isi.deso.tpdsw.Controllers.ClienteController;
 import isi.deso.tpdsw.Controllers.PedidoController;
+import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Models.EstadoPedido;
 import isi.deso.tpdsw.Models.ItemPedido;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.ClienteDaoFactory;
+import isi.deso.tpdsw.Services.VendedorDaoFactory;
+
 import java.util.ArrayList;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 
 public class EditarPedidoJFrame extends javax.swing.JFrame {
@@ -15,6 +19,10 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
     public EditarPedidoJFrame(PedidoController c) {
         controlador = c;
         initComponents();
+        controladorVendedor = new VendedorController((new VendedorDaoFactory()).getDao("sql"));
+        controladorCliente = new ClienteController((new ClienteDaoFactory()).getDao("sql"));
+        cargarVendedores();
+        cargarClientes();
     }
     
     @SuppressWarnings("unchecked")
@@ -50,19 +58,14 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Cliente:");
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Crear Nuevo Pedido");
-
+        jLabel2.setText("Editar Pedido");
         jLabel3.setText("Vendedor:");
-
         jLabel7.setText("Items:");
-
         jLabel8.setText("Subtotal:");
 
-//        clienteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-//        vendedorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        clienteComboBox.setModel(new DefaultComboBoxModel<>());
+        vendedorComboBox.setModel(new DefaultComboBoxModel<>());
 
         btnSeleccionar.setText("Seleccionar");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +181,10 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
     // End of variables declaration                   
     private PedidoController controlador;
     private ArrayList<ItemPedido> items;
-    
+    private VendedorController controladorVendedor;
+    private ClienteController controladorCliente;
+
+
     public JComboBox<Cliente> getClienteComboBox() {
         return clienteComboBox;
     }
@@ -202,5 +208,21 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
 
     public ArrayList<ItemPedido> getItems(){
         return this.items;
+    }
+
+    private void cargarClientes() {
+        ArrayList<Cliente> clientes = controladorCliente.obtenerClientes();
+        clienteComboBox.removeAllItems();
+        for (Cliente cliente : clientes) {
+            clienteComboBox.addItem(cliente);
+        }
+    }
+
+    private void cargarVendedores() {
+        ArrayList<Vendedor> vendedores = controladorVendedor.obtenerVendedores();
+        vendedorComboBox.removeAllItems();
+        for (Vendedor vendedor : vendedores) {
+            vendedorComboBox.addItem(vendedor);
+        }
     }
 }

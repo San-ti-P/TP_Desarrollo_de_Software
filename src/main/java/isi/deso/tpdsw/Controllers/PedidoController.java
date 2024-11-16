@@ -85,6 +85,8 @@ public class PedidoController implements Controller{
             if (tabla.isEditing()) {
                 tabla.getCellEditor().stopCellEditing();
             }
+            int id = (int) tabla.getValueAt(fila, 0);
+            dao.deletePedido(id);
             modelo.removeRow(fila);
             tabla.repaint();
         }
