@@ -1,5 +1,6 @@
 package isi.deso.tpdsw.Views;
 
+import isi.deso.tpdsw.Controllers.CategoriaController;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -9,14 +10,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import isi.deso.tpdsw.Controllers.ItemMenuController;
+import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Categoria;
 import isi.deso.tpdsw.Models.Vendedor;
+import java.util.ArrayList;
 
 public class ItemsMenuFormJFrame extends javax.swing.JFrame {
 
     public ItemsMenuFormJFrame(ItemMenuController c) {
         controlador = c;
         initComponents();
+        controladorVendedor = new VendedorController();
+        controladorCategoria = new CategoriaController();
     }
 
     @SuppressWarnings("unchecked")
@@ -330,6 +335,13 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tipoComboBoxActionPerformed
 
+    private void categoriaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        Categoria categoriaSeleccionada = (Categoria) categoriaComboBox.getSelectedItem();
+        if (categoriaSeleccionada != null) {
+            System.out.println("Categoría seleccionada: " + categoriaSeleccionada.getNombre());
+        }
+    }
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -367,6 +379,8 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<Vendedor> vendedorComboBox;
     // End of variables declaration//GEN-END:variables
     private ItemMenuController controlador;
+    private VendedorController controladorVendedor;
+    private CategoriaController controladorCategoria;
     
     public JPanel getBebidaJPanel() {
         return BebidaJPanel;
@@ -511,4 +525,21 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
     public void setVendedorComboBox(JComboBox<Vendedor> vendedorComboBox) {
         this.vendedorComboBox = vendedorComboBox;
     }
+
+        private void cargarCategorias() {
+        ArrayList<Categoria> categorias = controladorCategoria.obtenerCategorias();
+        categoriaComboBox.removeAllItems();
+        for (Categoria categoria : categorias) {
+            categoriaComboBox.addItem(categoria);
+        }
+    }
+
+    private void cargarVendedores() {
+        ArrayList<Vendedor> vendedores = controladorVendedor.obtenerVendedores();
+        vendedorComboBox.removeAllItems();
+        for (Vendedor vendedor : vendedores) {
+            vendedorComboBox.addItem(vendedor);
+        }
+}
+
 }

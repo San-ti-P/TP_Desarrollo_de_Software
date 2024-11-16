@@ -24,6 +24,10 @@ public class VendedorController implements Controller{
         this.dao = dao;
         nextID = dao.obtenerUltimoID() + 1;
     }
+
+    public VendedorController() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){
         Coordenada c = new Coordenada(latitud, longitud);
@@ -94,5 +98,9 @@ public class VendedorController implements Controller{
             modelo.removeRow(fila);
             tabla.repaint();
         }
+    }
+
+    public ArrayList<Vendedor> obtenerVendedores() {
+        return dao.getAll();
     }
 }
