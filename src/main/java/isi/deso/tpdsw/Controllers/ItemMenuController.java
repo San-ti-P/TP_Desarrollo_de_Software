@@ -21,12 +21,12 @@ public class ItemMenuController implements Controller{
     private PlatoController controladorPlato;
     private BebidaController controladorBebida;
     
-    public ItemMenuController(ItemsMenuJPanel iJPanel) {
+    public ItemMenuController(ItemsMenuJPanel iJPanel, BebidaDao daoBebida, PlatoDao daoPlato) {
         this.iJPanel = iJPanel;
         this.controladorPlato = new PlatoController();
         this.controladorBebida = new BebidaController();
-        this.daoBebida = (new BebidaDaoFactory().getDao("sql"));
-        this.daoPlato = (new PlatoDaoFactory().getDao("sql"));
+        this.daoBebida = daoBebida;
+        this.daoPlato = daoPlato;
         nextID = Math.max(daoPlato.obtenerUltimoID(), daoBebida.obtenerUltimoID()) + 1;
     }
     
@@ -74,6 +74,7 @@ public class ItemMenuController implements Controller{
     public Plato crearPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
         Plato p = controladorPlato.crearPlato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
         this.getIJPanel().agregarFila(p);
+        setNextID(getNextID()+ 1);
         return p;
     }
     
@@ -86,6 +87,7 @@ public class ItemMenuController implements Controller{
     public Bebida crearBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor){
         Bebida b = controladorBebida.crearBebida(getNextID(), nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
         this.getIJPanel().agregarFila(b);
+        setNextID(getNextID()+ 1);
         return b;
     }
     

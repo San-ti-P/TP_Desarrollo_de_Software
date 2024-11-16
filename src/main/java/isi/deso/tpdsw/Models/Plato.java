@@ -132,4 +132,9 @@ public class Plato extends ItemMenu implements Comparable<ItemMenu>{
     public String toString() {
         return "[Id=" + id + ", nombre=" + nombre + ']';
     }
+    
+    public boolean equals(Object o){
+        ItemMenu otro = (ItemMenu) o;
+        return id == otro.getId();
+    }
 }
