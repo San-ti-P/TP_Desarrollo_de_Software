@@ -1,6 +1,7 @@
 package isi.deso.tpdsw.Controllers;
 
 import isi.deso.tpdsw.Daos.ClienteDao;
+import isi.deso.tpdsw.Daos.VendedorDao;
 import isi.deso.tpdsw.Models.Coordenada;
 import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Services.ClienteDaoFactory;
@@ -19,6 +20,11 @@ public class ClienteController implements Controller{
     
     public ClienteController(ClientesJPanel cJPanel, ClienteDao dao) {
         this.cJPanel = cJPanel;
+        this.dao = dao;
+        nextID = dao.obtenerUltimoID() + 1;
+    }
+
+    public ClienteController(ClienteDao dao) {
         this.dao = dao;
         nextID = dao.obtenerUltimoID() + 1;
     }
@@ -96,5 +102,9 @@ public class ClienteController implements Controller{
             modelo.removeRow(fila);
             tabla.repaint();
         }
+    }
+
+    public ArrayList<Cliente> obtenerClientes() {
+        return dao.getAll();
     }
 }

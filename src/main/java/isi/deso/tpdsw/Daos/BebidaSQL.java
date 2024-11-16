@@ -146,6 +146,34 @@ public class BebidaSQL implements BebidaDao{
     }
 
     @Override
+    public ArrayList<Bebida> getByVendedor(Vendedor v){
+        ArrayList<Bebida> lista = new ArrayList<>();
+        int idVendedor = v.getId();
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM itemmenu im, bebida b WHERE im.id = b.id AND im.activo=1 AND im.vendedorId="+idVendedor+";";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float precio = rs.getFloat("precio");
+                int categoriaId = rs.getInt("categoriaId");
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
+                
+                Categoria categoria = categoriaDao.getCategoriaById(categoriaId);
+
+                int id = rs.getInt("im.id");
+                float graduacionAlcoholica = rs.getFloat("graduacionAlcoholica");
+                int tamaño = rs.getInt("tamaño");
+                lista.add(new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, v));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener los datos en getAll Bebida");
+        }
+        return lista;
+    }
+    
+    @Override
     public int obtenerUltimoID() {
         Connection con = DBConnector.getConnector().getConnection();
         String query = "SELECT MAX(id) AS max_id FROM bebida;";
@@ -160,4 +188,31 @@ public class BebidaSQL implements BebidaDao{
         return 0;
     }
 
+    @Override
+    public Bebida getById(int id) {
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM itemmenu im, bebida b WHERE im.id = b.id AND im.activo=1 AND im.id="+id+";";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float precio = rs.getFloat("precio");
+                int vendedorId = rs.getInt("vendedorId");
+                int categoriaId = rs.getInt("categoriaId");
+
+                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+                Categoria categoria = categoriaDao.getCategoriaById(categoriaId);
+
+                float graduacionAlcoholica = rs.getFloat("graduacionAlcoholica");
+                int tamaño = rs.getInt("tamaño");
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
+                return new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor);
+            }
+            else return null;
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener los datos en getAll Plato");
+        }
+        return null;
+    }
 }

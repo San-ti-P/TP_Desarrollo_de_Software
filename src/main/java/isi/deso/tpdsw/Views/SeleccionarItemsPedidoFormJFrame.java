@@ -1,7 +1,11 @@
 package isi.deso.tpdsw.Views;
 
+import isi.deso.tpdsw.Controllers.ItemMenuController;
+import isi.deso.tpdsw.Models.ItemMenu;
 import isi.deso.tpdsw.Models.ItemPedido;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.BebidaDaoFactory;
+import isi.deso.tpdsw.Services.PlatoDaoFactory;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,13 +14,26 @@ public class SeleccionarItemsPedidoFormJFrame extends javax.swing.JFrame {
     public SeleccionarItemsPedidoFormJFrame(PedidosFormJFrame pedidosForm, Vendedor v) {
         initComponents();
         this.pedidosForm = pedidosForm;
+        controlador = new ItemMenuController(null, (new BebidaDaoFactory().getDao("sql")), (new PlatoDaoFactory().getDao("sql")));
         //Aca se deben cargar en la tabla todos los items del vendedor
+        ArrayList<ItemMenu> items = controlador.getByVendedor(v);
+        DefaultTableModel modelo = ((DefaultTableModel)jTable.getModel());
+        for(ItemMenu i: items){
+            modelo.addRow(new Object[]{i.getId(), i.getNombre(), i.getCategoria(), i.getPrecio(), 0});
+        }
+        
     }
 
     public SeleccionarItemsPedidoFormJFrame(EditarPedidoJFrame editarForm, Vendedor v) {
         initComponents();
         this.editarForm = editarForm;
-        //Aca se deben cargar en la tabla todos los items del vendedor que no esten en editarForm.getItems()
+        controlador = new ItemMenuController(null, (new BebidaDaoFactory().getDao("sql")), (new PlatoDaoFactory().getDao("sql")));
+        //Aca se deben cargar en la tabla todos los items del vendedor
+        ArrayList<ItemMenu> items = controlador.getByVendedor(v);
+        DefaultTableModel modelo = ((DefaultTableModel)jTable.getModel());
+        for(ItemMenu i: items){
+            modelo.addRow(new Object[]{i.getId(), i.getNombre(), i.getCategoria(), i.getPrecio(), 0});
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -33,10 +50,7 @@ public class SeleccionarItemsPedidoFormJFrame extends javax.swing.JFrame {
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Categoría", "Precio", "Cantidad"
@@ -106,15 +120,19 @@ public class SeleccionarItemsPedidoFormJFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         int filas = model.getRowCount();
         for(int i=0; i<filas; i++){
-            int cant = Integer.parseInt((String)model.getValueAt(i, 4));
+            int cant = Integer.parseInt(model.getValueAt(i, 4).toString());
             if(cant!=0){
                 //Solicitar ItemMenu a la bdd
-                //ItemMenu i = ...
-                //ItemPedido nuevo = new ItemPedido(i, cant);
-                //items.add(nuevo);
+                int id = Integer.parseInt(model.getValueAt(i, 0).toString());
+                ItemMenu item = controlador.getById(id);
+
+                
+                ItemPedido nuevo = new ItemPedido(item, cant, null);
+                items.add(nuevo);
             }
         }
-        this.pedidosForm.setItems(items);
+        if(pedidosForm == null) this.editarForm.setItems(items);
+        else this.pedidosForm.setItems(items);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -130,6 +148,7 @@ public class SeleccionarItemsPedidoFormJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
-    PedidosFormJFrame pedidosForm;
-    EditarPedidoJFrame editarForm;
+    private PedidosFormJFrame pedidosForm;
+    private EditarPedidoJFrame editarForm;
+    private ItemMenuController controlador;
 }

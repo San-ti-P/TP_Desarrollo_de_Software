@@ -26,7 +26,7 @@ public class PedidoController implements Controller{
         nextID = dao.obtenerUltimoID() + 1;
     }
 
-    public Pedido crearPedido(Cliente cliente, Vendedor vendedor, ArrayList<ItemPedido> items, double subtotal){
+    public Pedido crearPedido(Cliente cliente, Vendedor vendedor, ArrayList<ItemPedido> items){
         Pedido p = new Pedido(getNextID(), cliente, items, vendedor, EstadoPedido.RECIBIDO);
         pJPanel.agregarFila(p);
         setNextID(getNextID()+ 1);
@@ -85,6 +85,8 @@ public class PedidoController implements Controller{
             if (tabla.isEditing()) {
                 tabla.getCellEditor().stopCellEditing();
             }
+            int id = (int) tabla.getValueAt(fila, 0);
+            dao.deletePedido(id);
             modelo.removeRow(fila);
             tabla.repaint();
         }

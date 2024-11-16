@@ -343,16 +343,10 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
 
     private void categoriaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                               
         Categoria categoriaSeleccionada = (Categoria) categoriaComboBox.getSelectedItem();
-        if (categoriaSeleccionada != null) {
-            System.out.println("Categoría seleccionada: " + categoriaSeleccionada.getDescripcion());
-        }
     }
     
     private void vendedorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                              
         Vendedor vendedorSeleccionado = (Vendedor) vendedorComboBox.getSelectedItem();
-        if (vendedorSeleccionado != null) {
-            System.out.println("Vendedor seleccionado: " + vendedorSeleccionado.getNombre());
-        }
     }
 
 

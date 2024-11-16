@@ -54,6 +54,11 @@ public class BebidaMemory implements BebidaDao{
     public void deleteBebida(int id) {
         bebidas.removeIf(bebida -> bebida.getId() == id);
     }
+    
+    @Override
+    public ArrayList<Bebida> getByVendedor(Vendedor v){
+        return null;
+    }
 
     @Override
     public int obtenerUltimoID() {
@@ -64,5 +69,10 @@ public class BebidaMemory implements BebidaDao{
             }
         }
         return maxId;
+    }
+
+    @Override
+    public Bebida getById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

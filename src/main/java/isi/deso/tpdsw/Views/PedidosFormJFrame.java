@@ -1,12 +1,17 @@
 package isi.deso.tpdsw.Views;
 
+import isi.deso.tpdsw.Controllers.ClienteController;
 import isi.deso.tpdsw.Controllers.PedidoController;
+import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Models.ItemPedido;
+import isi.deso.tpdsw.Models.Pedido;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.ClienteDaoFactory;
+import isi.deso.tpdsw.Services.VendedorDaoFactory;
+
 import java.util.ArrayList;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 
 public class PedidosFormJFrame extends javax.swing.JFrame {
@@ -14,6 +19,11 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     public PedidosFormJFrame(PedidoController c) {
         controlador = c;
         initComponents();
+        controladorVendedor = new VendedorController((new VendedorDaoFactory()).getDao("sql"));
+        controladorCliente = new ClienteController((new ClienteDaoFactory()).getDao("sql"));
+        cargarVendedores();
+        cargarClientes();
+        items = new ArrayList<>();
     }
 
     @SuppressWarnings("unchecked")
@@ -138,10 +148,12 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         Cliente cliente = (Cliente) this.getClienteComboBox().getSelectedItem();
         Vendedor vendedor = (Vendedor) this.getVendedorComboBox().getSelectedItem();
-        
-        
-        double subtotal = this.getSubtotal();
-        controlador.crearPedido(cliente, vendedor, getItems(), subtotal);
+
+        ArrayList<ItemPedido> items = getItems();
+        Pedido p = controlador.crearPedido(cliente, vendedor, items);
+        for(ItemPedido i : items){
+            i.setPedido(p);
+        }
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -159,7 +171,6 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
@@ -175,7 +186,10 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private PedidoController controlador;
     private ArrayList<ItemPedido> items;
-    
+    private VendedorController controladorVendedor;
+    private ClienteController controladorCliente;
+
+
     public JComboBox<Cliente> getClienteComboBox() {
         return clienteComboBox;
     }
@@ -191,17 +205,35 @@ public class PedidosFormJFrame extends javax.swing.JFrame {
     public void setVendedorComboBox(JComboBox vendedorComboBox) {
         this.vendedorComboBox = vendedorComboBox;
     }
-
-    private double getSubtotal() {
-        System.out.println("GETSUBTOTAL PRESENTE");
-        return 1;
-    }
     
     public void setItems(ArrayList<ItemPedido> items){
         this.items = items;
+        double subtotal = 0;
+        for(ItemPedido i : items){
+            System.out.println(i.getItem().getPrecio()+"  "+i.getCantidad());
+            subtotal = subtotal + (i.getItem().getPrecio()*i.getCantidad());
+        }
+        campoSubtotal.setText(String.valueOf(subtotal));
     }
     
     public ArrayList<ItemPedido> getItems(){
         return this.items;
+    }
+
+
+    private void cargarClientes() {
+        ArrayList<Cliente> clientes = controladorCliente.obtenerClientes();
+        clienteComboBox.removeAllItems();
+        for (Cliente cliente : clientes) {
+            clienteComboBox.addItem(cliente);
+        }
+    }
+
+    private void cargarVendedores() {
+        ArrayList<Vendedor> vendedores = controladorVendedor.obtenerVendedores();
+        vendedorComboBox.removeAllItems();
+        for (Vendedor vendedor : vendedores) {
+            vendedorComboBox.addItem(vendedor);
+        }
     }
 }

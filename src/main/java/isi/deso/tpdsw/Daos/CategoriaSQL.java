@@ -1,9 +1,7 @@
 package isi.deso.tpdsw.Daos;
 
 import isi.deso.tpdsw.Models.Categoria;
-import isi.deso.tpdsw.Models.Coordenada;
 import isi.deso.tpdsw.Models.TipoItem;
-import isi.deso.tpdsw.Models.Vendedor;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,12 +20,7 @@ public class CategoriaSQL implements CategoriaDao{
                 String descripcion = rs.getString("descripcion");
                 String tipoItem = rs.getString("tipoItem");
 
-                TipoItem tipo;
-                if (tipoItem.equalsIgnoreCase("PLATO")) {
-                    tipo = TipoItem.PLATO;
-                } else {
-                    tipo = TipoItem.BEBIDA;
-                }
+                TipoItem tipo = TipoItem.valueOf(tipoItem.toUpperCase());
                 categorias.add(new Categoria(id, descripcion, tipo));
             }
         } catch (SQLException e) {
@@ -46,12 +39,7 @@ public class CategoriaSQL implements CategoriaDao{
                 int id = rs.getInt("id");
                 String descripcion = rs.getString("descripcion");
                 String tipoItem = rs.getString("tipoItem");
-                TipoItem tipo;
-                if (tipoItem.equalsIgnoreCase("PLATO")) {
-                    tipo = TipoItem.PLATO;
-                } else {
-                    tipo = TipoItem.BEBIDA;
-                }
+                TipoItem tipo = TipoItem.valueOf(tipoItem.toUpperCase());
                 return new Categoria(id, descripcion, tipo);
             }
         } catch (SQLException ex) {
