@@ -41,6 +41,7 @@ public class VendedoresJPanel extends BuscadorJPanel{
     }                                                
 
     public void actualizarDatos(){
+        this.vaciarTabla(); 
         controlador.buscarDatos();
     }
     

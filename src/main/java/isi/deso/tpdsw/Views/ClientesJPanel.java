@@ -16,7 +16,6 @@ public class ClientesJPanel extends BuscadorJPanel{
             });
         this.getBtnCrear().setText("Crear Nuevo Cliente");
         this.getTitleTextField().setText("Lista de Clientes");
-        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
         this.getJTable().getColumnModel().getColumn(5).setMinWidth(150);
         this.getJTable().getColumnModel().getColumn(5).setMaxWidth(150);
         
@@ -40,6 +39,7 @@ public class ClientesJPanel extends BuscadorJPanel{
     }
 
     public void actualizarDatos(){
+        this.vaciarTabla(); 
         controlador.buscarDatos();
     }
 

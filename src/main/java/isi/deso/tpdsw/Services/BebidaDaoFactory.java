@@ -1,26 +1,26 @@
 package isi.deso.tpdsw.Services;
 
-import isi.deso.tpdsw.Daos.PlatoDao;
-import isi.deso.tpdsw.Daos.PlatoMemory;
-import isi.deso.tpdsw.Daos.PlatoSQL;
+import isi.deso.tpdsw.Daos.BebidaDao;
+import isi.deso.tpdsw.Daos.BebidaMemory;
+import isi.deso.tpdsw.Daos.BebidaSQL;
 import java.util.TreeMap;
 
-public class PlatoDaoFactory {
+public class BebidaDaoFactory {
     private final TreeMap<String, Integer> tipos = new TreeMap();
-    
-    public PlatoDaoFactory(){
+
+    public BebidaDaoFactory(){
         tipos.put("memory", 0);
         tipos.put("sql", 1);
     }
-   
-    public PlatoDao getDao(String tipo){
+
+    public BebidaDao getDao(String tipo){
         String t = tipo.toLowerCase();
         switch(tipos.get(t)){
             case 0 -> {
-                return new PlatoMemory();
+                return new BebidaMemory();
             }
-            case 1 -> {   
-                return new PlatoSQL();
+            case 1 -> {
+                return new BebidaSQL();
             }
         }
         return null;

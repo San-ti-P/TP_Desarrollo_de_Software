@@ -2,6 +2,7 @@ package isi.deso.tpdsw.Views;
 
 import isi.deso.tpdsw.Controllers.PedidoController;
 import isi.deso.tpdsw.Models.Cliente;
+import isi.deso.tpdsw.Models.EstadoPedido;
 import isi.deso.tpdsw.Models.ItemPedido;
 import isi.deso.tpdsw.Models.Vendedor;
 import java.util.ArrayList;
@@ -145,7 +146,7 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         
         ArrayList<ItemPedido> items = new ArrayList<>(); 
         double subtotal = this.getSubtotal();
-        controlador.editarPedido(cliente, vendedor, items, subtotal);
+        controlador.editarPedido(cliente, vendedor, items, EstadoPedido.RECIBIDO);
         this.setVisible(false);
     }     
     

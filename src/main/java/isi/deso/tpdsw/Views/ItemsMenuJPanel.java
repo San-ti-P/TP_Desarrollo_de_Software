@@ -37,6 +37,11 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(i.getAptoVegano(), fila, 5);
     }
 
+    public void actualizarDatos(){
+        this.vaciarTabla();
+        controlador.buscarDatos();
+    }
+
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         ItemsMenuFormJFrame form = new ItemsMenuFormJFrame(controlador);
@@ -47,6 +52,6 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
     @Override
     void buscadorKeyReleased(KeyEvent evt) {
         this.vaciarTabla();
-//        controlador.filtrarDatos(this.getBuscadorTextField().getText());
+        controlador.filtrarDatos(this.getBuscadorTextField().getText());
     }
 }

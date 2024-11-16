@@ -24,16 +24,27 @@ public class VendedorController implements Controller{
         this.dao = dao;
         nextID = dao.obtenerUltimoID() + 1;
     }
+
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){
         Coordenada c = new Coordenada(latitud, longitud);
         Vendedor v = new Vendedor(getNextID() ,nombre, direccion, c);
         vJPanel.agregarFila(v);
         setNextID(getNextID()+ 1);
+        dao.createVendedor(v);
         
         return v;
     }
     
+    
+    public Vendedor editarVendedor(String nombre, String direccion, Double latitud, Double longitud) {
+        int id = (int) vJPanel.getJTable().getValueAt(fila, 0);
+        Vendedor v = new Vendedor(id, nombre, direccion, new Coordenada(latitud, longitud));
+        vJPanel.modificarFila(fila, v);
+        dao.updateVendedor(v);
+
+        return v;
+    }
     public void buscarDatos(){
         ArrayList<Vendedor> vendedores = dao.getAll();
         
@@ -70,24 +81,23 @@ public class VendedorController implements Controller{
 
     @Override
     public void eliminarFila(int fila) {
-    this.fila = fila;
-    
-    JTable tabla = vJPanel.getJTable();
-    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-    
-    if (fila >= 0 && fila < modelo.getRowCount()) {
-        if (tabla.isEditing()) {
-            tabla.getCellEditor().stopCellEditing();
+        this.fila = fila;
+
+        JTable tabla = vJPanel.getJTable();
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+
+        if (fila >= 0 && fila < modelo.getRowCount()) {
+            if (tabla.isEditing()) {
+                tabla.getCellEditor().stopCellEditing();
+            }
+            int id = (int) tabla.getValueAt(fila, 0);
+            dao.deleteVendedor(id);
+            modelo.removeRow(fila);
+            tabla.repaint();
         }
-        modelo.removeRow(fila);
-        tabla.repaint();
     }
-}
-    public void editarVendedor(String nombre, String direccion, Double latitud, Double longitud) {
-        int id = (int) vJPanel.getJTable().getValueAt(fila, 0);
-        
-    //  Recuperar vendedor de la BD y pasar a modificar
-        Vendedor v = new Vendedor(id, nombre, direccion, new Coordenada(latitud, longitud));
-        vJPanel.modificarFila(fila, v);
+
+    public ArrayList<Vendedor> obtenerVendedores() {
+        return dao.getAll();
     }
 }

@@ -15,7 +15,7 @@ public class ClienteSQL implements ClienteDao {
     public ArrayList<Cliente> getAll() {
         ArrayList<Cliente> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM cliente;";
+        String query = "SELECT * FROM cliente WHERE activo=1;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
@@ -41,7 +41,7 @@ public class ClienteSQL implements ClienteDao {
     public ArrayList<Cliente> searchByName(String nombre) {
         ArrayList<Cliente> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM cliente WHERE nombre LIKE '%" + nombre + "%';";
+        String query = "SELECT * FROM cliente WHERE nombre LIKE '%" + nombre + "%' AND activo=1;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
@@ -126,5 +126,29 @@ public class ClienteSQL implements ClienteDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Cliente getClienteById(int id) {
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM cliente WHERE id = " + id + ";";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                //int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String cuit = rs.getString("cuit");
+                String email = rs.getString("email");
+                String direccion = rs.getString("direccion");
+                
+                double latitud = rs.getDouble("lat");
+                double longitud = rs.getDouble("lng");
+                Coordenada coordenada = new Coordenada(latitud, longitud);
+                return new Cliente(id, nombre, cuit, email, direccion, coordenada);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener el vendedor");
+        }
+        return null;
     }
 }

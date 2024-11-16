@@ -6,13 +6,10 @@ import isi.deso.tpdsw.Controllers.*;
 
 public class MenuJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuJFrame
-     */
     public MenuJFrame() {
         initComponents();
         configurarLayout();
-//        configurarTabla();
+//      configurarTabla();
     }
 
     /**
@@ -156,12 +153,14 @@ public class MenuJFrame extends javax.swing.JFrame {
     private void btnItemsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItemsMenuActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
+        itemMenuJPanel.actualizarDatos();
         ly.show(contenidoJPanel, "itemMenu");
     }//GEN-LAST:event_btnItemsMenuActionPerformed
 
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
         // TODO add your handling code here:
         CardLayout ly = (CardLayout)contenidoJPanel.getLayout();
+        pedidoJPanel.actualizarDatos();
         ly.show(contenidoJPanel, "pedido");
     }//GEN-LAST:event_btnPedidosActionPerformed
 
@@ -172,7 +171,7 @@ public class MenuJFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -199,7 +198,7 @@ public class MenuJFrame extends javax.swing.JFrame {
                 new MenuJFrame().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
