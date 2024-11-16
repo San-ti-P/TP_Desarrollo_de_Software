@@ -123,10 +123,10 @@ public class PedidoControllerTest {
         Pedido esperado = new Pedido(6, new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
                 new ArrayList<ItemPedido>(), 
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)), EstadoPedido.RECIBIDO);
-        Pedido real = controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
+        controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)),
                 new ArrayList<ItemPedido>(), 0);
-        real = controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
+        Pedido real = controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)),
                 new ArrayList<ItemPedido>(), 0);
         
