@@ -112,7 +112,7 @@ public class PedidoControllerTest {
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)), EstadoPedido.RECIBIDO);
         Pedido real = controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)),
-                new ArrayList<ItemPedido>(), 0);
+                new ArrayList<ItemPedido>());
         
         assertEquals(esperado, real);
         
@@ -125,10 +125,10 @@ public class PedidoControllerTest {
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)), EstadoPedido.RECIBIDO);
         controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)),
-                new ArrayList<ItemPedido>(), 0);
+                new ArrayList<ItemPedido>());
         Pedido real = controlador.crearPedido(new Cliente(3, "Carlos Diaz", "20-87654321-0", "carlos.diaz@hotmail.com", "Ruta Nacional 1 Km 50", new Coordenada(18.0, 35.0)),
                 new Vendedor(6, "La Brava", "Almirante Brown 1024", new Coordenada(50.0, 60.0)),
-                new ArrayList<ItemPedido>(), 0);
+                new ArrayList<ItemPedido>());
         
         assertEquals(esperado, real);
     }
