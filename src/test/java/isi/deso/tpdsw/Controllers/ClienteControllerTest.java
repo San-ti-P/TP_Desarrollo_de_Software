@@ -171,6 +171,21 @@ public class ClienteControllerTest {
         controlador.eliminarFila(1);
         assertEquals(1, ((DefaultTableModel) tabla.getModel()).getRowCount());
     }
+    /*
+    @Test
+    public void obtenerVendedoresObtieneTodos(){
+        ArrayList<Cliente> retorno = controlador.obtenerClientes();
+        int size = clientes.size();
+        for(int i=0; i<size; i++){
+            assertEquals(clientes.get(i), retorno.get(i));
+        }
+    }
     
-
+    @Test
+    public void obtenerVendedoresListaVacia(){
+        ArrayList<Cliente> vacio = new ArrayList();
+        when(dao.getAll()).thenReturn(vacio);
+        ArrayList<Cliente> retorno = controlador.obtenerClientes();
+        assertEquals(0, retorno.size());
+    }*/
 }

@@ -1,1 +1,4 @@
+isi\deso\tpdsw\Controllers\ClienteControllerTest.class
 isi\deso\tpdsw\Controllers\VendedorControllerTest.class
+isi\deso\tpdsw\Controllers\CategoriaControllerTest.class
+isi\deso\tpdsw\Daos\ClienteSQLTest.class

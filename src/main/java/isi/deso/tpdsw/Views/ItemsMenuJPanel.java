@@ -1,10 +1,9 @@
 package isi.deso.tpdsw.Views;
 
 import isi.deso.tpdsw.Controllers.ItemMenuController;
-import isi.deso.tpdsw.Models.Bebida;
 import isi.deso.tpdsw.Models.ItemMenu;
-import isi.deso.tpdsw.Models.Plato;
-
+import isi.deso.tpdsw.Services.BebidaDaoFactory;
+import isi.deso.tpdsw.Services.PlatoDaoFactory;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
@@ -21,23 +20,17 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
         this.getJTable().getColumnModel().getColumn(6).setMinWidth(150);
         this.getJTable().getColumnModel().getColumn(6).setMaxWidth(150);
         
-        controlador = new ItemMenuController(this);
+        controlador = new ItemMenuController(this, (new BebidaDaoFactory().getDao("sql")), (new PlatoDaoFactory().getDao("sql")));
         
         this.getJTable().getColumnModel().getColumn(6).setCellRenderer(new ButtonRendererEditor(controlador, this));
         this.getJTable().getColumnModel().getColumn(6).setCellEditor(new ButtonRendererEditor(controlador, this));
     }
-
-    public void agregarFila(Plato i){
+    
+    public void agregarFila(ItemMenu i){
         DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
         model.addRow(new Object[] {i.getId(), i.getNombre(), i.getDescripcion(), i.getPrecio(), i.getCategoria(), i.getAptoVegano(), null});
     }
-
-    public void agregarFila(Bebida i){
-        DefaultTableModel model = (DefaultTableModel)this.getJTable().getModel();
-        model.addRow(new Object[] {i.getId(), i.getNombre(), i.getDescripcion(), i.getPrecio(), i.getCategoria(), i.getAptoVegano(), null});
-    }
-
-
+    
     public void modificarFila(int fila, ItemMenu i) {
         this.getJTable().setValueAt(i.getNombre(), fila, 1);
         this.getJTable().setValueAt(i.getDescripcion(), fila, 2);

@@ -21,12 +21,12 @@ public class ItemMenuController implements Controller{
     private PlatoController controladorPlato;
     private BebidaController controladorBebida;
     
-    public ItemMenuController(ItemsMenuJPanel iJPanel) {
+    public ItemMenuController(ItemsMenuJPanel iJPanel, BebidaDao daoBebida, PlatoDao daoPlato) {
         this.iJPanel = iJPanel;
         this.controladorPlato = new PlatoController();
         this.controladorBebida = new BebidaController();
-        this.daoBebida = (new BebidaDaoFactory().getDao("sql"));
-        this.daoPlato = (new PlatoDaoFactory().getDao("sql"));
+        this.daoBebida = daoBebida;
+        this.daoPlato = daoPlato;
         nextID = Math.max(daoPlato.obtenerUltimoID(), daoBebida.obtenerUltimoID()) + 1;
     }
     
