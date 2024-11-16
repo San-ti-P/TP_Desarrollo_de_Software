@@ -9,8 +9,8 @@ import isi.deso.tpdsw.Services.PlatoDaoFactory;
 public class PlatoController {
     private PlatoDao dao;
     
-    public PlatoController(){
-        this.dao = (new PlatoDaoFactory()).getDao("sql");
+    public PlatoController(PlatoDao dao){
+        this.dao = dao;
     }
     
     public Plato crearPlato(Plato p){

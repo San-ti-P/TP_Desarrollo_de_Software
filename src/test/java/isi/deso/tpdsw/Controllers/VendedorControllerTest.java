@@ -18,10 +18,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- *
- * @author santi
- */
+
 public class VendedorControllerTest {
 
     private VendedorController controlador;
@@ -96,8 +93,8 @@ public class VendedorControllerTest {
     public void idIncrementadoCorrectamente(){
         Vendedor esperado = new Vendedor(9, "Nombre1", "Dirección1", new Coordenada(10, 10));
 
-        Vendedor real = controlador.crearVendedor("Luigi's", "Marcial Candioti 3986", 12.3, 89.4);
-        real = controlador.crearVendedor("Nombre1", "Dirección1", 10d, 10d);
+        controlador.crearVendedor("Luigi's", "Marcial Candioti 3986", 12.3, 89.4);
+        Vendedor real = controlador.crearVendedor("Nombre1", "Dirección1", 10d, 10d);
         
         assertEquals(esperado, real);
     }

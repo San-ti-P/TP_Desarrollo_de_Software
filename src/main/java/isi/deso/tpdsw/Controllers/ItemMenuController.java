@@ -23,8 +23,8 @@ public class ItemMenuController implements Controller{
     
     public ItemMenuController(ItemsMenuJPanel iJPanel, BebidaDao daoBebida, PlatoDao daoPlato) {
         this.iJPanel = iJPanel;
-        this.controladorPlato = new PlatoController();
-        this.controladorBebida = new BebidaController();
+        this.controladorPlato = new PlatoController((new PlatoDaoFactory()).getDao("sql"));
+        this.controladorBebida = new BebidaController((new BebidaDaoFactory()).getDao("sql"));
         this.daoBebida = daoBebida;
         this.daoPlato = daoPlato;
         nextID = Math.max(daoPlato.obtenerUltimoID(), daoBebida.obtenerUltimoID()) + 1;

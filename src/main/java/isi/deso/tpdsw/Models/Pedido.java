@@ -126,4 +126,10 @@ public class Pedido implements Observable, Comparable<Pedido> {
     public int compareTo(Pedido p) {
         return this.id - p.getId();
     }
+    
+    @Override
+    public boolean equals(Object o){
+        Pedido otro = (Pedido) o;
+        return id == otro.getId();
+    }
 }

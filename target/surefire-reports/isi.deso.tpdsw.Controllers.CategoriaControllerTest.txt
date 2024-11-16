@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: isi.deso.tpdsw.Controllers.CategoriaControllerTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.469 s -- in isi.deso.tpdsw.Controllers.CategoriaControllerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.555 s -- in isi.deso.tpdsw.Controllers.CategoriaControllerTest
