@@ -31,8 +31,8 @@ public class PedidoSQL implements PedidoDao {
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()) {
                 int id = rs.getInt("id");
-                int clienteId = rs.getInt("cliente_id");
-                int vendedorId = rs.getInt("vendedor_id");
+                int clienteId = rs.getInt("clienteid");
+                int vendedorId = rs.getInt("vendedorid");
                 double precio = rs.getDouble("precio");
                 String estado = rs.getString("estado");
 
@@ -54,14 +54,14 @@ public class PedidoSQL implements PedidoDao {
     public ArrayList<Pedido> searchByName(String nombre) {
         ArrayList<Pedido> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM pedido WHERE nombre_cliente LIKE '%"+nombre+"%';";
+        String query = "SELECT * FROM pedido WHERE nombrecliente LIKE '%"+nombre+"%';";
 
         try(Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()) {
                 int id = rs.getInt("id");
-                int clienteId = rs.getInt("cliente_id");
-                int vendedorId = rs.getInt("vendedor_id");
+                int clienteId = rs.getInt("clienteid");
+                int vendedorId = rs.getInt("vendedorid");
                 double precio = rs.getDouble("precio");
                 String estado = rs.getString("estado");
 
@@ -116,8 +116,8 @@ public class PedidoSQL implements PedidoDao {
     public Pedido updatePedido(Pedido pedido) {
         Connection con = DBConnector.getConnector().getConnection();
         String query =  "UPDATE cliente SET id = '"
-                + pedido.getId() + ", cliente_id = '"
-                + pedido.getCliente().getId() + "', vendedor_id = '"
+                + pedido.getId() + ", clienteid = '"
+                + pedido.getCliente().getId() + "', vendedorid = '"
                 + pedido.getVendedor().getId() + "', estado = '"
                 + pedido.getEstado() + "', precio ='"
                 + pedido.getPrecio() + ";";

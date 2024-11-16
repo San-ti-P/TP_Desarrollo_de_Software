@@ -17,13 +17,13 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
     public ArrayList<ItemPedido> getAll() {
         ArrayList<ItemPedido> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_pedido;";
+        String query = "SELECT * FROM itempedido;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 int cantidad = rs.getInt("cantidad");
-                int itemId = rs.getInt("item_id");
-                int pedidoId = rs.getInt("pedido_id");
+                int itemId = rs.getInt("itemId");
+                int pedidoId = rs.getInt("pedidoId");
                 ItemMenu item = getItemById(itemId);
                 Pedido pedido = getPedidoById(pedidoId);
                 ItemPedido itemPedido = new ItemPedido(item, cantidad, pedido);
@@ -38,13 +38,13 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
     public ArrayList<ItemPedido> searchByName(String nombre) {
         ArrayList<ItemPedido> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_pedido ip JOIN item_menu im ON ip.item_id = im.id WHERE im.nombre LIKE '%" + nombre + "%';";
+        String query = "SELECT * FROM itempedido ip JOIN itemmenu im ON ip.itemId = im.id WHERE im.nombre LIKE '%" + nombre + "%';";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 int cantidad = rs.getInt("cantidad");
-                int itemId = rs.getInt("item_id");
-                int pedidoId = rs.getInt("pedido_id");
+                int itemId = rs.getInt("itemId");
+                int pedidoId = rs.getInt("pedidoId");
                 ItemMenu item = getItemById(itemId);
                 Pedido pedido = getPedidoById(pedidoId);
                 ItemPedido itemPedido = new ItemPedido(item, cantidad, pedido);
@@ -64,7 +64,7 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
 
     private Plato getPlatoById(int itemId) {
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_menu im, plato p WHERE im.id = " + itemId +"im.id = p.id;";
+        String query = "SELECT * FROM itemmenu im, plato p WHERE im.id = " + itemId +"im.id = p.id;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             if(rs.isBeforeFirst()){
@@ -73,13 +73,13 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
                     String nombre = rs.getString("nombre");
                     String descripcion = rs.getString("descripcion");
                     float precio = rs.getFloat("precio");
-                    int vendedorId = rs.getInt("vendedor_id");
+                    int vendedorId = rs.getInt("vendedorid");
                     Vendedor vendedor = getVendedorById(vendedorId);
 
                     int calorias = rs.getInt("calorias");
-                    boolean aptoCeliaco = rs.getBoolean("apto_celiaco");
+                    boolean aptoCeliaco = rs.getBoolean("aptoceliaco");
                     float peso = rs.getFloat("peso");
-                    boolean aptoVegano = rs.getBoolean("apto_vegano");
+                    boolean aptoVegano = rs.getBoolean("aptovegano");
                     Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
                     return new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
                 }
@@ -92,7 +92,7 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
     
     private Bebida getBebidaById(int itemId) {
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_menu im, bebida b WHERE im.id = " + itemId +"im.id = b.id;";
+        String query = "SELECT * FROM itemmenu im, bebida b WHERE im.id = " + itemId +"im.id = b.id;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             if(rs.isBeforeFirst()){
@@ -101,12 +101,12 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
                     String nombre = rs.getString("nombre");
                     String descripcion = rs.getString("descripcion");
                     float precio = rs.getFloat("precio");
-                    int vendedorId = rs.getInt("vendedor_id");
+                    int vendedorId = rs.getInt("vendedorid");
                     Vendedor vendedor = getVendedorById(vendedorId);
 
-                    float graduacionAlcoholica = rs.getFloat("graduacion_alcoholica");
+                    float graduacionAlcoholica = rs.getFloat("graduacionalcoholica");
                     int tamaño = rs.getInt("tamaño");
-                    boolean aptoVegano = rs.getBoolean("apto_vegano");
+                    boolean aptoVegano = rs.getBoolean("aptovegano");
                     Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
                     return new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor);
                 }
@@ -144,10 +144,10 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
             ResultSet rs = stm.executeQuery(query);
             if (rs.next()) {
                 int id = rs.getInt("id");
-                int clienteId = rs.getInt("cliente_id");
+                int clienteId = rs.getInt("clienteid");
                 Cliente cliente = getClienteById(clienteId);
                 ArrayList<ItemPedido> items = getItemsByPedidoId(id);
-                int vendedorId = rs.getInt("vendedor_id");
+                int vendedorId = rs.getInt("vendedorid");
                 Vendedor vendedor = getVendedorById(vendedorId);
                 EstadoPedido estado = EstadoPedido.valueOf(rs.getString("estado"));
                 return new Pedido(id, cliente, items, vendedor, estado);
@@ -178,12 +178,12 @@ public class ItemsPedidoSQL implements ItemsPedidoDao {
     private ArrayList<ItemPedido> getItemsByPedidoId(int pedidoId) {
         ArrayList<ItemPedido> items = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_pedido WHERE pedido_id = " + pedidoId + ";";
+        String query = "SELECT * FROM itempedido WHERE pedidoid = " + pedidoId + ";";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 int cantidad = rs.getInt("cantidad");
-                int itemId = rs.getInt("item_id");
+                int itemId = rs.getInt("itemid");
                 ItemMenu item = getItemById(itemId);
                 Pedido pedido = getPedidoById(pedidoId);
                 items.add(new ItemPedido(item, cantidad, pedido));

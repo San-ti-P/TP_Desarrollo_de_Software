@@ -306,7 +306,7 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
         String descripcion = this.getCampoDescripcion().getText();
         float precio = Float.parseFloat(this.getCampoPrecio().getText());
         Categoria categoria = (Categoria) (this.getCategoriaComboBox().getSelectedItem());
-        boolean aptoVegano = Boolean.parseBoolean(this.getAptoVeganoCheckBox().getText());
+        boolean aptoVegano = this.getAptoVeganoCheckBox().isSelected();
         Vendedor vendedor = (Vendedor) (this.getVendedorComboBox().getSelectedItem());
         String tipo = (String) this.getTipoComboBox().getSelectedItem();
         
@@ -317,7 +317,7 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
         }
         else if(tipo.equalsIgnoreCase("Plato")){
             int calorias = Integer.parseInt(this.getCampoCalorias().getText());
-            boolean aptoCeliaco = Boolean.parseBoolean(this.getAptoCeliacoCheckBox().getText());
+            boolean aptoCeliaco = this.getAptoCeliacoCheckBox().isSelected();
             float peso = Float.parseFloat(this.getCampoPeso().getText());
             controlador.crearPlato(nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
         }
@@ -552,6 +552,6 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
         for (Vendedor vendedor : vendedores) {
             vendedorComboBox.addItem(vendedor);
         }
-}
+    }
 
 }

@@ -13,11 +13,13 @@ public class PlatoController {
         this.dao = (new PlatoDaoFactory()).getDao("sql");
     }
     
-    public Plato crearPlato(int id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
-        return new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+    public Plato crearPlato(Plato p){
+        dao.createPlato(p);
+        return p;
     }
-    public Plato editarPlato(int id, String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
-        return new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+    public Plato editarPlato(Plato p) {
+        dao.updatePlato(p);
+        return p;
     }
 
 }

@@ -28,7 +28,6 @@ public class VendedorSQL implements VendedorDao  {
                 lista.add(vendedor);
             }
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonaJDBC.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Fallo al obtener los datos");
         }
         return lista;

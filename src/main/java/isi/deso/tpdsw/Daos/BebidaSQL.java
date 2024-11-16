@@ -3,6 +3,7 @@ package isi.deso.tpdsw.Daos;
 import isi.deso.tpdsw.Models.Bebida;
 import isi.deso.tpdsw.Models.Categoria;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.CategoriaDaoFactory;
 import isi.deso.tpdsw.Services.VendedorDaoFactory;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,34 +13,37 @@ import java.util.ArrayList;
 
 public class BebidaSQL implements BebidaDao{
     private VendedorDao vendedorDao;
+    private CategoriaDao categoriaDao;
     
     public BebidaSQL(){
         this.vendedorDao = (new VendedorDaoFactory()).getDao("sql");
+        this.categoriaDao = (new CategoriaDaoFactory()).getDao("sql");
     }
 
     @Override
     public ArrayList<Bebida> getAll() {
         ArrayList<Bebida> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM itemMenu im, bebida b WHERE im.id = b.id;";
+        String query = "SELECT * FROM itemmenu im, bebida b WHERE im.id = b.id AND im.activo=1;";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
-            if (rs.next()) {
-                int id = rs.getInt("id");
+            while (rs.next()) {
                 String nombre = rs.getString("nombre");
                 String descripcion = rs.getString("descripcion");
                 float precio = rs.getFloat("precio");
-                int vendedorId = rs.getInt("vendedor_id");
-                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+                int categoriaId = rs.getInt("categoriaId");
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
+                int vendedorId = rs.getInt("vendedorId");
 
+                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+                Categoria categoria = categoriaDao.getCategoriaById(categoriaId);
+
+                int id = rs.getInt("id");
                 float graduacionAlcoholica = rs.getFloat("graduacionAlcoholica");
                 int tamaño = rs.getInt("tamaño");
-                boolean aptoVegano = rs.getBoolean("aptoVegano");
-                Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
                 lista.add(new Bebida(id, nombre, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor));
             }
         } catch (SQLException ex) {
-            //Logger.getLogger(PersonaJDBC.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Fallo al obtener los datos en getAll Bebida");
         }
         return lista;
@@ -49,21 +53,23 @@ public class BebidaSQL implements BebidaDao{
     public ArrayList<Bebida> searchByName(String nombre) {
         ArrayList<Bebida> lista = new ArrayList<>();
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "SELECT * FROM item_menu im, bebida b WHERE im.id = b.id AND im.nombre LIKE '%"+nombre+"%';";
+        String query = "SELECT * FROM itemmenu im, bebida b WHERE im.id = b.id AND im.activo=1 AND im.nombre LIKE '%"+nombre+"%';";
         try (Statement stm = con.createStatement()) {
             ResultSet rs = stm.executeQuery(query);
-            if (rs.next()) {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String nombreReal = rs.getString("nombre");
                 String descripcion = rs.getString("descripcion");
                 float precio = rs.getFloat("precio");
-                int vendedorId = rs.getInt("vendedor_id");
-                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+                int categoriaId = rs.getInt("categoriaId");
+                int vendedorId = rs.getInt("vendedorId");
 
-                float graduacionAlcoholica = rs.getFloat("graduacion_alcoholica");
+                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+                Categoria categoria = categoriaDao.getCategoriaById(categoriaId);
+
+                float graduacionAlcoholica = rs.getFloat("graduacionAlcoholica");
                 int tamaño = rs.getInt("tamaño");
-                boolean aptoVegano = rs.getBoolean("apto_vegano");
-                Categoria categoria = Categoria.valueOf(rs.getString("categoria"));
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
                 lista.add(new Bebida(id, nombreReal, descripcion, precio, categoria, graduacionAlcoholica, tamaño, aptoVegano, vendedor));
             }
             
@@ -76,16 +82,16 @@ public class BebidaSQL implements BebidaDao{
     @Override
     public Bebida updateBebida(Bebida bebida) {
         Connection con = DBConnector.getConnector().getConnection();
-        String updateItemMenuQuery = "UPDATE ItemMenu SET " +
+        String updateItemMenuQuery = "UPDATE itemmenu SET " +
                 "nombre = '" + bebida.getNombre() + "', " +
                 "descripcion = '" + bebida.getDescripcion() + "', " +
                 "precio = " + bebida.getPrecio() + ", " +
-                "categoria_id = '" + bebida.getCategoria().getId() + "', " +
+                "categoriaId = '" + bebida.getCategoria().getId() + "', " +
                 "aptoVegano = " + bebida.getAptoVegano() + ", " +
                 "vendedor_id = " + bebida.getVendedor().getId() +
                 " WHERE id = " + bebida.getId() + ";";
 
-        String updateBebidaQuery = "UPDATE Bebida SET " +
+        String updateBebidaQuery = "UPDATE bebida SET " +
                 "graduacionAlcoholica = " + bebida.getGraduacionAlcoholica() + ", " +
                 "tamaño = " + bebida.getTamaño() +
                 " WHERE id = " + bebida.getId() + ";";
@@ -102,7 +108,7 @@ public class BebidaSQL implements BebidaDao{
     @Override
     public Bebida createBebida(Bebida bebida) {
         Connection con = DBConnector.getConnector().getConnection();
-        String insertItemMenuQuery = "INSERT INTO ItemMenu (id, nombre, descripcion, precio, categoria_id, aptoVegano, vendedor_id, activo) VALUES ("
+        String insertItemMenuQuery = "INSERT INTO itemmenu (id, nombre, descripcion, precio, categoriaId, aptoVegano, vendedorId, activo) VALUES ("
                 + bebida.getId() + ", '"
                 + bebida.getNombre() + "', '"
                 + bebida.getDescripcion() + "', "
@@ -112,7 +118,7 @@ public class BebidaSQL implements BebidaDao{
                 + bebida.getVendedor().getId() + ", "
                 + "true);";
 
-        String insertBebidaQuery = "INSERT INTO Bebida (id, graduacionAlcoholica, tamaño) VALUES ("
+        String insertBebidaQuery = "INSERT INTO bebida (id, graduacionAlcoholica, tamaño) VALUES ("
                 + bebida.getId() + ", "
                 + bebida.getGraduacionAlcoholica() + ", "
                 + bebida.getTamaño() + ");";
@@ -120,6 +126,7 @@ public class BebidaSQL implements BebidaDao{
         try (Statement stm = con.createStatement()) {
             stm.executeUpdate(insertItemMenuQuery);
             stm.executeUpdate(insertBebidaQuery);
+            System.out.println("Inserte bebida + item");
         } catch (SQLException e) {
             System.out.println("Error al crear la bebida");
         }
@@ -129,11 +136,9 @@ public class BebidaSQL implements BebidaDao{
     @Override
     public void deleteBebida(int id) {
         Connection con = DBConnector.getConnector().getConnection();
-        String deleteBebidaQuery = "DELETE FROM Bebida WHERE id = " + id + ";";
-        String deleteItemMenuQuery = "DELETE FROM ItemMenu WHERE id = " + id + ";";
+        String deleteItemMenuQuery = "UPDATE itemmenu SET activo = false WHERE id = " + id + ";";
 
         try (Statement stm = con.createStatement()) {
-            stm.executeUpdate(deleteBebidaQuery);
             stm.executeUpdate(deleteItemMenuQuery);
         } catch (SQLException e) {
             System.out.println("Error al eliminar la bebida");

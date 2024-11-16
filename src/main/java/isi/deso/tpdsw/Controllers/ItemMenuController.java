@@ -72,26 +72,33 @@ public class ItemMenuController implements Controller{
     }
 
     public Plato crearPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
-        Plato p = controladorPlato.crearPlato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+        System.out.println(getNextID());
+        Plato p = new Plato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+        controladorPlato.crearPlato(p);
         this.getIJPanel().agregarFila(p);
+        setNextID(getNextID()+ 1);
         return p;
     }
     
     public void editarPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor) {
         int id = (int) this.getIJPanel().getJTable().getValueAt(this.getFila(), 0);
-        Plato p = controladorPlato.editarPlato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+        Plato p = new Plato(id, nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+        controladorPlato.editarPlato(p);
         this.getIJPanel().modificarFila(this.getFila(), p);
     }
     
     public Bebida crearBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor){
-        Bebida b = controladorBebida.crearBebida(getNextID(), nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
+        Bebida b = new Bebida(getNextID(), nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
+        controladorBebida.crearBebida(b);
         this.getIJPanel().agregarFila(b);
+        setNextID(getNextID()+ 1);
         return b;
     }
     
     public void editarBebida(String nombre, String descripcion, float precio, Categoria categoria, float gradAlcohol, int tamanio, boolean aptoVegano, Vendedor vendedor) {
         int id = (int) this.getIJPanel().getJTable().getValueAt(this.getFila(), 0);
-        Bebida b = controladorBebida.editarBebida(id, nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
+        Bebida b = new Bebida(id, nombre, descripcion, precio, categoria, gradAlcohol, tamanio, aptoVegano, vendedor);
+        controladorBebida.editarBebida(b);
         this.getIJPanel().modificarFila(this.getFila(), b);
     }
 
