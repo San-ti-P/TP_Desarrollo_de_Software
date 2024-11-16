@@ -149,6 +149,35 @@ public class PlatoSQL implements PlatoDao{
     }
 
     @Override
+    public ArrayList<Plato> getByVendedor(Vendedor v) {
+        ArrayList<Plato> lista = new ArrayList<>();
+        int idVendedor = v.getId();
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM itemmenu im, plato p WHERE im.id = p.id AND im.activo=1 AND im.vendedorId="+idVendedor+";";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                int id = rs.getInt("im.id");
+                String nombreReal = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float precio = rs.getFloat("precio");
+                int categoriaId = rs.getInt("categoriaId");
+
+                Categoria categoria = categoriaDao.getCategoriaById(categoriaId);
+
+                int calorias = rs.getInt("calorias");
+                boolean aptoCeliaco = rs.getBoolean("aptoCeliaco");
+                float peso = rs.getFloat("peso");
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
+                lista.add(new Plato(id, nombreReal, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, v));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener los datos en getAll Plato");
+        }
+        return lista;
+    }
+    
+    @Override
     public int obtenerUltimoID() {
         Connection con = DBConnector.getConnector().getConnection();
         String query = "SELECT MAX(id) AS max_id FROM plato;";
@@ -161,5 +190,34 @@ public class PlatoSQL implements PlatoDao{
             throw new RuntimeException(e);
         }
         return 0;
+    }
+
+    @Override
+    public Plato getById(int id) {
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT * FROM itemmenu im, plato p WHERE im.id = p.id AND im.activo=1 AND im.id="+id+";";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                String nombreReal = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float precio = rs.getFloat("precio");
+                int vendedorId = rs.getInt("vendedorId");
+                int categoriaId = rs.getInt("categoriaId");
+
+                Vendedor vendedor = vendedorDao.getVendedorById(vendedorId);
+                Categoria categoria = categoriaDao.getCategoriaById(categoriaId);
+
+                int calorias = rs.getInt("calorias");
+                boolean aptoCeliaco = rs.getBoolean("aptoCeliaco");
+                float peso = rs.getFloat("peso");
+                boolean aptoVegano = rs.getBoolean("aptoVegano");
+                return new Plato(id, nombreReal, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
+            }
+            else return null;
+        } catch (SQLException ex) {
+            System.out.println("Fallo al obtener los datos en getAll Plato");
+        }
+        return null;
     }
 }

@@ -6,6 +6,7 @@ import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Cliente;
 import isi.deso.tpdsw.Models.EstadoPedido;
 import isi.deso.tpdsw.Models.ItemPedido;
+import isi.deso.tpdsw.Models.Pedido;
 import isi.deso.tpdsw.Models.Vendedor;
 import isi.deso.tpdsw.Services.ClienteDaoFactory;
 import isi.deso.tpdsw.Services.VendedorDaoFactory;
@@ -23,6 +24,7 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         controladorCliente = new ClienteController((new ClienteDaoFactory()).getDao("sql"));
         cargarVendedores();
         cargarClientes();
+        items = new ArrayList<>();
     }
     
     @SuppressWarnings("unchecked")
@@ -40,6 +42,8 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         vendedorComboBox = new javax.swing.JComboBox<>();
         btnSeleccionar = new javax.swing.JButton();
         campoSubtotal = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        estadoComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,14 +62,15 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Cliente:");
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Editar Pedido");
-        jLabel3.setText("Vendedor:");
-        jLabel7.setText("Items:");
-        jLabel8.setText("Subtotal:");
 
-        clienteComboBox.setModel(new DefaultComboBoxModel<>());
-        vendedorComboBox.setModel(new DefaultComboBoxModel<>());
+        jLabel3.setText("Vendedor:");
+
+        jLabel7.setText("Items:");
+
+        jLabel8.setText("Subtotal:");
 
         btnSeleccionar.setText("Seleccionar");
         btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +80,10 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         });
 
         campoSubtotal.setFocusable(false);
+
+        jLabel9.setText("Estado:");
+
+        estadoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RECIBIDO", "EN_PREPARACION", "EN_ENVIO", "ENTREGADO" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +118,11 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(campoSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campoSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(53, 53, 53)
+                        .addComponent(estadoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -133,7 +146,11 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estadoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
@@ -146,10 +163,12 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         Cliente cliente = (Cliente) this.getClienteComboBox().getSelectedItem();
         Vendedor vendedor = (Vendedor) this.getVendedorComboBox().getSelectedItem();
-        
-        ArrayList<ItemPedido> items = new ArrayList<>(); 
-        double subtotal = this.getSubtotal();
-        controlador.editarPedido(cliente, vendedor, items, EstadoPedido.RECIBIDO);
+
+        ArrayList<ItemPedido> items = getItems();
+        Pedido p = controlador.editarPedido(cliente, vendedor, items, EstadoPedido.valueOf((String)estadoComboBox.getSelectedItem()));
+        for(ItemPedido i : items){
+            i.setPedido(p);
+        }
         this.setVisible(false);
     }     
     
@@ -177,7 +196,9 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<Vendedor> vendedorComboBox;
+    private javax.swing.JComboBox<String> estadoComboBox;
     // End of variables declaration                   
     private PedidoController controlador;
     private ArrayList<ItemPedido> items;
@@ -201,11 +222,16 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         this.vendedorComboBox = vendedorComboBox;
     }
 
-    private double getSubtotal() {
-        System.out.println("GETSUBTOTAL PRESENTE");
-        return 1;
+    public void setItems(ArrayList<ItemPedido> items){
+        this.items = items;
+        double subtotal = 0;
+        for(ItemPedido i : items){
+            System.out.println(i.getItem().getPrecio()+"  "+i.getCantidad());
+            subtotal = subtotal + (i.getItem().getPrecio()*i.getCantidad());
+        }
+        campoSubtotal.setText(String.valueOf(subtotal));
     }
-
+    
     public ArrayList<ItemPedido> getItems(){
         return this.items;
     }

@@ -70,7 +70,37 @@ public class ItemMenuController implements Controller{
             iJPanel.agregarFila(plato);
         }
     }
+    
+    public ArrayList<ItemMenu> getByVendedor(Vendedor v){
+        ArrayList<ItemMenu> retorno = new ArrayList<>();
+        ArrayList<Bebida> bebidas = daoBebida.getByVendedor(v);
+        ArrayList<Plato> platos = daoPlato.getByVendedor(v);
+        for (Bebida bebida : bebidas) {
+            retorno.add(bebida);
+        }
+        for (Plato plato : platos) {
+            retorno.add(plato);
+        }
+        return retorno;
+    }
 
+    public ItemMenu getById(int id){
+        Bebida bebida = daoBebida.getById(id);
+        if(bebida==null){
+            Plato plato = daoPlato.getById(id);
+            if(plato==null){
+                return null;
+            }
+            else{
+                return plato;
+            }
+        }
+        else{
+            return bebida;
+        }
+
+    }
+    
     public Plato crearPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
         System.out.println(getNextID());
         Plato p = new Plato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);

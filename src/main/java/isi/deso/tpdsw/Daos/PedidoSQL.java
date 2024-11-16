@@ -95,12 +95,12 @@ public ArrayList<Pedido> searchByName(String nombre) {
     @Override
     public Pedido createPedido(Pedido pedido) {
         Connection con = DBConnector.getConnector().getConnection();
-        String query = "INSERT INTO pedido(id, cliente, vendedor, estado) VALUES ("
+        String query = "INSERT INTO pedido(id, clienteId, vendedorId, estado, precio, activo) VALUES ("
                 + pedido.getId() + ", '"
                 + pedido.getCliente().getId() + "', '"
                 + pedido.getVendedor().getId() + "', '"
                 + pedido.getEstado() + "', '"
-                + pedido.getPrecio() + "', '"
+                + pedido.getPrecio() + "', "
                 + true + ");";
         try (Statement stm = con.createStatement()) {
             int rs = stm.executeUpdate(query);
@@ -113,12 +113,11 @@ public ArrayList<Pedido> searchByName(String nombre) {
     @Override
     public Pedido updatePedido(Pedido pedido) {
         Connection con = DBConnector.getConnector().getConnection();
-        String query =  "UPDATE cliente SET id = '"
-                + pedido.getId() + ", clienteid = '"
+        String query =  "UPDATE pedido SET clienteid = '"
                 + pedido.getCliente().getId() + "', vendedorid = '"
                 + pedido.getVendedor().getId() + "', estado = '"
                 + pedido.getEstado() + "', precio ='"
-                + pedido.getPrecio() + ";";
+                + pedido.getPrecio() + "' WHERE id="+pedido.getId()+";";
         try (Statement stm = con.createStatement()) {
             int rs = stm.executeUpdate(query);
         } catch (SQLException e) {

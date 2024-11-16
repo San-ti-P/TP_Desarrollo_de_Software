@@ -47,9 +47,19 @@ public class BebidaMemory implements BebidaDao{
     public void deleteBebida(int id) {
 
     }
+    
+    @Override
+    public ArrayList<Bebida> getByVendedor(Vendedor v){
+        return null;
+    }
 
     @Override
     public int obtenerUltimoID() {
         return 0;
+    }
+
+    @Override
+    public Bebida getById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

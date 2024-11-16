@@ -35,6 +35,8 @@ public class PedidosJPanel extends BuscadorJPanel{
     }
     
     public void modificarFila(int fila, Pedido p) {
+        this.getJTable().setValueAt(p.getCliente(), fila, 1);
+        this.getJTable().setValueAt(p.getVendedor(), fila, 2);
         this.getJTable().setValueAt(p.getEstado(), fila, 3);
     }
     

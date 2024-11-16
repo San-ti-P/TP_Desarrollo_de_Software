@@ -26,7 +26,7 @@ public class PedidoController implements Controller{
         nextID = dao.obtenerUltimoID() + 1;
     }
 
-    public Pedido crearPedido(Cliente cliente, Vendedor vendedor, ArrayList<ItemPedido> items, double subtotal){
+    public Pedido crearPedido(Cliente cliente, Vendedor vendedor, ArrayList<ItemPedido> items){
         Pedido p = new Pedido(getNextID(), cliente, items, vendedor, EstadoPedido.RECIBIDO);
         pJPanel.agregarFila(p);
         setNextID(getNextID()+ 1);
