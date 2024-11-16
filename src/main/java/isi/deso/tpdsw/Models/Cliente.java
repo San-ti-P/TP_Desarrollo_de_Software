@@ -139,4 +139,15 @@ public class Cliente implements PedidoObserver {
         }
     }
 
+    @Override
+    public boolean equals(Object o){
+        Cliente otro = (Cliente) o;
+        return id == otro.getId() &&
+                nombre.equals(otro.getNombre()) &&
+                cuit.equals(otro.getCuit()) &&
+                email.equals(otro.getEmail()) &&
+                direccion.equals((otro.getDireccion())) &&
+                coordenadas.getLat() == otro.getCoordenadas().getLat() &&
+                coordenadas.getLng() == otro.getCoordenadas().getLng();
+    }
 }

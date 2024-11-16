@@ -57,6 +57,21 @@ public class VendedorSQL implements VendedorDao {
         return lista;
     }
     
+    @Override
+    public int obtenerUltimoID() {
+        Connection con = DBConnector.getConnector().getConnection();
+        String query = "SELECT MAX(id) AS max_id FROM vendedor;";
+        try (Statement stm = con.createStatement()) {
+            ResultSet rs = stm.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt("max_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+    
     public Vendedor getVendedorById(int vendedorId) {
         Connection con = DBConnector.getConnector().getConnection();
         String query = "SELECT * FROM vendedor WHERE id = " + vendedorId + ";";

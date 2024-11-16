@@ -3,6 +3,7 @@ package isi.deso.tpdsw.Views;
 import isi.deso.tpdsw.Controllers.VendedorController;
 import javax.swing.table.DefaultTableModel;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.VendedorDaoFactory;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
@@ -19,7 +20,7 @@ public class VendedoresJPanel extends BuscadorJPanel{
         this.getJTable().getColumnModel().getColumn(4).setMinWidth(150);
         this.getJTable().getColumnModel().getColumn(4).setMaxWidth(150);
         
-        controlador = new VendedorController(this);
+        controlador = new VendedorController(this, (new VendedorDaoFactory()).getDao("sql"));
         
         this.getJTable().getColumnModel().getColumn(4).setCellRenderer(new ButtonRendererEditor(controlador, this));
         this.getJTable().getColumnModel().getColumn(4).setCellEditor(new ButtonRendererEditor(controlador, this));

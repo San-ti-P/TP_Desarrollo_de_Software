@@ -14,14 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 public class VendedorController implements Controller{
-    private static int nextID = 0;
+    private static int nextID;
     private VendedoresJPanel vJPanel;
     private VendedorDao dao;
     private int fila;
 
-    public VendedorController(VendedoresJPanel vJPanel) {
+    public VendedorController(VendedoresJPanel vJPanel, VendedorDao dao) {
         this.vJPanel = vJPanel;
-        this.dao = (new VendedorDaoFactory()).getDao("sql");
+        this.dao = dao;
+        nextID = dao.obtenerUltimoID() + 1;
     }
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){

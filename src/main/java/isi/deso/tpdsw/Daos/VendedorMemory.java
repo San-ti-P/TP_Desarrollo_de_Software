@@ -32,4 +32,9 @@ public class VendedorMemory implements VendedorDao {
     }
     
     public Vendedor getVendedorById(int vendedorId){return null;}
+
+    @Override
+    public int obtenerUltimoID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

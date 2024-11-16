@@ -151,5 +151,15 @@ public class Vendedor {
         }
         return subPedidos;
     }
+    
+    @Override
+    public boolean equals(Object o){
+        Vendedor otro = (Vendedor) o;
+        return id == otro.getId() &&
+                nombre.equals(otro.getNombre()) &&
+                direccion.equals((otro.getDireccion())) &&
+                coordenadas.getLat() == otro.getCoordenadas().getLat() &&
+                coordenadas.getLng() == otro.getCoordenadas().getLng();
+    }
 }
 

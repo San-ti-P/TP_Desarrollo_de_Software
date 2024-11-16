@@ -17,9 +17,9 @@ public class ClienteController implements Controller{
     private ClienteDao dao;
     private int fila;
     
-    public ClienteController(ClientesJPanel cJPanel) {
+    public ClienteController(ClientesJPanel cJPanel, ClienteDao dao) {
         this.cJPanel = cJPanel;
-        this.dao = (new ClienteDaoFactory()).getDao("sql");
+        this.dao = dao;
         nextID = dao.obtenerUltimoID() + 1;
     }
 
