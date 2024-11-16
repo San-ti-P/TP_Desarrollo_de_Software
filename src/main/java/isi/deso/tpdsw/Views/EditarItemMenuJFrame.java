@@ -1,6 +1,7 @@
 package isi.deso.tpdsw.Views;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -8,15 +9,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import isi.deso.tpdsw.Controllers.CategoriaController;
 import isi.deso.tpdsw.Controllers.ItemMenuController;
+import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Categoria;
 import isi.deso.tpdsw.Models.Vendedor;
+import isi.deso.tpdsw.Services.CategoriaDaoFactory;
+import isi.deso.tpdsw.Services.VendedorDaoFactory;
 
 public class EditarItemMenuJFrame extends javax.swing.JFrame {
 
     public EditarItemMenuJFrame(ItemMenuController c) {
         controlador = c;
         initComponents();
+        controladorVendedor = new VendedorController((new VendedorDaoFactory()).getDao("sql"));
+        controladorCategoria = new CategoriaController((new CategoriaDaoFactory()).getDao("sql"));
+        cargarCategorias();
+        cargarVendedores();
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +69,7 @@ public class EditarItemMenuJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
 
         TitleJLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        TitleJLabel.setText("Crear Nuevo ItemMenu");
+        TitleJLabel.setText("Editar ItemMenu");
 
 //        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -328,8 +337,21 @@ public class EditarItemMenuJFrame extends javax.swing.JFrame {
         else if(sel.equals("Bebida")){
             ly.show(tipoJPanel, "Bebida");
         }
-    }                                            
+    }
 
+    private void categoriaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
+        Categoria categoriaSeleccionada = (Categoria) categoriaComboBox.getSelectedItem();
+        if (categoriaSeleccionada != null) {
+            System.out.println("Categoría seleccionada: " + categoriaSeleccionada.getDescripcion());
+        }
+    }
+
+    private void vendedorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {
+        Vendedor vendedorSeleccionado = (Vendedor) vendedorComboBox.getSelectedItem();
+        if (vendedorSeleccionado != null) {
+            System.out.println("Vendedor seleccionado: " + vendedorSeleccionado.getNombre());
+        }
+    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JPanel BebidaJPanel;
@@ -366,7 +388,10 @@ public class EditarItemMenuJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<Vendedor> vendedorComboBox;
     // End of variables declaration                   
     private ItemMenuController controlador;
-    
+    private VendedorController controladorVendedor;
+    private CategoriaController controladorCategoria;
+
+
     public JPanel getBebidaJPanel() {
         return BebidaJPanel;
     }
@@ -510,4 +535,21 @@ public class EditarItemMenuJFrame extends javax.swing.JFrame {
     public void setVendedorComboBox(JComboBox<Vendedor> vendedorComboBox) {
         this.vendedorComboBox = vendedorComboBox;
     }
+
+    private void cargarCategorias() {
+        ArrayList<Categoria> categorias = controladorCategoria.obtenerCategorias();
+        categoriaComboBox.removeAllItems();
+        for (Categoria categoria : categorias) {
+            categoriaComboBox.addItem(categoria);
+        }
+    }
+
+    private void cargarVendedores() {
+        ArrayList<Vendedor> vendedores = controladorVendedor.obtenerVendedores();
+        vendedorComboBox.removeAllItems();
+        for (Vendedor vendedor : vendedores) {
+            vendedorComboBox.addItem(vendedor);
+        }
+    }
+
 }

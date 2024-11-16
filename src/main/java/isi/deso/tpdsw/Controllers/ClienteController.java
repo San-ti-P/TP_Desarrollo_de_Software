@@ -17,10 +17,40 @@ public class ClienteController implements Controller{
     private ClienteDao dao;
     private int fila;
     
-    public ClienteController(ClientesJPanel cJPanel) {
+    public ClienteController(ClientesJPanel cJPanel, ClienteDao dao) {
         this.cJPanel = cJPanel;
-        this.dao = (new ClienteDaoFactory()).getDao("sql");
+        this.dao = dao;
         nextID = dao.obtenerUltimoID() + 1;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    public static int getNextID() {
+        return nextID;
+    }
+
+    public static void setNextID(int nextID) {
+        ClienteController.nextID = nextID;
+    }
+
+    public void buscarDatos() {
+        ArrayList<Cliente> clientes = dao.getAll();
+        for (Cliente cliente : clientes) {
+            cJPanel.agregarFila(cliente);
+        }
+    }
+
+    public void filtrarDatos(String nombre) {
+        ArrayList<Cliente> clientes = dao.searchByName(nombre);
+        for (Cliente cliente : clientes) {
+            cJPanel.agregarFila(cliente);
+        }
     }
 
     public Cliente crearCliente(String nombre, String cuit, String email, String direccion, Double latitud, Double longitud){
@@ -42,27 +72,6 @@ public class ClienteController implements Controller{
         return cli;
     }
 
-    public void buscarDatos() {
-        ArrayList<Cliente> clientes = dao.getAll();
-        for (Cliente cliente : clientes) {
-            cJPanel.agregarFila(cliente);
-        }
-    }
-
-    public void filtrarDatos(String nombre) {
-        ArrayList<Cliente> clientes = dao.searchByName(nombre);
-        for (Cliente cliente : clientes) {
-            cJPanel.agregarFila(cliente);
-        }
-    }
-    
-    public static int getNextID() {
-        return nextID;
-    }
-
-    public static void setNextID(int nextID) {
-        ClienteController.nextID = nextID;
-    }
 
     @Override
     public void editarFila(int fila) {

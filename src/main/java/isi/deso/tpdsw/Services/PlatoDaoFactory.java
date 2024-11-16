@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package isi.deso.tpdsw.Services;
 
 import isi.deso.tpdsw.Daos.PlatoDao;
@@ -9,10 +5,6 @@ import isi.deso.tpdsw.Daos.PlatoMemory;
 import isi.deso.tpdsw.Daos.PlatoSQL;
 import java.util.TreeMap;
 
-/**
- *
- * @author santi
- */
 public class PlatoDaoFactory {
     private final TreeMap<String, Integer> tipos = new TreeMap();
     

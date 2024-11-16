@@ -14,4 +14,24 @@ public class PlatoMemory implements PlatoDao{
     public ArrayList<Plato> searchByName(String nombre) {
         return null;
     }
+
+    @Override
+    public Plato createPlato(Plato plato) {
+        return null;
+    }
+
+    @Override
+    public Plato updatePlato(Plato plato) {
+        return null;
+    }
+
+    @Override
+    public void deletePlato(int id) {
+
+    }
+
+    @Override
+    public int obtenerUltimoID() {
+        return 0;
+    }
 }

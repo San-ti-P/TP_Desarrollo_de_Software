@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: isi.deso.tpdsw.Controllers.PlatoControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.552 s -- in isi.deso.tpdsw.Controllers.PlatoControllerTest

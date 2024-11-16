@@ -10,4 +10,5 @@ public interface ClienteDao {
     public Cliente updateCliente(Cliente cliente);
     public void deleteCliente(int id);
     public int obtenerUltimoID();
+    public Cliente getClienteById(int id); 
 }

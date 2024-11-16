@@ -59,4 +59,9 @@ public class ClienteMemory implements ClienteDao {
     public int obtenerUltimoID() {
         return 0;
     }
+
+    @Override
+    public Cliente getClienteById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

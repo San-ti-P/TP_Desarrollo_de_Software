@@ -2,6 +2,8 @@ package isi.deso.tpdsw.Views;
 
 import isi.deso.tpdsw.Controllers.ItemMenuController;
 import isi.deso.tpdsw.Models.ItemMenu;
+import isi.deso.tpdsw.Services.BebidaDaoFactory;
+import isi.deso.tpdsw.Services.PlatoDaoFactory;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
@@ -18,7 +20,7 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
         this.getJTable().getColumnModel().getColumn(6).setMinWidth(150);
         this.getJTable().getColumnModel().getColumn(6).setMaxWidth(150);
         
-        controlador = new ItemMenuController(this);
+        controlador = new ItemMenuController(this, (new BebidaDaoFactory().getDao("sql")), (new PlatoDaoFactory().getDao("sql")));
         
         this.getJTable().getColumnModel().getColumn(6).setCellRenderer(new ButtonRendererEditor(controlador, this));
         this.getJTable().getColumnModel().getColumn(6).setCellEditor(new ButtonRendererEditor(controlador, this));
@@ -37,6 +39,11 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
         this.getJTable().setValueAt(i.getAptoVegano(), fila, 5);
     }
 
+    public void actualizarDatos(){
+        this.vaciarTabla();
+        controlador.buscarDatos();
+    }
+
     @Override
     void btnCrearActionPerformed(java.awt.event.ActionEvent evt){
         ItemsMenuFormJFrame form = new ItemsMenuFormJFrame(controlador);
@@ -47,6 +54,6 @@ public class ItemsMenuJPanel extends BuscadorJPanel{
     @Override
     void buscadorKeyReleased(KeyEvent evt) {
         this.vaciarTabla();
-//        controlador.filtrarDatos(this.getBuscadorTextField().getText());
+        controlador.filtrarDatos(this.getBuscadorTextField().getText());
     }
 }

@@ -32,4 +32,24 @@ public class BebidaMemory implements BebidaDao{
         }
         return result;
     }
+
+    @Override
+    public Bebida updateBebida(Bebida bebida) {
+        return null;
+    }
+
+    @Override
+    public Bebida createBebida(Bebida bebida) {
+        return null;
+    }
+
+    @Override
+    public void deleteBebida(int id) {
+
+    }
+
+    @Override
+    public int obtenerUltimoID() {
+        return 0;
+    }
 }
