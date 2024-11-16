@@ -7,6 +7,10 @@ public class PagoMemory implements PagoDao{
 
     @Override
     public ArrayList<Pago> getAll() {
-        return null;
+        ArrayList<Pago> pagos = new ArrayList<>();
+        // Add logic to populate the list with Pago objects
+        // Example:
+        // pagos.add(new Pago(...));
+        return pagos;
     }
 }

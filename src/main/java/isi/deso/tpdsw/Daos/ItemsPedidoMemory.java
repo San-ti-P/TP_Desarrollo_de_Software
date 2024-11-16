@@ -22,7 +22,7 @@ public class ItemsPedidoMemory implements ItemsPedidoDao {
 
     @Override
     public ArrayList<ItemPedido> getAll() {
-        return new ArrayList<>(itemsPedido);
+        return itemsPedido;
     }
 
 

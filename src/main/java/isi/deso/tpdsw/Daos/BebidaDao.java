@@ -10,6 +10,5 @@ public interface BebidaDao {
     public Bebida updateBebida(Bebida bebida);
     public Bebida createBebida(Bebida bebida);
     public void deleteBebida(int id);
-
-    int obtenerUltimoID();
+    public int obtenerUltimoID();
 }

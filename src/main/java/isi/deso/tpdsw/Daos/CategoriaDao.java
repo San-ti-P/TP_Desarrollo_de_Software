@@ -6,6 +6,5 @@ import java.util.ArrayList;
 
 public interface CategoriaDao {
     public ArrayList<Categoria> getAll();
-    public int obtenerUltimoID();
     public Categoria getCategoriaById(int categoriaId);
 }

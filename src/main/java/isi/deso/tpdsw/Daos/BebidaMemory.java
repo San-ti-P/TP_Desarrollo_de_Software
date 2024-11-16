@@ -35,21 +35,34 @@ public class BebidaMemory implements BebidaDao{
 
     @Override
     public Bebida updateBebida(Bebida bebida) {
+        for (int i = 0; i < bebidas.size(); i++) {
+            if (bebidas.get(i).getId() == bebida.getId()) {
+                bebidas.set(i, bebida);
+                return bebida;
+            }
+        }
         return null;
     }
 
     @Override
     public Bebida createBebida(Bebida bebida) {
-        return null;
+        bebidas.add(bebida);
+        return bebida;
     }
 
     @Override
     public void deleteBebida(int id) {
-
+        bebidas.removeIf(bebida -> bebida.getId() == id);
     }
 
     @Override
     public int obtenerUltimoID() {
-        return 0;
+        int maxId = 0;
+        for (Bebida bebida : bebidas) {
+            if (bebida.getId() > maxId) {
+                maxId = bebida.getId();
+            }
+        }
+        return maxId;
     }
 }

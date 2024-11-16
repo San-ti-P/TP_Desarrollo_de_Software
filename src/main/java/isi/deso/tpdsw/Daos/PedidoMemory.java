@@ -24,7 +24,7 @@ public class PedidoMemory implements PedidoDao{
 
     @Override
     public ArrayList<Pedido> getAll() {
-        return new ArrayList<>(pedidos);
+        return pedidos;
     }
 
     @Override
@@ -40,21 +40,34 @@ public class PedidoMemory implements PedidoDao{
 
     @Override
     public Pedido createPedido(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        pedidos.add(pedido);
+        return pedido;
     }
 
     @Override
     public Pedido updatePedido(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (int i = 0; i < pedidos.size(); i++) {
+            if (pedidos.get(i).getId() == pedido.getId()) {
+                pedidos.set(i, pedido);
+                return pedido;
+            }
+        }
+        return null;
     }
 
     @Override
     public void deletePedido(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        pedidos.removeIf(pedido -> pedido.getId() == id);
     }
 
     @Override
     public int obtenerUltimoID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int maxId = 0;
+        for (Pedido pedido : pedidos) {
+            if (pedido.getId() > maxId) {
+                maxId = pedido.getId();
+            }
+        }
+        return maxId;
     }
 }
