@@ -13,6 +13,7 @@ isi\deso\tpdsw\Daos\EstrategiaMercadoPagoMemory.class
 isi\deso\tpdsw\Daos\CoordenadaSQL.class
 isi\deso\tpdsw\Daos\ClienteDao.class
 isi\deso\tpdsw\Daos\ItemsPedidoMemory.class
+isi\deso\tpdsw\Services\CategoriaDaoFactory.class
 isi\deso\tpdsw\Views\ButtonRendererEditor$2.class
 isi\deso\tpdsw\Views\PedidosFormJFrame$1.class
 isi\deso\tpdsw\Daos\VendedorDao.class
@@ -49,6 +50,7 @@ isi\deso\tpdsw\Models\Plato.class
 isi\deso\tpdsw\Views\SeleccionarItemsPedidoFormJFrame$2.class
 isi\deso\tpdsw\Views\VendedoresFormJFrame$4.class
 isi\deso\tpdsw\Services\PedidoDaoFactory.class
+isi\deso\tpdsw\Controllers\CategoriaController.class
 isi\deso\tpdsw\Views\EditarClienteJFrame$2.class
 isi\deso\tpdsw\Daos\PedidoDao.class
 isi\deso\tpdsw\Models\Pago.class

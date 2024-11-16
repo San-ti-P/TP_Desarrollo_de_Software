@@ -14,6 +14,7 @@ import isi.deso.tpdsw.Controllers.VendedorController;
 import isi.deso.tpdsw.Models.Categoria;
 import isi.deso.tpdsw.Models.Vendedor;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 public class ItemsMenuFormJFrame extends javax.swing.JFrame {
 
@@ -22,6 +23,8 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
         initComponents();
         controladorVendedor = new VendedorController();
         controladorCategoria = new CategoriaController();
+        cargarCategorias();
+        cargarVendedores();
     }
 
     @SuppressWarnings("unchecked")
@@ -67,7 +70,8 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
         TitleJLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         TitleJLabel.setText("Crear Nuevo ItemMenu");
 
-//        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        categoriaComboBox.setModel(new DefaultComboBoxModel<>());
+        vendedorComboBox.setModel(new DefaultComboBoxModel<>());
 
         tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plato", "Bebida" }));
         tipoComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -338,11 +342,17 @@ public class ItemsMenuFormJFrame extends javax.swing.JFrame {
     private void categoriaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                               
         Categoria categoriaSeleccionada = (Categoria) categoriaComboBox.getSelectedItem();
         if (categoriaSeleccionada != null) {
-            System.out.println("Categoría seleccionada: " + categoriaSeleccionada.getNombre());
+            System.out.println("Categoría seleccionada: " + categoriaSeleccionada.getDescripcion());
+        }
+    }
+    
+    private void vendedorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        Vendedor vendedorSeleccionado = (Vendedor) vendedorComboBox.getSelectedItem();
+        if (vendedorSeleccionado != null) {
+            System.out.println("Vendedor seleccionado: " + vendedorSeleccionado.getNombre());
         }
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BebidaJPanel;

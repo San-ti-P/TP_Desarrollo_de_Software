@@ -151,5 +151,10 @@ public class Vendedor {
         }
         return subPedidos;
     }
+    
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }
 

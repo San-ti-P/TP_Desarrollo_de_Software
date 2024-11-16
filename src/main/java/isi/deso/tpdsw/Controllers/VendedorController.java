@@ -26,7 +26,7 @@ public class VendedorController implements Controller{
     }
 
     public VendedorController() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.dao = dao;
     }
     
     public Vendedor crearVendedor(String nombre, String direccion, Double latitud, Double longitud){

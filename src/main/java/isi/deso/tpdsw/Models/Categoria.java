@@ -64,5 +64,12 @@ public class Categoria {
     public void setTipoItem(TipoItem tipoItem) {
         this.tipoItem = tipoItem;
     }
+
+    @Override
+    public String toString() {
+        return this.descripcion;
+    }
+
+
 }
 
