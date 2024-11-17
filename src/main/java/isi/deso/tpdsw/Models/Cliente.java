@@ -1,5 +1,6 @@
 package isi.deso.tpdsw.Models;
 
+import isi.deso.tpdsw.Daos.PagoSQL;
 import isi.deso.tpdsw.Services.PedidoObserver;
 import java.util.ArrayList;
 import java.util.Date;
@@ -135,6 +136,7 @@ public class Cliente implements PedidoObserver {
                 return; 
             }
             Pago pago = new Pago(new Date(), p, e);
+            (new PagoSQL()).agregarPago(pago, entradaMetodoPago);
             p.setPago(pago);
         }
     }

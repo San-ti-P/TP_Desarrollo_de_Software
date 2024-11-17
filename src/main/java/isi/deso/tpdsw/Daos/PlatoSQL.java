@@ -129,7 +129,6 @@ public class PlatoSQL implements PlatoDao{
         try (Statement stm = con.createStatement()) {
             stm.executeUpdate(updateItemMenuQuery);
             stm.executeUpdate(updatePlatoQuery);
-            System.out.println("Inserte plato + item");
         } catch (SQLException e) {
             System.out.println("Error al actualiza el plato");
         }

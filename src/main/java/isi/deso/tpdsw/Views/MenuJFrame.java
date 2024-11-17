@@ -1,12 +1,31 @@
 package isi.deso.tpdsw.Views;
 
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.*;
 import isi.deso.tpdsw.Controllers.*;
+import isi.deso.tpdsw.Daos.DBConnector;
 
 public class MenuJFrame extends javax.swing.JFrame {
 
     public MenuJFrame() {
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Connection finalConnection = DBConnector.getConnector().getConnection();
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                try {
+                    if (finalConnection != null && !finalConnection.isClosed()) {
+                        finalConnection.close();
+                        System.out.println("Conexión cerrada.");
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar la conexión: " + ex.getMessage());
+                }
+            }
+        });
         initComponents();
         configurarLayout();
 //      configurarTabla();

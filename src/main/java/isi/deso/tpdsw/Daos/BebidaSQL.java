@@ -126,7 +126,6 @@ public class BebidaSQL implements BebidaDao{
         try (Statement stm = con.createStatement()) {
             stm.executeUpdate(insertItemMenuQuery);
             stm.executeUpdate(insertBebidaQuery);
-            System.out.println("Inserte bebida + item");
         } catch (SQLException e) {
             System.out.println("Error al crear la bebida");
         }

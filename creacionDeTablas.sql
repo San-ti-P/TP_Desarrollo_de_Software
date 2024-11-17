@@ -69,21 +69,21 @@ CREATE TABLE ItemPedido (
 );
 
 CREATE TABLE Pago (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATE NOT NULL,
     montoFinal DOUBLE NOT NULL,
     pedidoId INT NOT NULL REFERENCES Pedido(id)
 );
 
 CREATE TABLE EstrategiaTransferencia (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     CUIT VARCHAR(15) NOT NULL,
     cbu VARCHAR(25) NOT NULL,
     pagoId INT NOT NULL REFERENCES Pago(id)
 );
 
 CREATE TABLE EstrategiaMercadoPago (
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     alias VARCHAR(50) NOT NULL,
     pagoId INT NOT NULL REFERENCES Pago(id)
 );

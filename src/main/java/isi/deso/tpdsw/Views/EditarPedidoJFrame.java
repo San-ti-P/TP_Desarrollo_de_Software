@@ -169,6 +169,10 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         for(ItemPedido i : items){
             i.setPedido(p);
         }
+        if(p.getEstado() == EstadoPedido.EN_ENVIO){
+            p.addObserver(p.getCliente());
+            p.notifyObservers();
+        }
         this.setVisible(false);
     }     
     
@@ -226,7 +230,6 @@ public class EditarPedidoJFrame extends javax.swing.JFrame {
         this.items = items;
         double subtotal = 0;
         for(ItemPedido i : items){
-            System.out.println(i.getItem().getPrecio()+"  "+i.getCantidad());
             subtotal = subtotal + (i.getItem().getPrecio()*i.getCantidad());
         }
         campoSubtotal.setText(String.valueOf(subtotal));

@@ -13,4 +13,14 @@ public class PagoMemory implements PagoDao{
         // pagos.add(new Pago(...));
         return pagos;
     }
+
+    @Override
+    public void agregarPago(Pago pago, String tipo) {
+
+    }
+
+    @Override
+    public int obtenerUltimoID() {
+        return 0;
+    }
 }

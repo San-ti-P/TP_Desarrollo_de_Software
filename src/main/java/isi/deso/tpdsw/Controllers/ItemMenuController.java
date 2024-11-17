@@ -49,8 +49,6 @@ public class ItemMenuController implements Controller{
     public void buscarDatos() {
         ArrayList<Bebida> bebidas = daoBebida.getAll();
         ArrayList<Plato> platos = daoPlato.getAll();
-        System.out.println(platos);
-        System.out.println(bebidas);
         
         for (Bebida bebida : bebidas) {
             iJPanel.agregarFila(bebida);
@@ -102,7 +100,6 @@ public class ItemMenuController implements Controller{
     }
     
     public Plato crearPlato(String nombre, String descripcion, int calorias, boolean aptoCeliaco, float peso, float precio, Categoria categoria, boolean aptoVegano, Vendedor vendedor){
-        System.out.println(getNextID());
         Plato p = new Plato(getNextID(), nombre, descripcion, calorias, aptoCeliaco, peso, precio, categoria, aptoVegano, vendedor);
         controladorPlato.crearPlato(p);
         this.getIJPanel().agregarFila(p);
