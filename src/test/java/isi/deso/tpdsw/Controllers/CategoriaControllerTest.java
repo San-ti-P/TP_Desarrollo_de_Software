@@ -51,7 +51,6 @@ public class CategoriaControllerTest {
            
         
         when(dao.getAll()).thenReturn(categorias);
-        when(dao.obtenerUltimoID()).thenReturn(4);
 
         
         

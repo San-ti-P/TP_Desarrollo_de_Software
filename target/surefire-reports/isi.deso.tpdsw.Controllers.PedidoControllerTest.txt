@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: isi.deso.tpdsw.Controllers.PedidoControllerTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.788 s -- in isi.deso.tpdsw.Controllers.PedidoControllerTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.378 s -- in isi.deso.tpdsw.Controllers.PedidoControllerTest
